@@ -1,0 +1,432 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 10px;
+}
+body{
+    position: relative;
+    min-width: 100vw;
+    min-height: 100vh;
+    /* border: 2px solid red; */
+    background-color: rgb(218, 218, 218);
+}
+#profile_main{
+    display: flex;
+}
+#index_col{
+    padding: 4em 0;
+    width: 15%;
+    height: auto;
+    background-color: rgb(19, 153, 86);
+
+}
+#index_col ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#index_col ul li{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+#index_col ul li a{
+    position: relative;
+    margin: 2rem 0;
+    padding: 0.2em 1em;
+    width: 80%;
+    height: 3rem;
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+    /* overflow: hidden; */
+    transition-duration: 0.3s;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.692), -1px -1px 2px rgba(255, 255, 255, 0.699);
+}
+.profile_link_active:after{
+    position: absolute;
+    content: "";
+    right: -5%;
+    transform: rotate(45deg);
+    border-top: 1rem solid rgb(255, 255, 255);
+    border-bottom: 1rem solid rgba(19, 153, 86, 0);
+    border-left: 1rem solid rgba(19, 153, 86, 0);
+    border-right: 1rem solid rgb(255, 255, 255);
+}
+#index_col ul li a:hover{
+    letter-spacing: 0.2rem;
+}
+#content_col{
+    width: 85%;
+    height: 100%;
+}
+
+
+/* =========================================DASHBOARD=========================== */
+#dashboard{
+    width: 100%;
+    height: 100%;
+    /* display: none; */
+}
+.header_row{
+    position: relative;
+    width: 100%;
+    height: 25rem;
+}
+.header_row #cover_img{
+    width: 100%;
+    height: 100%;
+}
+.header_row .profile_img_box{
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 20rem;
+    height: 20rem;
+    background-color: rgb(78, 78, 78);
+    border: 3px solid rgb(255, 255, 255);
+    z-index: 10;
+}
+.header_row .profile_img_box img{
+    width: 100%;
+    height: 100%;
+}
+.header_row .header_info_row{
+    position: absolute;
+    padding: 0 2em;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    width: 80%;
+    height: 50%;
+}
+.header_row .header_info_row .name_box{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+}
+.header_row .header_info_row .name_box .user_name{
+    color: white;
+    font-size: 2rem;
+    font-family: 'Bitter', serif;
+}
+.header_row .header_info_row .name_box .desgn{
+    color: rgb(224, 224, 224);
+    font-size: 1.6rem;
+    /* font-family: 'Bitter', serif; */
+}
+.header_row .header_info_row .name_box .user_status{
+    margin-top: 1.5rem;
+    width: 50%;
+    text-align: center;
+    color: white;
+    font-size: 1.4rem;
+    border-radius: 2rem;
+    font-family: 'Bitter', serif;
+}
+.header_row .header_info_row .btns_box{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+.header_row .header_info_row .btns_box .ask_user_btn{
+    margin: 1rem;
+    padding: 0.2em 0.7em;
+    color: white;
+    font-size: 1.8rem;
+    text-decoration: none;
+    font-family: 'Bitter', serif;
+}
+.header_row .header_info_row .btns_box .ask_user_btn:nth-child(1):hover{
+    background-color: red;
+}
+
+#user_about{
+    padding: 2em 0;
+    width: 100%;
+    height: 40rem;
+    display: flex;
+}
+#user_about .left_col{
+    position: relative;
+    padding: 0 1em;
+    width: 80%;
+    height: 100%;
+}
+#user_about .left_col .left_col_heading{
+    margin-bottom: 3rem;
+    text-align: center;
+    font-size: 3rem;
+}
+#user_about .left_col .user_quote{
+    padding: 0 3em;
+    text-align: center;
+    font-size: 1.6rem;
+    color: #303030d7;
+}
+#user_about .left_col .row2{
+    position: absolute;
+    bottom: 0;
+    margin: 2rem 0;
+    width: 100%;
+    height: 14%;
+    display: flex;
+}
+#user_about .left_col .row2 .box{
+    width: 25%;
+    height: 100%;
+    font-size: 1.6rem;
+    color: #474747;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+}
+#user_about .right_col{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#user_about .right_col .box{
+    width: 10rem;
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+}
+#user_about .right_col .box span{
+    margin-top: 1rem;
+}
+
+
+/* =========================================DASHBOARD=========================== */
+#user_followers{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+#user_followers .row-1{
+    padding: 0 3em;
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid rgb(80, 80, 80);
+}
+#user_followers .row-1 h4{
+    width: 80%;
+    font-family: 'Bitter', serif;
+    font-size: 2rem;
+    /* border: 2px solid red; */
+}
+#user_followers .row-1 .search_box{
+    width: 20%;
+    display: flex;
+    /* border: 2px solid red; */
+
+}
+#user_followers .row-1 .search_box input{
+    padding: 0 0.3em;
+    font-family: 'Bitter', serif;
+    font-size: 1.6rem;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid rgb(3, 170, 92);
+}
+#user_followers .row-1 .search_box button{
+    padding: 0.2em 0.4em;
+    background-color: rgb(3, 170, 92);
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 1.6rem;
+
+}
+#user_followers .row-2{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+/* ========================================PROFILE EDIT================================= */
+#profile_edit{
+    width: 100%;
+    height: 100%;
+}
+
+#profile_edit .header_row #cover_img_input{
+    bottom: 0;
+    position: absolute;
+    display: none;
+}
+#profile_edit .header_row .cover_label{
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+    width: 0;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    font-size: 2rem;
+    background-color: rgb(255, 0, 85);
+    overflow: hidden;
+    transition: all linear 0.4s;
+    
+}
+#profile_edit .header_row:hover .cover_label{
+    width: 10rem;
+}
+
+#profile_edit .profile_img_box #avtar_img{
+    bottom: 0;
+    position: absolute;
+    display: none;
+}
+#profile_edit .profile_img_box .avtar_label{
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 0;
+    font-size: 1.6rem;
+    text-align: center;
+    position: absolute;
+    color: white;
+    overflow: hidden;
+    background-color: rgba(2, 192, 81, 0.856);
+    transition: all linear 0.4s;
+}
+#profile_edit .profile_img_box:hover .avtar_label{
+    height: 3rem;
+}
+#profile_edit form .row{
+    width: 100%;
+    margin: 2.5rem;
+}
+#profile_edit form .row label{
+    display: block;
+    margin-bottom: 0.3rem;
+    font-family: 'Bitter', serif;
+    font-weight: 500;
+    font-size: 1.6rem;
+}
+#profile_edit form .row input{
+    padding: 0.2em 0.2em;
+    width: 90%;
+    font-size: 1.6rem;
+    outline: none;
+    background-color: transparent;
+    color: rgb(49, 49, 49);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    /* border-radius: 2rem; */
+}
+#profile_edit form .row-4{
+    display: flex;
+}
+#profile_edit form .row-4 .left_box{
+    width: 45%;
+    height: 100%;
+}
+#profile_edit form .row-4 .right_box{
+    width: 45%;
+    height: 100%;
+}
+#profile_edit form .button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#profile_edit form button{
+    width: 20%;
+    margin: 3rem 0;
+    height: 4rem;
+    outline: none;
+    border: none;
+    border-radius: 2rem;
+    font-size: 2rem;
+    color: white;
+    /* letter-spacing: 0.2rem; */
+    background-color: rgb(0, 158, 84);
+    transition-duration: 0.3s;
+}
+#profile_edit form button:hover{
+    width: 25%;
+
+}
+#answers{
+    padding: 1em;
+}
+.user_ans_box{
+    padding: 2rem 0;
+    width: 100%;
+}
+.asked_ques_heading{
+    /* padding: 1.6em; */
+    text-align: center;
+    font-size: 2.6rem;
+}
+.user_ans_box .post_detail_row{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    font-size: 1.4rem;
+    display: flex;
+}
+.user_ans_box .post_detail_row .in{
+    margin-left: 5%;
+}
+.user_ans_box .que_row{
+    width: 100%;
+}
+.user_ans_box .que_row a{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+.user_ans_box .que_row a:hover{
+    color: blue;
+}
+.user_ans_box .user_ans_row .user_ans_para{
+    margin-top: 2rem;
+    font-size: 1.7rem;
+    color: #363636;
+}
+.user_ans_box .user_ans_row .user_ans_lastrow{
+    margin-top: 2rem;
+    padding: 0 2em;
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    background-color: #b4b3b3;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends "profile/profile.html" %}
+{% load static %}
+
+<!-- {{ block.super }} -->
+{% block profilecontent %}
+<div id="profile_edit">
+    <form action="" method="post">
+        <div class="header_row">
+            <img id="cover_img" src="{% static 'images/profile_cover.jpg' %}" alt="">
+            <label for="cover_img_input" class="cover_label"><i class="far fa-edit"></i></label>
+            <input type="file" name="cover_img" id="cover_img_input" accept="image/*">
+            <div class="profile_img_box">
+                <img id="avtar" src="{% static 'images/little_boy.jpg' %}" alt="">
+                <label for="avtar_img" class="avtar_label"><i class="fas fa-camera"></i></label>
+                <input type="file" name="avtar_img" id="avtar_img" accept="image/*">
+            </div>
+            
+        </div>
+        <div class="row">
+            <label for="name">Name:</label>
+            <input type="text" id="name">
+        </div>
+        <div class="row">
+            <label for="display_name">Display Name:</label>
+            <input type="text" id="display_name">
+        </div>
+        <div class="row">
+            <label for="designation">Designation:</label>
+            <input type="text" id="designation">
+        </div>
+        <div class="row row-4">
+            <div class="left_box">
+                <label for="city">City:</label>
+                <input type="text" id="city">
+            </div>
+            <div class="right_box">
+                <label for="state">State:</label>
+                <input type="text" id="state">
+            </div>
+        </div>
+        <div class="row">
+            <label for="email">Email:</label>
+            <input type="text" id="email">
+        </div>
+        <div class="row">
+            <label for="password">Password:</label>
+            <input type="text" id="password">
+        </div>
+        <div class="button">
+            <button type="submit">Save Profile</button>
+        </div>
+    </form>
+</div>
+{% endblock profilecontent %}

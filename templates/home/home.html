@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+{% extends "base/base.html" %}
+{% load static %}
+<title>AskMe-home</title>
+
+{% block bodyblock %}
+<header id="header">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 320">
+        <path fill="#02a151" fill-opacity="1"
+            d="M0,128L120,112C240,96,480,64,720,64C960,64,1200,96,1320,112L1440,128L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z">
+        </path>
+    </svg>
+
+    <div class="search_box">
+        <h1 class="search_heading">Where you got stuck?</h1>
+        <input type="text" placeholder="Type a question to search">
+        <button type="submit">Search</button>
+    </div>
+    <div class="square1"></div>
+    <div class="square2"></div>
+    <div class="square3"></div>
+</header>
+<div class="services">
+    <div class="serv_box">
+        <h1 class="serv_icon"><i class="fas fa-question"></i></h1>
+        <h2 class="serv_heading">Post Questions</h2>
+        <p class="serv_para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel dolorem dolore nemo labore
+            corrupti quas?</p>
+    </div>
+    <div class="serv_box">
+        <h1 class="serv_icon"><i class="fas fa-reply"></i></h1>
+        <h2 class="serv_heading">Reply Answers</h2>
+        <p class="serv_para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel dolorem dolore nemo labore
+            corrupti quas?</p>
+    </div>
+    <div class="serv_box">
+        <h1 class="serv_icon"><i class="far fa-bell"></i></h1>
+        <h2 class="serv_heading">Live Notifications</h2>
+        <p class="serv_para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel dolorem dolore nemo labore
+            corrupti quas?</p>
+    </div>
+    <div class="serv_box">
+        <h1 class="serv_icon"><i class="fas fa-poll"></i></h1>
+        <h2 class="serv_heading">Create Polls</h2>
+        <p class="serv_para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel dolorem dolore nemo labore
+            corrupti quas?</p>
+    </div>
+</div>
+
+<div id="main_section">
+    <div id="column2" class="column2">
+        <div class="index_row">
+            <a id="index_link1" href="/" class="index_link index_link_active"><i class="fas fa-home font_2rem"></i><small class="index_link_name">Home</small></a>
+            <a id="index_link2" href="/home/peoples" class="index_link"><i class="fas fa-users font_2rem"></i><small class="index_link_name">Peoples</small></a>
+            <a id="index_link5" href="/home/write-answers" class="index_link"><i class="fas fa-poll font_2rem"></i><small class="index_link_name">Polls</small></a>
+            <!-- <a id="index_link3" href="#user_questions" class="index_link"><i class="fas fa-question-circle font_2rem"></i><small class="index_link_name">Questions</small></a>
+            <a id="index_link4" href="#user_answers" class="index_link"><i class="fas fa-file-alt font_2rem"></i><small class="index_link_name">Answers</small></a> -->
+            
+        </div>
+        {% block sectionblock %}
+        <div id="section_home">
+            <div id="categories" class="categories">
+                <ul id="cate_ul">
+                    <li><a href="" class="cate_link cateActive">All</a></li>
+                    <li><a href="" class="cate_link">Programming</a></li>
+                    <li><a href="" class="cate_link">Technology</a></li>
+                    <li><a href="" class="cate_link">Language</a></li>
+                    <li><a href="" class="cate_link">Products</a></li>
+                    <li><a href="" class="cate_link">Math</a></li>
+                    <li><a href="" class="cate_link">Science</a></li>
+                    <li><a href="" class="cate_link">Bussiness</a></li>
+                    <li><a href="" class="cate_link">Education</a></li>
+                    <li><button onclick="showHideDropdown()" id="more_btn">More <i
+                                class="fas fa-caret-down"></i></button>
+                        <div id="cate_dropdown">
+                            <a href="" class="cate_link_more">Gk</a>
+                            <a href="" class="cate_link_more">Space</a>
+                            <a href="" class="cate_link_more">Health</a>
+                            <a href="" class="cate_link_more">Other</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="que_box">
+                <div class="col2_left">
+                    <a href="" class="prof_icon">
+                        <img src="{% static 'images/Cute-Girl.jpg' %}" alt="">
+                    </a>
+                    <div class="col2_row2">
+                        <h4><i class="fas fa-question"></i></h4>
+                        <p><span class="clr_red">43</span> People Asked</p>
+                        <button>Ask Again</button>
+                    </div>
+                </div>
+                <div class="col2_right">
+                    <div class="col2_right_row1">
+                        <a href="" class="name clr_blue">Akash Mothe</a>
+                        <p class="status bg_blueviolet">Professional</p>
+                        <p class="date">Asked: <span class="clr_blue">May 14,2021</span></p>
+                        <p class="category">In: <span class="clr_blue">Programming</span></p>
+                    </div>
+                    <div class="col2_right_row2">
+                        <h2 class="que"><Span class="clr_green">Que: </Span>What is the difference between Call by
+                            Value
+                            and Call by Reference?</h2>
+                        <p class="ans"><span class="clr_green">Ans:</span> When using Call by Value, you are sending
+                            the
+                            value of a variable as parameter to a function, whereas Call by Reference sends the
+                            address
+                            of the variable. Also, under Call by Value, the value in the parameter is not affected
+                            by
+                            whatever operation that takes place, while in the case of Call by Reference, values can
+                            be
+                            affected by the process within the function.</p>
+                    </div>
+                    <div class="col2_right_row3">
+                        <a href="/home/write-answers" class="btn1"><i
+                                class="fas fa-comment-alt font_1-2rem"></i>&nbsp;&nbsp;&nbsp;<span>4</span>&nbsp;Answers</a>
+                        <p href="" class="btn1"><i class="fas fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>3</span>k Views
+                        </p>
+                        <a href="/home/write-answers" class="ans_btn"">Answer</a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="que_box">
+                <div class="col2_left">
+                    <div class="col2_row1">
+                        <a href="" class="prof_icon"><img src="{% static 'images/Cute-Girl.jpg' %}" alt=""></a>
+                    </div>
+                    <div class="col2_row2">
+                        <h4><i class="fas fa-question"></i></h4>
+                        <p><span class="clr_red">43</span> People Asked</p>
+                        <button>Ask Again</button>
+                    </div>
+                </div>
+                <div class="col2_right">
+                    <div class="col2_right_row1">
+                        <a href="" class="name clr_blue">Yogesh Nikas</a>
+                        <p class="status bg_blueviolet">Professional</p>
+                        <p class="date">Asked: <span class="clr_blue">May 14,2021</span></p>
+                        <p class="category">In: <span class="clr_blue">Programming</span></p>
+                    </div>
+                    <div class="col2_right_row2">
+                        <h2 class="que"><Span class="clr_green">Que: </Span>What is the difference between Call by
+                            Value
+                            and Call by Reference?</h2>
+                        <p class="ans"><span class="clr_green">Ans:</span> When using Call by Value, you are sending
+                            the
+                            value of a variable as parameter to a function, whereas Call by Reference sends the
+                            address
+                            of the variable. Also, under Call by Value, the value in the parameter is not affected
+                            by
+                            whatever operation that takes place, while in the case of Call by Reference, values can
+                            be
+                            affected by the process within the function.
+                            When using Call by Value, you are sending the
+                            value of a variable as parameter to a function, whereas Call by Reference sends the
+                            address
+                            of the variable. Also, under Call by Value, the value in the parameter is not affected
+                            by
+                            whatever operation that takes place, while in the case of Call by Reference, values can
+                            be
+                            affected by the process within the function.</p>
+                    </div>
+                    <div class="col2_right_row3">
+                        <a href="#ans_page" class="btn1"><i
+                                class="fas fa-comment-alt font_1-2rem"></i>&nbsp;&nbsp;&nbsp;<span>4</span>&nbsp;Answers</a>
+                        <p href="" class="btn1"><i class="fas fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>3</span>k Views
+                        </p>
+                        <a href="#ans_section" class="ans_btn">Answer</a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="que_box">
+                <div class="col2_left">
+                    <div class="col2_row1">
+                        <a href="" class="prof_icon"><img src="{% static 'images/Cute-Girl.jpg' %}" alt=""></a>
+                    </div>
+                    <div class="col2_row2">
+                        <h4><i class="fas fa-question"></i></h4>
+                        <p><span class="clr_red">43</span> People Asked</p>
+                        <button>Ask Again</button>
+                    </div>
+                </div>
+                <div class="col2_right">
+                    <div class="col2_right_row1">
+                        <a href="" class="name clr_blue">Yogesh Nikas</a>
+                        <p class="status bg_blueviolet">Professional</p>
+                        <p class="date">Asked: <span class="clr_blue">May 14,2021</span></p>
+                        <p class="category">In: <span class="clr_blue">Programming</span></p>
+                    </div>
+                    <div class="col2_right_row2">
+                        <h2 class="que"><Span class="clr_green">Que: </Span>What is the difference between Call by
+                            Value
+                            and Call by Reference?</h2>
+                        <p class="ans"><span class="clr_green">Ans:</span> When using Call by Value, you are sending
+                            the
+                            value of a variable as parameter to a function, whereas Call by Reference sends the
+                            address
+                            of the variable. Also, under Call by Value, the value in the parameter is not affected
+                            by
+                            whatever operation that takes place, while in the case of Call by Reference, values can
+                            be
+                            affected by the process within the function.
+                            When using Call by Value, you are sending the
+                            value of a variable as parameter to a function, whereas Call by Reference sends the
+                            address
+                            of the variable. Also, under Call by Value, the value in the parameter is not affected
+                            by
+                            whatever operation that takes place, while in the case of Call by Reference, values can
+                            be
+                            affected by the process within the function.</p>
+                    </div>
+                    <div class="col2_right_row3">
+                        <a href="#ans_page" class="btn1"><i
+                                class="fas fa-comment-alt font_1-2rem"></i>&nbsp;&nbsp;&nbsp;<span>4</span>&nbsp;Answers</a>
+                        <p href="" class="btn1"><i class="fas fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>3</span>k Views
+                        </p>
+                        <a href="#ans_section" class="ans_btn">Answer</a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+        {% endblock sectionblock %}       
+    </div>
+    
+
+</div>
+
+<div id="post_question">
+    <div class="question_box">
+        <div class="top_row">
+            <div class="que_mark"><i class="fas fa-question clr_red"></i></div>
+            <div class="head_box">
+                <h2>Hello, <span class="clr_blue" >Akash</span></h2>
+                <p>Didn't found your answer?</p>
+                <p>Just post your question below.</p>
+            </div>
+        </div>
+        <hr>
+        <form action="" method="post" class="ask_que_form">
+            <div class="field_box">
+                <label for="question">Question: </label>
+                <input type="text" id="question" placeholder="Type your question here.">
+            </div>
+            <div class="field_box">
+                <label for="category">Category: </label>
+                <select name="category" id="category">
+                    <option value="">Programming</option>
+                    <option value="">Technology</option>
+                    <option value="">Language</option>
+                    <option value="">Products</option>
+                    <option value="">Math</option>
+                    <option value="">Science</option>
+                    <option value="">Bussiness</option>
+                    <option value="">Education</option>
+                    <option value="">Gk</option>
+                    <option value="">Space</option>
+                    <option value="">Health</option>
+                    <option value="">Other</option>
+                </select>
+            </div>
+            <div class="field_box">
+                <label for="que_details">Question Details: </label>
+                <textarea name="" id="que_details" cols="20" rows="7"></textarea>
+            </div>
+            <div class="btn_row">
+                <button type="submit">Post Question</button>
+            </div>
+        </form>
+    </div>
+        
+</div>
+{% endblock bodyblock%}

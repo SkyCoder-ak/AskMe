@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{% extends "base/base.html" %}
+{% load static %}
+<title>Profile</title>
+
+{% block bodyblock %}
+<div id="profile_main">
+    <div id="index_col">
+        <ul>
+            <li><a href="/profile/dashboard" class="left_nav_link profile_link_active"><i class="fas fa-tachometer-alt"></i> &nbsp;&nbsp;Dashboard</a></li>
+            <li><a href="/profile/followers" class="left_nav_link"><i class="fas fa-user-friends"></i>&nbsp;&nbsp;Followers</a></li>
+            <li><a href="/profile/followings" class="left_nav_link"><i class="fas fa-user-check"></i>&nbsp;&nbsp;Following</a></li>
+            <li><a href="/profile/user-questions" class="left_nav_link"><i class="fas fa-question"></i>&nbsp;&nbsp;Questions</a></li>
+            <li><a href="/profile/user-answers" class="left_nav_link"><i class="far fa-file-alt"></i>&nbsp;&nbsp;Answers</a></li>
+            <li><a href="" class="left_nav_link"><i class="fas fa-poll-h"></i>&nbsp;&nbsp;Polls</a></li>
+            <li><a href="/profile/edit-profile" class="left_nav_link"><i class="fas fa-poll-h"></i>&nbsp;&nbsp;Edit Profile</a></li>
+        </ul>
+    </div>
+    <div id="content_col">
+        {% block profilecontent %}
+        <div id="dashboard">
+            <div class="header_row">
+                <img src="{% static 'images/profile_cover.jpg' %}" alt="" id="cover_img">
+                <div class="profile_img_box">
+                    <img src="{% static 'images/little_boy.jpg' %}" alt="">
+                </div>
+                <div class="header_info_row">
+                    <div class="name_box">
+                        <h4 class="user_name">Akash Mothe</h4>
+                        <p class="desgn">Software Developer</p>
+                        <p class="user_status bg_blueviolet">Professional</p>
+                    </div>
+                    <div class="btns_box">
+                        <a href="" class="ask_user_btn bg_redPigment">Ask Question</a>
+                        <p class="ask_user_btn bg_grey"><i class="fas fa-user-friends"></i>12 Followers</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="user_about">
+                <div class="left_col">
+                    <h3 class="left_col_heading"><span class="clr_red">A</span>bout</h3>
+                    <div class="row1">
+                        <!-- <h4 class="row1_label"><i class="fas fa-quote-left clr_red"></i> Quote by him:</h4> -->
+                        <p class="user_quote">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque facilis odio dicta deserunt, quidem labore recusandae! Maxime quia pariatur tempora, consectetur magnam facere impedit similique id beatae, ipsum ex incidunt! Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet repellat, ut cum necessitatibus laborum neque quisquam nobis quae voluptates! Rem officiis quaerat animi quidem rerum minima impedit qui magnam quis? lorem200</p>
+                    </div>
+                    <div class="row2">
+                        <div class="box">
+                            <i class="fas fa-map-marker-alt font_2rem clr_red"></i>
+                            <p>Mehkar, Maharastra</p>
+                        </div>
+                        <div class="box">
+                            <i class="far fa-envelope font_2rem clr_red"></i>
+                            <p>akashmothe1@gmail.com</p>
+                        </div>
+                        <div class="box">
+                            <i class="fas fa-male font_2rem clr_red"></i>
+                            <p>Male</p>
+                        </div>
+                        <div class="box">
+                            <i class="fas fa-birthday-cake font-2rem clr_red"></i>
+                            <p>24 Year Old</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="right_col">
+                    <div class="box">
+                        <i class="fas fa-question fa-2x clr_red"></i>
+                        <span>12</span>
+                        <p>Questions</p>
+                    </div>
+                    <div class="box">
+                        <i class="far fa-file-alt fa-2x clr_red"></i>
+                        <span>24</span>
+                        <p>Answers</p>
+                    </div>
+                    <div class="box">
+                        <i class="fas fa-poll fa-2x clr_red"></i>
+                        <span>6</span>
+                        <p>Polls</p>
+                    </div>
+                    <div class="box">
+                        <i class="fas fa-trophy fa-2x clr_red"></i>
+                        <span>231</span>
+                        <p>Points</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock profilecontent %}
+    </div>
+    
+</div>
+{% endblock bodyblock%}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% extends "base/base.html" %}
+{% load static %}
+<title>AskMe-signup</title>
+
+{% block bodyblock %}
+<div class="signup_main">
+    <div class="signup_box">
+        <div class="left_box">
+            <h1>SignUp Here</h1>
+            <form action="" method="post">
+                <div class="field_row">
+                    <label for="name">Fullname:</label>
+                    <input type="text" id="name">
+                </div>
+                <div class="field_row">
+                    <label for="displayName">Display Name:</label>
+                    <input type="text" id="displayName">
+                </div>
+                <div class="field_row">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email">
+                </div>
+                <div class="field_row">
+                    <label for="signup_pass">Password:</label>
+                    <input type="password" id="signup_pass">
+                    <p onclick="showHidePass()" id="show_pass"><i class="fas fa-eye"></i></p>
+                    <p onclick="showHidePass()" id="hide_pass"><i class="fas fa-eye-slash"></i></p>
+                </div>
+                <div class="field_row">
+                    <div class="col1">
+                        <label for="year">Year:</label>
+                        <select name="year" id="year">
+                            <option value="First Year">First Year</option>
+                            <option value="Second Year">Second Year</option>
+                            <option value="Third Year">Third Year</option>
+                            <option value="Final Year">Final Year</option>
+                        </select>
+                    </div>
+
+                    <div class="col2">
+                        <label for="sem">Semister:</label>
+                        <select name="sem" id="sem">
+                            <option value="1st">1st</option>
+                            <option value="2nd">2nd</option>
+                            <option value="3rd">3rd</option>
+                            <option value="4th">4th</option>
+                            <option value="5th">5th</option>
+                            <option value="6th">6th</option>
+                            <option value="7th">7th</option>
+                            <option value="8th">8th</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="btn_row">
+                    <button type="submit">SignUp</button>
+                </div>
+            </form>
+        </div>
+        <div class="right_box">
+            <img src="{% static 'images/student-girl.png' %}" alt="">
+        </div>
+    </div>
+</div>
+{% endblock bodyblock%}
