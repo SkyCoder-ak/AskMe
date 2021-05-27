@@ -9,22 +9,31 @@
         <div class="left_box">
             <h1>SignUp Here</h1>
             <form action="" method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
                 <div class="field_row">
+                    {{ form.full_name.errors }}
                     <label for="fname">Full Name:</label>
-                    <input type="text" id="fname">
-                    
+                    {{ form.full_name }}
+                    <!-- <input type="text" id="fname"> -->
                 </div>
                 <div class="field_row">
+                    {{ form.dis_name.errors }}
                     <label for="displayName">Display Name:</label>
-                    <input type="text" id="displayName">
+                    {{ form.dis_name }}
+                    <!-- <input type="text" id="displayName"> -->
                 </div>
                 <div class="field_row">
+                    {{ form.email.errors }}
                     <label for="email">Email:</label>
-                    <input type="text" id="email">
+                    {{ form.email }}
+                    <!-- <input type="text" id="email"> -->
                 </div>
                 <div class="field_row">
+                    {{ form.password.errors }}
                     <label for="signup_pass">Password:</label>
-                    <input type="password" id="signup_pass">
+                    {{ form.password }}
+                    <!-- <input type="password" id="signup_pass"> -->
                     <p onclick="showHidePass()" id="show_pass"><i class="fas fa-eye"></i></p>
                     <p onclick="showHidePass()" id="hide_pass"><i class="fas fa-eye-slash"></i></p>
                 </div>

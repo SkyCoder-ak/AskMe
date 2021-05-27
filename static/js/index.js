@@ -1,14 +1,5 @@
 
-// ===========================FOR LEFT NAVBAR======================
-var btnContainer = document.getElementById("side_nav_ul");
-var btns = btnContainer.getElementsByClassName("side_nav_link");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
+
 
 // ===========================FOR CATEGORIES DROPDOWN======================
 function showHideDropdown() {
@@ -24,42 +15,42 @@ function showHideDropdown() {
 }
 
 // ===========================FOR SECTION COLUMN2======================
-document.getElementById("peoples_link").addEventListener("click", function() {
-    var sectionHome = document.getElementById("section_home");
-    var peoplesBox = document.getElementById("peoples_box");
-    // if (sectionHome.style.display === "none")
-  });
+// document.getElementById("peoples_link").addEventListener("click", function() {
+//     var sectionHome = document.getElementById("section_home");
+//     var peoplesBox = document.getElementById("peoples_box");
+//     // if (sectionHome.style.display === "none")
+//   });
 
-document.getElementById("peoples_link").addEventListener("click", function(){
-    var sectionHome = document.getElementById("section_home");
-    var peoplesBox = document.getElementById("peoples_box");
-    var ansPage = document.getElementById("ans_page");
-    sectionHome.style.display = "none";
-    peoplesBox.style.display = "block";
-    ansPage.style.display = "none";
-});
+// document.getElementById("peoples_link").addEventListener("click", function(){
+//     var sectionHome = document.getElementById("section_home");
+//     var peoplesBox = document.getElementById("peoples_box");
+//     var ansPage = document.getElementById("ans_page");
+//     sectionHome.style.display = "none";
+//     peoplesBox.style.display = "block";
+//     ansPage.style.display = "none";
+// });
 
-document.getElementById("sec_home_link").addEventListener("click", function(){
-    var sectionHome = document.getElementById("section_home");
-    var peoplesBox = document.getElementById("peoples_box");
-    var ansPage = document.getElementById("ans_page");
-    sectionHome.style.display = "block";
-    peoplesBox.style.display = "none";
-    ansPage.style.display = "none";
-});
+// document.getElementById("sec_home_link").addEventListener("click", function(){
+//     var sectionHome = document.getElementById("section_home");
+//     var peoplesBox = document.getElementById("peoples_box");
+//     var ansPage = document.getElementById("ans_page");
+//     sectionHome.style.display = "block";
+//     peoplesBox.style.display = "none";
+//     ansPage.style.display = "none";
+// });
 
-function showHideItem(){
-    var sectionHome = document.getElementById("section_home");
-    var peoplesBox = document.getElementById("peoples_box");
-    var ansPage = document.getElementById("ans_page");
-    sectionHome.style.display = "none";
-    peoplesBox.style.display = "none";
-    ansPage.style.display = "block";
-}
-var ansBtn = document.getElementsByClassName("ans_btn");
-for (i = 0; i < ansBtn.length; i++) {
-    ansBtn[i].addEventListener("click", showHideItem);
-}
+// function showHideItem(){
+//     var sectionHome = document.getElementById("section_home");
+//     var peoplesBox = document.getElementById("peoples_box");
+//     var ansPage = document.getElementById("ans_page");
+//     sectionHome.style.display = "none";
+//     peoplesBox.style.display = "none";
+//     ansPage.style.display = "block";
+// }
+// var ansBtn = document.getElementsByClassName("ans_btn");
+// for (i = 0; i < ansBtn.length; i++) {
+//     ansBtn[i].addEventListener("click", showHideItem);
+// }
 // document.getElementsByClassName("ans_btn").addEventListener("click", function(){
 
 // });

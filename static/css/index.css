@@ -23,7 +23,7 @@ body{
     color: rgb(164, 0, 214);
 }
 .clr_red{
-    color: #f53b57;
+    color: #ff014d;
 }
 .clr_blue{
     color: blue;
@@ -60,6 +60,12 @@ body{
 }
 .bg_twiter{
     background-color: #0692fd;
+}
+.bg_error{
+    background-color: rgb(250, 166, 166);
+}
+.bg_success{
+    background-color: rgb(161, 250, 157);
 }
 .font_1-2rem{
     font-size: 1.2rem;
@@ -99,6 +105,29 @@ body{
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+/* =============================MESSAGES======================== */
+#error_msg{
+    position: relative;
+    /* width: 100%; */
+    padding: 0.4em 2em 0.4em 0.2em;
+    font-size: 1.4rem;
+    color: rgb(0, 0, 0);
+    z-index: 1000;
+}
+#error_msg #msg_close_btn{
+    font-size: 1.6rem;
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(247, 30, 30);
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
+
 #nav_top{
     padding: 0 4em;
     display: flex;
@@ -115,10 +144,18 @@ body{
     width: 60%;
 
 }
-#nav_top .nav_left .logo{
-    font-family: 'Niconne', cursive;
-    font-size: 3rem;
+/* #nav_top .nav_left .logo{
+    font-size: 2.5rem;
     color: rgb(230, 255, 1);
+} */
+#nav_top .nav_left .logo span:nth-child(1){
+    font-size: 3rem;
+    color: rgb(255, 255, 255);
+}
+#nav_top .nav_left .logo span:nth-child(2){
+    font-family: 'Charm', cursive;
+    font-size: 2.4rem;
+    color: rgb(235, 253, 71);
 }
 #nav_top .nav_left ul{
     display: flex;
@@ -144,6 +181,16 @@ body{
     flex-direction: row-reverse;
     width: 30%;
     /* border: 2px solid white; */
+}
+#nav_top .nav_right .username{
+    margin: 0 1rem;
+    padding: 0.2em 0.9em;
+    color: white;
+    font-size: 1.7rem;
+    text-decoration: none;
+}
+#nav_top .nav_right .username span{
+    font-family: 'Poppins', sans-serif;
 }
 #nav_top .nav_right .nav_btn{
     margin: 0 1rem;
@@ -218,11 +265,16 @@ body{
 }
 .square1{
     position: absolute;
+    display: grid;
+    place-items: center;
     width: 7rem;
     height: 7rem;
-    top: 22%;
+    top: 30%;
     left: 10%;
-    background-color: #02a151;
+    font-size: 4rem;
+    transform: rotate(100deg);
+    color: rgb(255, 99, 71);
+    /* background-color: #02a151; */
     border-radius: 10%;
     animation: spin 25s infinite linear;
 }
@@ -335,9 +387,8 @@ body{
 .index_row .index_link:hover{
     box-shadow: 0 0 5px black;
 }
-.index_row .index_link:nth-child(1){
-    background-color: #ff3838;
-
+.index_link_active{
+    background-color: #ff4757 !important;
 }
 .index_link_name{
     position: absolute;
@@ -670,8 +721,9 @@ body{
     align-items: center;
     width: 20rem;
     height: 25rem;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5), -2px -2px 2px rgba(255, 255, 255, 0.753);
-    border-radius: 1rem;
+    /* box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5), -2px -2px 2px rgba(255, 255, 255, 0.753); */
+    border: 1px solid black;
+    /* border-radius: 1rem; */
     overflow: hidden;
 
 }
@@ -1256,7 +1308,7 @@ body{
     font-size: 1.6rem;
     padding: 1em;
     outline: none;
-    box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.692), inset -2px -2px 3px rgba(255, 255, 255, 0.966), 2px 2px 3px rgba(0, 0, 0, 0.692), -2px -2px 3px rgba(255, 255, 255, 0.966);
+    box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.692), inset -2px -2px 3px rgba(255, 255, 255, 0.966);
     border: none;
     border-radius: 1rem;
     background-color: transparent;
@@ -1266,7 +1318,7 @@ body{
     font-size: 1.6rem;
     padding: 0.4em 1em;
     outline: none;
-    box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.692), inset -2px -2px 3px rgba(255, 255, 255, 0.966), 2px 2px 3px rgba(0, 0, 0, 0.692), -2px -2px 3px rgba(255, 255, 255, 0.966);
+    box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.692), inset -2px -2px 3px rgba(255, 255, 255, 0.966);
     border: none;
     border-radius: 1rem;
     background-color: transparent;
@@ -1276,7 +1328,7 @@ body{
     font-size: 1.6rem;
     padding: 0.4em 1em;
     outline: none;
-    box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.692), inset -2px -2px 3px rgba(255, 255, 255, 0.966), 2px 2px 3px rgba(0, 0, 0, 0.692), -2px -2px 3px rgba(255, 255, 255, 0.966);
+    box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.692), inset -2px -2px 3px rgba(255, 255, 255, 0.966);
     border: none;
     border-radius: 1rem;
     background-color: transparent;

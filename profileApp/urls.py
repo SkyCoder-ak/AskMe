@@ -8,4 +8,5 @@ urlpatterns = [
     path('followings', views.followingsView),
     path('user-questions', views.userQueView),
     path('user-answers', views.userAnsView),
+    path('logout', views.logoutView),
 ]

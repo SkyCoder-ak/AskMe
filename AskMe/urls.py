@@ -19,6 +19,8 @@ from django.urls import path,include
 from homeApp import views as homeviews
 from signupApp import views as signupviews
 from loginApp import views as loginviews
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +31,4 @@ urlpatterns = [
     path('login/', loginviews.loginView),
 
     path('profile/', include('profileApp.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

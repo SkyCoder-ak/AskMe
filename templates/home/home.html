@@ -16,7 +16,9 @@
         <input type="text" placeholder="Type a question to search">
         <button type="submit">Search</button>
     </div>
-    <div class="square1"></div>
+    <div class="square1">
+        <i class="fas fa-equals"></i>
+    </div>
     <div class="square2"></div>
     <div class="square3"></div>
 </header>
@@ -50,11 +52,12 @@
 <div id="main_section">
     <div id="column2" class="column2">
         <div class="index_row">
-            <a id="index_link1" href="/" class="index_link index_link_active"><i class="fas fa-home font_2rem"></i><small class="index_link_name">Home</small></a>
-            <a id="index_link2" href="/home/peoples" class="index_link"><i class="fas fa-users font_2rem"></i><small class="index_link_name">Peoples</small></a>
-            <a id="index_link5" href="/home/write-answers" class="index_link"><i class="fas fa-poll font_2rem"></i><small class="index_link_name">Polls</small></a>
-            <!-- <a id="index_link3" href="#user_questions" class="index_link"><i class="fas fa-question-circle font_2rem"></i><small class="index_link_name">Questions</small></a>
-            <a id="index_link4" href="#user_answers" class="index_link"><i class="fas fa-file-alt font_2rem"></i><small class="index_link_name">Answers</small></a> -->
+            <a id="index_link1" href="/" class="index_link {{home}}"><i class="fas fa-home font_2rem"></i><small class="index_link_name">Home</small></a>
+            <a id="index_link2" href="/home/peoples" class="index_link {{peoples}}"><i class="fas fa-users font_2rem"></i><small class="index_link_name">Peoples</small></a>
+            <a id="index_link4" href="#user_answers" class="index_link {{answers}}"><i class="fas fa-file-alt font_2rem"></i><small class="index_link_name">Answers</small></a>
+            <a id="index_link5" href="/home/write-answers" class="index_link {{write_ans}}"><i class="fas fa-poll font_2rem"></i><small class="index_link_name">Polls</small></a>
+            <!-- <a id="index_link3" href="#user_questions" class="index_link"><i class="fas fa-question-circle font_2rem"></i><small class="index_link_name">Questions</small></a> -->
+            
             
         </div>
         {% block sectionblock %}
@@ -236,7 +239,11 @@
         <div class="top_row">
             <div class="que_mark"><i class="fas fa-question clr_red"></i></div>
             <div class="head_box">
-                <h2>Hello, <span class="clr_blue" >Akash</span></h2>
+                {% if user.is_authenticated %}
+                <h2>Hello, <span class="clr_blue" >{{user.first_name}}</span></h2>
+                {% else %}
+                <h2>Hello, <span class="clr_blue" >There</span></h2>
+                {% endif %}
                 <p>Didn't found your answer?</p>
                 <p>Just post your question below.</p>
             </div>

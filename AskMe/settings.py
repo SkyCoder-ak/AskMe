@@ -87,6 +87,9 @@ DATABASES = {
         'PORT': '3306',
         'USER': 'root',
         'PASSWORD': 'wadgaonmali',
+        'OPTIONS':{
+        "init_command":"SET foreign_key_checks = 0;",
+        }
     }
 }
 
@@ -129,3 +132,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [STATIC_DIR]
+
+#managing media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

@@ -15,3 +15,7 @@ function showHidePass() {
       hide_btn.style.display = 'none';
     }
   }
+
+function closeMsg(){
+    document.getElementById("error_msg").style.display = "none";
+}

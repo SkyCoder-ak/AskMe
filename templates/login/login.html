@@ -4,21 +4,49 @@
 <title>AskMe-login</title>
 
 {% block bodyblock %}
+
+{% for message in messages %}
+{% if "success" in message.tags %}
+<p id="error_msg" class="bg_success">
+    <strong>Message: </strong>
+    {{ message }}
+    <button id="msg_close_btn" onclick="closeMsg()"><i class="far fa-times-circle"></i></button>
+</p>
+{% endif %}
+{% endfor %}
+
 <div class="login_main">
     <div class="login_box">
         <h2 class="login_icon"><i class="fas fa-key"></i></h2>
         <h1 class="login_heading">LOGIN</h1>
         <form action="" method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
             <div class="row">
-                <label for="login_email">Email:</label>
-                <input type="text" id="login_email">
+                {{ form.username.errors}}
+                <label for="login_email">Username:</label>
+                {{ form.username }}
+                <!-- <input type="text" id="login_email"> -->
             </div>
             <div class="row">
+                {{ form.password.errors }}
                 <label for="login_pass">Password:</label>
-                <input type="password" id="login_pass">
+                {{ form.password }}
+                <!-- <input type="password" id="login_pass"> -->
                 <p onclick="showHidePass()" id="show_pass"><i class="fas fa-eye"></i></p>
                 <p onclick="showHidePass()" id="hide_pass"><i class="fas fa-eye-slash"></i></p>
             </div>
+            {% for message in messages %}
+            {% if "error" in message.tags %}
+
+            <p id="error_msg" class="bg_error">
+                <strong>Message: </strong>
+                {{ message }}
+                <button id="msg_close_btn" onclick="closeMsg()"><i class="far fa-times-circle"></i></button>
+            </p>
+
+            {% endif %}
+            {% endfor %}
             <div class="btn_row">
                 <button type="submit">Login</button>
             </div>

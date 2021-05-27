@@ -1,9 +1,4 @@
-// $(document).ready(function(){
-//     $('#avtar_img]').change(function(e){
-//         var fileName = e.target.files[0].name;
-//         alert('The file "' + fileName +  '" has been selected.');
-//     });
-// });
+
 
 function previewProfileImage( uploader ) {
     if (uploader.files && uploader.files[0]) {
@@ -35,3 +30,17 @@ $("#avtar_img").change(function(){
 // $("#cover_img_input").change(function(){
 //     previewProfileImage( this );
 // });
+
+
+// =======================FOR PASSWORD CHANGE FORM================
+
+function show_password_form() {
+    var frm = document.getElementById("password_form");
+    frm.style.display = "flex";
+}
+
+function hide_password_form() {
+    var frm = document.getElementById("password_form");
+    frm.style.display = "none";
+}
+

@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Niconne&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Charm:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200&display=swap"
         rel="stylesheet">
@@ -25,7 +27,10 @@
 <body>
     <nav id="nav_top" class="nav_top">
         <div class="nav_left">
-            <h1 class="logo">AskMe</h1>
+            <a class="logo">
+                <span><i class="fab fa-atlassian"></i></span>
+                <span>AskMe</span>
+            </a>
             <ul id="top_nav_ul">
                 <li><a href="/" class="nav_link activeTopNav">Home</a></li>
                 <li><a href="#main_section" class="nav_link">Questions</a></li>
@@ -34,8 +39,13 @@
             </ul>
         </div>
         <div class="nav_right">
+            {% if user.is_authenticated %}
+            <a href="/profile/logout" class="nav_btn">Logout</a>
+            <a href="/profile/dashboard" class="username">Welcome, <span>{{ user.first_name }}</span></a>
+            {% else %}
             <a href="/login" class="nav_btn">Login</a>
             <a href="/signup" class="nav_btn">SignUp</a>
+            {% endif %}
         </div>
     </nav>
 
@@ -101,8 +111,8 @@
 
 
     <!-- ==========================================JAVASCRIPT============================ -->
-    <script src="{% static 'js/font-awesome.js' %}"></script>
     <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/font-awesome.js' %}"></script>
     <script src="{% static 'js/index.js' %}"></script>
     <script src="{% static 'js/profile_page.js' %}"></script>
     <script src="{% static 'js/signup.js' %}"></script>

@@ -20,7 +20,7 @@ body{
     padding: 4em 0;
     width: 15%;
     height: auto;
-    background-color: rgb(19, 153, 86);
+    background-color: #01b35f;
 
 }
 #index_col ul{
@@ -49,18 +49,13 @@ body{
     transition-duration: 0.3s;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.692), -1px -1px 2px rgba(255, 255, 255, 0.699);
 }
-.profile_link_active:after{
-    position: absolute;
-    content: "";
-    right: -5%;
-    transform: rotate(45deg);
-    border-top: 1rem solid rgb(255, 255, 255);
-    border-bottom: 1rem solid rgba(19, 153, 86, 0);
-    border-left: 1rem solid rgba(19, 153, 86, 0);
-    border-right: 1rem solid rgb(255, 255, 255);
-}
+
 #index_col ul li a:hover{
+    background-color: rgb(238, 34, 61);
     letter-spacing: 0.2rem;
+}
+.profile_link_active{
+    background-color: rgb(238, 34, 61);
 }
 #content_col{
     width: 85%;
@@ -78,6 +73,7 @@ body{
     position: relative;
     width: 100%;
     height: 25rem;
+    /* background-color: rgb(255,150,106); */
 }
 .header_row #cover_img{
     width: 100%;
@@ -85,17 +81,20 @@ body{
 }
 .header_row .profile_img_box{
     position: absolute;
-    bottom: 0;
+    bottom: -20%;
     left: 5%;
     width: 20rem;
     height: 20rem;
+    border-radius: 50%;
     background-color: rgb(78, 78, 78);
     border: 3px solid rgb(255, 255, 255);
     z-index: 10;
+    overflow: hidden;
 }
 .header_row .profile_img_box img{
     width: 100%;
     height: 100%;
+    border-radius: 50%;
 }
 .header_row .header_info_row{
     position: absolute;
@@ -104,7 +103,8 @@ body{
     right: 0;
     display: flex;
     width: 80%;
-    height: 50%;
+    height: 40%;
+    /* border: 2px solid red; */
 }
 .header_row .header_info_row .name_box{
     width: 20%;
@@ -147,72 +147,86 @@ body{
     font-size: 1.8rem;
     text-decoration: none;
     font-family: 'Bitter', serif;
+    transition-duration: 0.4s;
 }
-.header_row .header_info_row .btns_box .ask_user_btn:nth-child(1):hover{
-    background-color: red;
+.header_row .header_info_row .btns_box .ask_user_btn:hover{
+    background-color: #e74646;
 }
-
 #user_about{
-    padding: 2em 0;
+    padding: 2em;
     width: 100%;
-    height: 40rem;
-    display: flex;
+    height: auto;
 }
-#user_about .left_col{
-    position: relative;
-    padding: 0 1em;
-    width: 80%;
-    height: 100%;
-}
-#user_about .left_col .left_col_heading{
-    margin-bottom: 3rem;
-    text-align: center;
-    font-size: 3rem;
-}
-#user_about .left_col .user_quote{
-    padding: 0 3em;
-    text-align: center;
-    font-size: 1.6rem;
-    color: #303030d7;
-}
-#user_about .left_col .row2{
-    position: absolute;
-    bottom: 0;
-    margin: 2rem 0;
+#user_about .social_info_row{
     width: 100%;
-    height: 14%;
+    height: 8rem;
     display: flex;
-}
-#user_about .left_col .row2 .box{
-    width: 25%;
-    height: 100%;
-    font-size: 1.6rem;
-    color: #474747;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row-reverse;
     align-items: center;
+    border-bottom: 1px solid grey;
 
 }
-#user_about .right_col{
-    width: 20%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#user_about .right_col .box{
-    width: 10rem;
-    height: 10rem;
+.social_info_row .social_info_box{
+    margin: 0 1rem;
+    width:8rem;
+    height: 8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    /* background-color: #4cd137; */
+    /* box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.692), -2px -2px 3px rgba(255, 255, 255, 0.699); */
+    border-radius: 50%;
+}
+.social_info_row .social_info_box span{
+    font-size: 2.4rem;
+    /* color: white; */
+}
+.social_info_row .social_info_box p{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.7rem;
+}
+#user_about .user_info_box{
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+}
+#user_about .user_info_box .left_box{
+    padding: 1em 2em;
+    width: 65%;
+}
+#user_about .user_info_box .left_box .about_box h2{
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+}
+#user_about .user_info_box .left_box .about_box p{
+    margin-top: 2rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.7rem;
+}
+#user_about .user_info{
+    margin-top: 4rem;
+    display: flex;
+}
+#user_about .user_info .icon_box{
+    padding-right: 0.6em;
+    display: grid;
+    place-items: center;
+    font-size: 3rem;
+}
+#user_about .user_info .text_box h2{
+    /* font-family: 'Poppins', sans-serif; */
+    font-size: 2rem;
+}
+#user_about .user_info .text_box p{
+    font-family: 'Poppins', sans-serif;
+    margin-top: 1rem;
     font-size: 1.6rem;
 }
-#user_about .right_col .box span{
-    margin-top: 1rem;
-}
+
+
+
+
 
 
 /* =========================================DASHBOARD=========================== */
@@ -268,7 +282,7 @@ body{
 }
 
 
-/* ========================================PROFILE EDIT================================= */
+/* =====================PROFILE EDIT======================= */
 #profile_edit{
     width: 100%;
     height: 100%;
@@ -323,18 +337,107 @@ body{
 #profile_edit .profile_img_box:hover .avtar_label{
     height: 3rem;
 }
-#profile_edit form .row{
-    width: 100%;
-    margin: 2.5rem;
+#profile_edit .user_details_form .row_box{
+    padding-top: 4em;
 }
-#profile_edit form .row label{
+#profile_edit .change_pass_btn{
+    position: absolute;
+    right: 3%;
+    bottom: -20%;
+    padding: 0.4em 1em;
+    outline: none;
+    border: none;
+    /* border-radius: 2rem; */
+    font-size: 1.7rem;
+    color: white;
+    background-color: rgb(0, 158, 84);
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+#password_form{
+    position: absolute;
+    top: 40%;
+    right: 2%;
+    display: none;
+    flex-direction: column;
+    padding: 2em;
+    align-items: center;
+    width: 20vw;
+    height: 50vh;
+    background-color: #e0e0e0;
+    box-shadow: 0 0 10px black;
+    overflow: hidden;
+    transition: opacity 0.5s;
+}
+#password_form #close_btn{
+    position: absolute;
+    top: 3%;
+    right: 5%;
+    font-size: 2.4rem;
+    color: #706f6f;
+}
+#password_form .head_icon{
+    display: grid;
+    place-items: center;
+    margin-bottom: 5%;
+    width: 7rem;
+    height: 7rem;
+    font-size: 3rem;
+    color: rgb(255, 0, 55);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+#password_form .row{
+    width: 100%;
+    margin: 3% 0;
+}
+#password_form label{
+    display: block;
+    /* margin-bottom: 0.3rem; */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+#password_form input{
+    padding: 0.2em 0;
+    width: 100%;
+    font-size: 1.6rem;
+    outline: none;
+    background-color: transparent;
+    color: rgb(49, 49, 49);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+#password_form .btn_row{
+    margin-top: 5%;
+}
+#password_form .btn_row button{
+    margin-top: 5%;
+    padding: 0.4em 1em;
+    outline: none;
+    border: none;
+    font-size: 1.7rem;
+    color: white;
+    background-color: rgb(0, 158, 84);
+    transition-duration: 0.3s;
+}
+
+
+
+#profile_edit .user_details_form .row{
+    width: 100%;
+    margin: 3rem 4rem;
+}
+#profile_edit .user_details_form .row label{
     display: block;
     margin-bottom: 0.3rem;
-    font-family: 'Bitter', serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 1.6rem;
 }
-#profile_edit form .row input{
+#profile_edit .user_details_form .row input{
     padding: 0.2em 0.2em;
     width: 90%;
     font-size: 1.6rem;
@@ -345,26 +448,47 @@ body{
     border-right: none;
     border-left: none;
     border-bottom: 2px solid rgb(0, 0, 0);
-    /* border-radius: 2rem; */
 }
-#profile_edit form .row-4{
+#profile_edit .user_details_form .row select{
+    padding: 0.2em 0.2em;
+    width: 90%;
+    font-size: 1.6rem;
+    outline: none;
+    background-color: transparent;
+    color: rgb(49, 49, 49);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+#profile_edit .user_details_form .row textarea{
+    padding: 0.6em;
+    width: 90%;
+    font-size: 1.6rem;
+    outline: none;
+    background-color: transparent;
+    color: rgb(49, 49, 49);
+    border: 2px solid rgb(0, 0, 0);
+    resize: vertical;
+}
+#profile_edit .user_details_form .row-4{
     display: flex;
 }
-#profile_edit form .row-4 .left_box{
+#profile_edit .user_details_form .row-4 .left_box{
     width: 45%;
     height: 100%;
 }
-#profile_edit form .row-4 .right_box{
+#profile_edit .user_details_form .row-4 .right_box{
     width: 45%;
     height: 100%;
 }
-#profile_edit form .button{
+#profile_edit .user_details_form .button{
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#profile_edit form button{
+#profile_edit .user_details_form .submit_button{
     width: 20%;
     margin: 3rem 0;
     height: 4rem;
@@ -377,21 +501,27 @@ body{
     background-color: rgb(0, 158, 84);
     transition-duration: 0.3s;
 }
-#profile_edit form button:hover{
+#profile_edit .user_details_form .submit_button:hover{
     width: 25%;
 
 }
+
+/* #asked_ques{
+    display: none;
+} */
+.asked_ques_heading{
+    padding: 1.6em;
+    text-align: center;
+    font-size: 2.6rem;
+}
+
+
 #answers{
-    padding: 1em;
+    padding: 2em;
 }
 .user_ans_box{
     padding: 2rem 0;
     width: 100%;
-}
-.asked_ques_heading{
-    /* padding: 1.6em; */
-    text-align: center;
-    font-size: 2.6rem;
 }
 .user_ans_box .post_detail_row{
     margin-top: 2rem;
