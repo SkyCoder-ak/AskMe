@@ -67,9 +67,13 @@ window.addEventListener("scroll", (event) => {
 });
 
 document.getElementById('ans_file').onchange = function () {
-    // alert('Selected file: ' + this.value);
     var fileElem = document.getElementById("selected_file");
     var fileValue = this.value;
     var fileName = fileValue.replace("C:\\fakepath\\",'')
     fileElem.innerHTML = fileName;
   };
+
+//   =====================READONLY FORM================
+function LoginAlert(){
+    alert("You need to login first.")
+}

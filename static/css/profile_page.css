@@ -560,3 +560,7 @@ body{
     align-items: center;
     background-color: #b4b3b3;
 }
+
+#user_questions .col2_right_row2 .que_descs pre{
+    font-size: 4rem !important;
+}

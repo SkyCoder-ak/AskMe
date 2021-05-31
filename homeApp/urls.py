@@ -4,5 +4,6 @@ from . import views
 urlpatterns = [
     path('peoples', views.peoplesView),
     path('write-answers', views.writeAnsView),
+    # path('post-question', views.postQueView),
 
 ]

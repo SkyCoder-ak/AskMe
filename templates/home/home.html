@@ -54,8 +54,8 @@
         <div class="index_row">
             <a id="index_link1" href="/" class="index_link {{home}}"><i class="fas fa-home font_2rem"></i><small class="index_link_name">Home</small></a>
             <a id="index_link2" href="/home/peoples" class="index_link {{peoples}}"><i class="fas fa-users font_2rem"></i><small class="index_link_name">Peoples</small></a>
-            <a id="index_link4" href="#user_answers" class="index_link {{answers}}"><i class="fas fa-file-alt font_2rem"></i><small class="index_link_name">Answers</small></a>
-            <a id="index_link5" href="/home/write-answers" class="index_link {{write_ans}}"><i class="fas fa-poll font_2rem"></i><small class="index_link_name">Polls</small></a>
+            <a id="index_link4" href="/home/write-answers" class="index_link {{answers}}"><i class="fas fa-file-alt font_2rem"></i><small class="index_link_name">Answers</small></a>
+            <a id="index_link5" href="#" class="index_link {{write_ans}}"><i class="fas fa-poll font_2rem"></i><small class="index_link_name">Polls</small></a>
             <!-- <a id="index_link3" href="#user_questions" class="index_link"><i class="fas fa-question-circle font_2rem"></i><small class="index_link_name">Questions</small></a> -->
             
             
@@ -85,10 +85,12 @@
 
                 </ul>
             </div>
+            {% for que in questions %}
+            {% if que.question %}
             <div class="que_box">
                 <div class="col2_left">
                     <a href="" class="prof_icon">
-                        <img src="{% static 'images/Cute-Girl.jpg' %}" alt="">
+                        <img src="{{ que.user.usermodel.profile_photo.url }}" alt="">
                     </a>
                     <div class="col2_row2">
                         <h4><i class="fas fa-question"></i></h4>
@@ -98,15 +100,13 @@
                 </div>
                 <div class="col2_right">
                     <div class="col2_right_row1">
-                        <a href="" class="name clr_blue">Akash Mothe</a>
+                        <a href="" class="name clr_blue">{{que.user.first_name}} {{que.user.last_name}}</a>
                         <p class="status bg_blueviolet">Professional</p>
-                        <p class="date">Asked: <span class="clr_blue">May 14,2021</span></p>
-                        <p class="category">In: <span class="clr_blue">Programming</span></p>
+                        <p class="date">Asked: <span class="clr_blue">{{que.que_date_time}}</span></p>
+                        <p class="category">In: <span class="clr_blue">{{que.que_category}}</span></p>
                     </div>
                     <div class="col2_right_row2">
-                        <h2 class="que"><Span class="clr_green">Que: </Span>What is the difference between Call by
-                            Value
-                            and Call by Reference?</h2>
+                        <h2 class="que"><Span class="clr_green">Que: </Span>{{que.question}}</h2>
                         <p class="ans"><span class="clr_green">Ans:</span> When using Call by Value, you are sending
                             the
                             value of a variable as parameter to a function, whereas Call by Reference sends the
@@ -127,136 +127,83 @@
                 </div>
             </div>
             <hr>
-            <div class="que_box">
-                <div class="col2_left">
-                    <div class="col2_row1">
-                        <a href="" class="prof_icon"><img src="{% static 'images/Cute-Girl.jpg' %}" alt=""></a>
-                    </div>
-                    <div class="col2_row2">
-                        <h4><i class="fas fa-question"></i></h4>
-                        <p><span class="clr_red">43</span> People Asked</p>
-                        <button>Ask Again</button>
-                    </div>
-                </div>
-                <div class="col2_right">
-                    <div class="col2_right_row1">
-                        <a href="" class="name clr_blue">Yogesh Nikas</a>
-                        <p class="status bg_blueviolet">Professional</p>
-                        <p class="date">Asked: <span class="clr_blue">May 14,2021</span></p>
-                        <p class="category">In: <span class="clr_blue">Programming</span></p>
-                    </div>
-                    <div class="col2_right_row2">
-                        <h2 class="que"><Span class="clr_green">Que: </Span>What is the difference between Call by
-                            Value
-                            and Call by Reference?</h2>
-                        <p class="ans"><span class="clr_green">Ans:</span> When using Call by Value, you are sending
-                            the
-                            value of a variable as parameter to a function, whereas Call by Reference sends the
-                            address
-                            of the variable. Also, under Call by Value, the value in the parameter is not affected
-                            by
-                            whatever operation that takes place, while in the case of Call by Reference, values can
-                            be
-                            affected by the process within the function.
-                            When using Call by Value, you are sending the
-                            value of a variable as parameter to a function, whereas Call by Reference sends the
-                            address
-                            of the variable. Also, under Call by Value, the value in the parameter is not affected
-                            by
-                            whatever operation that takes place, while in the case of Call by Reference, values can
-                            be
-                            affected by the process within the function.</p>
-                    </div>
-                    <div class="col2_right_row3">
-                        <a href="#ans_page" class="btn1"><i
-                                class="fas fa-comment-alt font_1-2rem"></i>&nbsp;&nbsp;&nbsp;<span>4</span>&nbsp;Answers</a>
-                        <p href="" class="btn1"><i class="fas fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>3</span>k Views
-                        </p>
-                        <a href="#ans_section" class="ans_btn">Answer</a>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="que_box">
-                <div class="col2_left">
-                    <div class="col2_row1">
-                        <a href="" class="prof_icon"><img src="{% static 'images/Cute-Girl.jpg' %}" alt=""></a>
-                    </div>
-                    <div class="col2_row2">
-                        <h4><i class="fas fa-question"></i></h4>
-                        <p><span class="clr_red">43</span> People Asked</p>
-                        <button>Ask Again</button>
-                    </div>
-                </div>
-                <div class="col2_right">
-                    <div class="col2_right_row1">
-                        <a href="" class="name clr_blue">Yogesh Nikas</a>
-                        <p class="status bg_blueviolet">Professional</p>
-                        <p class="date">Asked: <span class="clr_blue">May 14,2021</span></p>
-                        <p class="category">In: <span class="clr_blue">Programming</span></p>
-                    </div>
-                    <div class="col2_right_row2">
-                        <h2 class="que"><Span class="clr_green">Que: </Span>What is the difference between Call by
-                            Value
-                            and Call by Reference?</h2>
-                        <p class="ans"><span class="clr_green">Ans:</span> When using Call by Value, you are sending
-                            the
-                            value of a variable as parameter to a function, whereas Call by Reference sends the
-                            address
-                            of the variable. Also, under Call by Value, the value in the parameter is not affected
-                            by
-                            whatever operation that takes place, while in the case of Call by Reference, values can
-                            be
-                            affected by the process within the function.
-                            When using Call by Value, you are sending the
-                            value of a variable as parameter to a function, whereas Call by Reference sends the
-                            address
-                            of the variable. Also, under Call by Value, the value in the parameter is not affected
-                            by
-                            whatever operation that takes place, while in the case of Call by Reference, values can
-                            be
-                            affected by the process within the function.</p>
-                    </div>
-                    <div class="col2_right_row3">
-                        <a href="#ans_page" class="btn1"><i
-                                class="fas fa-comment-alt font_1-2rem"></i>&nbsp;&nbsp;&nbsp;<span>4</span>&nbsp;Answers</a>
-                        <p href="" class="btn1"><i class="fas fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>3</span>k Views
-                        </p>
-                        <a href="#ans_section" class="ans_btn">Answer</a>
-                    </div>
-                </div>
-            </div>
-            <hr>
+            {% endif %}
+            {% endfor %}
+
         </div>
         {% endblock sectionblock %}       
     </div>
     
 
 </div>
-
+{% block post_questions %}
+{% if user.is_authenticated %}
 <div id="post_question">
     <div class="question_box">
         <div class="top_row">
             <div class="que_mark"><i class="fas fa-question clr_red"></i></div>
             <div class="head_box">
-                {% if user.is_authenticated %}
                 <h2>Hello, <span class="clr_blue" >{{user.first_name}}</span></h2>
-                {% else %}
-                <h2>Hello, <span class="clr_blue" >There</span></h2>
-                {% endif %}
+                
                 <p>Didn't found your answer?</p>
                 <p>Just post your question below.</p>
             </div>
         </div>
         <hr>
         <form action="" method="post" class="ask_que_form">
+            {% csrf_token %}
             <div class="field_box">
                 <label for="question">Question: </label>
-                <input type="text" id="question" placeholder="Type your question here.">
+                <input type="text" id="question" placeholder="Type your question here." name="question">
             </div>
             <div class="field_box">
                 <label for="category">Category: </label>
-                <select name="category" id="category">
+                <select id="category" name="que_category">
+                    <option value="Other">Other</option>
+                    <option value="Programming">Programming</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Language">Language</option>
+                    <option value="Products">Products</option>
+                    <option value="Science">Science</option>
+                    <option value="Bussiness">Bussiness</option>
+                    <option value="Education">Education</option>
+                    <option value="Gk">Gk</option>
+                    <option value="Space">Space</option>
+                    <option value="Health">Health</option>
+                </select>
+            </div>
+            <div class="field_box">
+                <label for="que_details">Question Details: </label>
+                <textarea id="que_details" name="que_details" cols="20" rows="7"></textarea>
+            </div>
+            <div class="btn_row">
+                <button type="submit">Post Question</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% else %}
+<div id="post_question">
+    <div class="question_box">
+        <div class="top_row">
+            <div class="que_mark"><i class="fas fa-question clr_red"></i></div>
+            <div class="head_box">
+                <h2>Hello, <span class="clr_blue" >There</span></h2>
+                
+                <p>Didn't found your answer?</p>
+                <p>Just post your question below.</p>
+            </div>
+        </div>
+        <hr>
+        <form action="" method="post" class="ask_que_form" id="readonly_form">
+            {% csrf_token %}
+            <div class="field_box">
+                <label for="question">Question: </label>
+                <input type="text" id="question" placeholder="Type your question here." onclick="LoginAlert()" readonly>
+            </div>
+            <div class="field_box">
+                <label for="category">Category: </label>
+                <select name="" id="category" disabled>
                     <option value="">Programming</option>
                     <option value="">Technology</option>
                     <option value="">Language</option>
@@ -273,7 +220,7 @@
             </div>
             <div class="field_box">
                 <label for="que_details">Question Details: </label>
-                <textarea name="" id="que_details" cols="20" rows="7"></textarea>
+                <textarea name="" id="que_details" cols="20" rows="7" onclick="LoginAlert()" readonly></textarea>
             </div>
             <div class="btn_row">
                 <button type="submit">Post Question</button>
@@ -282,4 +229,6 @@
     </div>
         
 </div>
+{% endif %}
+{% endblock post_questions %}
 {% endblock bodyblock%}

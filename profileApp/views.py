@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import authenticate
 from .models import UserModel
+from homeApp.models import QuestionsModel
 from django.contrib import messages
 
 
@@ -71,8 +72,10 @@ def followersView(request):
 def followingsView(request):
     return render(request, "profile/followings.html", {'followings':'profile_link_active'})
 
+@login_required()
 def userQueView(request):
-    return render(request, "profile/user_questions.html",{'questions':'profile_link_active'})
+    que_data = QuestionsModel.objects.all().filter(user_id=request.user.id)
+    return render(request, "profile/user_questions.html",{'questions':'profile_link_active','que_data':que_data})
 
 def userAnsView(request):
     return render(request, "profile/user_answers.html", {'answers':'profile_link_active'})

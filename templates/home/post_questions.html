@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends "home/home.html" %}
+{% load static %}
+
+{{ block.super }}
+{% block post_questions %}
+{% if user.is_authenticated %}
+<div id="post_question">
+    <div class="question_box">
+        <div class="top_row">
+            <div class="que_mark"><i class="fas fa-question clr_red"></i></div>
+            <div class="head_box">
+                <h2>Hello, <span class="clr_blue" >{{user.first_name}}</span></h2>
+                
+                <p>Didn't found your answer?</p>
+                <p>Just post your question below.</p>
+            </div>
+        </div>
+        <hr>
+        <form action="" method="post" class="ask_que_form">
+            {% csrf_token %}
+            <div class="field_box">
+                <label for="question">Question: </label>
+                <input type="text" id="question" placeholder="Type your question here." name="question">
+            </div>
+            <div class="field_box">
+                <label for="category">Category: </label>
+                <select id="category" name="que_category">
+                    <option value="Programming">Programming</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Language">Language</option>
+                    <option value="Products">Products</option>
+                    <option value="Science">Science</option>
+                    <option value="Bussiness">Bussiness</option>
+                    <option value="Education">Education</option>
+                    <option value="Gk">Gk</option>
+                    <option value="Space">Space</option>
+                    <option value="Health">Health</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="field_box">
+                <label for="que_details">Question Details: </label>
+                <textarea id="que_details" name="que_details" cols="20" rows="7"></textarea>
+            </div>
+            <div class="btn_row">
+                <button type="submit">Post Question</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endif %}
+{% endblock post_questions %}
