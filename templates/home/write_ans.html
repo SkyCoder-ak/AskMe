@@ -4,11 +4,22 @@
 
 {{ block.super }}
 {% block sectionblock %}
+{% if messages %}
+{% for message in messages %}
+<p id="error_msg" class="bg_success">
+    <strong>Message: </strong>
+    {{ message }}
+    <button id="msg_close_btn" onclick="closeMsg()"><i class="far fa-times-circle"></i></button>
+</p>
+{% endfor %}
+{% endif %}
 <div id="ans_page">
+    {% if clicked_que %}
     <div class="que_box">
         <div class="col2_left">
-            <a href="./user_profile.html" class="prof_icon"><img src="./Images/Cute-Girl.jpg" alt=""></a>
-        
+            <a href="" class="prof_icon"><img src="{{ clicked_que.user.usermodel.profile_photo.url }}"
+                    alt="Profile Image"></a>
+
             <div class="col2_row2">
                 <h4><i class="fas fa-question"></i></h4>
                 <p><span class="clr_red">43</span> People Asked</p>
@@ -17,47 +28,49 @@
         </div>
         <div class="col2_right">
             <div class="col2_right_row1">
-                <a href="" class="name clr_blue">Yogesh Nikas</a>
+                <a href="" class="name clr_blue">{{clicked_que.user.first_name}} {{clicked_que.user.last_name}}</a>
                 <p class="status bg_blueviolet">Professional</p>
-                <p class="date">Asked: <span class="clr_blue">May 14,2021</span></p>
-                <p class="category">In: <span class="clr_blue">Programming</span></p>
+                <p class="date">Asked: <span class="clr_blue">{{clicked_que.que_date_time}}</span></p>
+                <p class="category">In: <span class="clr_blue">{{clicked_que.que_category}}</span></p>
             </div>
             <div class="col2_right_row2">
-                <h2 class="que"><Span class="clr_green">Que: </Span>What is the difference between Call by
-                    Value
-                    and Call by Reference?</h2>
-                <p class="ans"><span class="clr_green">Description:</span> When using Call by Value, you are sending
-                    the
-                    value of a variable as parameter to a function, whereas Call by Reference sends the
-                    address
-                    of the variable. Also, under Call by Value, the value in the parameter is not affected
-                    by
-                    whatever operation that takes place, while in the case of Call by Reference, values can
-                    be
-                    affected by the process within the function.</p>
+                <h2 class="que"><Span class="clr_green">Que: </Span>{{clicked_que}}</h2>
+                {% if clicked_que.que_details %}
+                <p class="ans"><span class="clr_green">Description:</span>&nbsp;&nbsp;
+                <pre style="color:rgb(65, 65, 65); font-size:1.6rem;">{{clicked_que.que_details}}</pre>
+                </p>
+                {% else %}
+                <p class="ans"><span class="clr_green">Description:</span>&nbsp;No Description!!</p>
+                {% endif %}
             </div>
         </div>
     </div>
-    <h2 class="ans_heading">3 Answers</h2>
+    <h2 class="ans_heading">{{ans_count}} Answers</h2>
+    {% for ans in ans_obj %}
     <div class="ans_row">
         <div class="col_left">
-            <a href=""><img src="./Images/boy2.jpg" alt=""></a>
+            <a href=""><img src="{{ ans.ans_by.usermodel.profile_photo.url }}" alt=""></a>
         </div>
         <div class="col_right">
             <div class="row1">
-                <a href="">Akash Mothe</a>
+                <a href="">{{ans.ans_by.first_name}} {{ans.ans_by.last_name}}</a>
                 <p class="status bg_orange">Diamond</p>
-                <p class="date_time">Answerd on: <span class="clr_blue">May 14,2021</span> at: <span class="clr_blue">2.00pm</span></p>
-                
+                <p class="date_time">Answerd on: <span class="clr_blue">{{ans.ans_date_time}}</span></p>
+
             </div>
             <div class="row2">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum saepe cupiditate ut maxime corrupti voluptatum! Voluptates impedit excepturi corrupti animi omnis commodi. Dolore culpa sapiente repudiandae tenetur expedita exercitationem modi optio eum praesentium enim possimus voluptatibus minus doloremque, placeat distinctio quasi deleniti tempora, rem dignissimos adipisci ad! Quo, sunt! Sequi deserunt hic quis, iusto id aliquam incidunt ducimus veniam, aliquid ratione impedit, doloremque accusamus obcaecati? Rerum sapiente nulla numquam perferendis qui doloremque, repudiandae voluptatem id harum, minus eaque, dolorum quam in quia totam iusto optio aliquam a delectus repellat consectetur voluptates. Assumenda reiciendis amet dolor, optio quisquam eaque quidem rem!</p>
+                <p>
+                <pre style="color:rgb(49, 49, 49); font-size:1.6rem;">{{ans.answer}}</pre>
+                </p>
             </div>
             <div class="row_last">
                 <button class="like_btn"><i class="fas fa-medal clr_orange"></i></button>
             </div>
         </div>
     </div>
+    <hr>
+    {% endfor %}
+
     <div id="ans_section">
         <h2 class="ans_section_heading">Leave an Answer</h2>
         <div class="ans_box">
@@ -76,7 +89,9 @@
                 <button class="style_btn"><i class="fas fa-italic"></i></button>
                 <button class="style_btn"><i class="fas fa-link"></i></button>
             </div>
+            {% if user.is_authenticated %}
             <form class="ans_form" action="" method="post">
+                {% csrf_token %}
                 <textarea name="ans_text" id=""></textarea>
                 <p class="img_label">Image&nbsp;<span>(if required)</span></p>
                 <div class="file_row">
@@ -84,11 +99,26 @@
                     <input type="file" name="ans_file" accept="image/*" id="ans_file">
                     <label for="ans_file">Select Image</label>
                 </div>
-                
+
                 <button class="submit_btn" type="submit">SUBMIT</button>
             </form>
+            {% else %}
+            <form class="ans_form" action="" method="post">
+                {% csrf_token %}
+                <textarea name="" id="" onclick="LoginAlert()" readonly></textarea>
+                <p class="img_label">Image&nbsp;<span>(if required)</span></p>
+                <div class="file_row">
+                    <p id="selected_file"></p>
+                    <input type="file" name="" accept="image/*" id="ans_file" disabled>
+                    <label for="ans_file" onclick="LoginAlert()">Select Image</label>
+                </div>
+
+                <button class="submit_btn" type="submit">SUBMIT</button>
+            </form>
+            {% endif %}
 
         </div>
     </div>
+    {% endif %}
 </div>
 {% endblock sectionblock %}

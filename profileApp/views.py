@@ -3,16 +3,21 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import authenticate
 from .models import UserModel
-from homeApp.models import QuestionsModel
+from homeApp.models import AnswersModel, QuestionsModel
 from django.contrib import messages
 
 
 # Create your views here.
 @login_required(login_url='/login')
 def profileView(request):
-    return render(request, "profile/profile.html", {'dashboard':'profile_link_active'})
+    user_ques = QuestionsModel.objects.filter(user=request.user)
+    user_ques_len = len(user_ques)
+    user_ans = AnswersModel.objects.filter(ans_by=request.user)
+    user_ans_len = len(user_ans)
 
-@login_required()
+    return render(request, "profile/profile.html", {'dashboard':'profile_link_active', 'user_ques_len':user_ques_len, 'user_ans_len':user_ans_len})
+
+@login_required(login_url='/login')
 def editProfileView(request):
     if request.method == 'POST':
         current_user = User.objects.get(id=request.user.id)
@@ -72,13 +77,16 @@ def followersView(request):
 def followingsView(request):
     return render(request, "profile/followings.html", {'followings':'profile_link_active'})
 
-@login_required()
+@login_required(login_url='/login')
 def userQueView(request):
     que_data = QuestionsModel.objects.all().filter(user_id=request.user.id)
     return render(request, "profile/user_questions.html",{'questions':'profile_link_active','que_data':que_data})
 
+@login_required(login_url='/login')
 def userAnsView(request):
-    return render(request, "profile/user_answers.html", {'answers':'profile_link_active'})
+    given_anss = AnswersModel.objects.filter(ans_by=request.user)
+    
+    return render(request, "profile/user_answers.html", {'answers':'profile_link_active', 'given_anss':given_anss})
 
 def logoutView(request):
     auth.logout(request)

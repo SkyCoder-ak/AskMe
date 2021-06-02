@@ -52,7 +52,7 @@
 <div id="main_section">
     <div id="column2" class="column2">
         <div class="index_row">
-            <a id="index_link1" href="/" class="index_link {{home}}"><i class="fas fa-home font_2rem"></i><small class="index_link_name">Home</small></a>
+            <a id="index_link1" href="/#section_home" class="index_link {{home}}"><i class="fas fa-home font_2rem"></i><small class="index_link_name">Home</small></a>
             <a id="index_link2" href="/home/peoples" class="index_link {{peoples}}"><i class="fas fa-users font_2rem"></i><small class="index_link_name">Peoples</small></a>
             <a id="index_link4" href="/home/write-answers" class="index_link {{answers}}"><i class="fas fa-file-alt font_2rem"></i><small class="index_link_name">Answers</small></a>
             <a id="index_link5" href="#" class="index_link {{write_ans}}"><i class="fas fa-poll font_2rem"></i><small class="index_link_name">Polls</small></a>
@@ -106,23 +106,17 @@
                         <p class="category">In: <span class="clr_blue">{{que.que_category}}</span></p>
                     </div>
                     <div class="col2_right_row2">
-                        <h2 class="que"><Span class="clr_green">Que: </Span>{{que.question}}</h2>
-                        <p class="ans"><span class="clr_green">Ans:</span> When using Call by Value, you are sending
-                            the
-                            value of a variable as parameter to a function, whereas Call by Reference sends the
-                            address
-                            of the variable. Also, under Call by Value, the value in the parameter is not affected
-                            by
-                            whatever operation that takes place, while in the case of Call by Reference, values can
-                            be
-                            affected by the process within the function.</p>
+                        <a href="{% url 'ans_page' que.id %}" class="que"><Span class="clr_green">Que: </Span>{{que.question}}</a>
+                        {% if que.que_details %}
+                        <p class="ans"><span class="clr_green">Discription:</span>&nbsp;&nbsp;<pre style="color:rgb(49, 49, 49); font-size:1.6rem;">{{que.que_details}}</pre></p>
+                        {% endif %}
                     </div>
                     <div class="col2_right_row3">
-                        <a href="/home/write-answers" class="btn1"><i
-                                class="fas fa-comment-alt font_1-2rem"></i>&nbsp;&nbsp;&nbsp;<span>4</span>&nbsp;Answers</a>
-                        <p href="" class="btn1"><i class="fas fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>3</span>k Views
+                        <a href="{% url 'ans_page' que.id %}#ans_page" class="btn1"><i
+                                class="fas fa-comment-alt font_1-2rem"></i>&nbsp;&nbsp;&nbsp;<span>{{que.answersmodel_set.all|length}}</span>&nbsp;Answers</a>
+                        <p href="" class="btn1"><i class="fas fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>{{que.que_views}}</span> Views
                         </p>
-                        <a href="/home/write-answers" class="ans_btn"">Answer</a>
+                        <a href="{% url 'ans_page' que.id %}#ans_section" class="ans_btn"">Answer</a>
                     </div>
                 </div>
             </div>
@@ -138,7 +132,7 @@
 </div>
 {% block post_questions %}
 {% if user.is_authenticated %}
-<div id="post_question">
+<div id="post_question" {% if request.path != '/' %} style="display: none;" {% endif %}>
     <div class="question_box">
         <div class="top_row">
             <div class="que_mark"><i class="fas fa-question clr_red"></i></div>
@@ -183,7 +177,7 @@
     </div>
 </div>
 {% else %}
-<div id="post_question">
+<div id="post_question" {% if request.path != '/' %} style="display: none;" {% endif %}>
     <div class="question_box">
         <div class="top_row">
             <div class="que_mark"><i class="fas fa-question clr_red"></i></div>

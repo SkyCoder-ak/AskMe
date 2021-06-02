@@ -505,16 +505,12 @@ body{
     width: 25%;
 
 }
-
-/* #asked_ques{
-    display: none;
-} */
 .asked_ques_heading{
-    padding: 1.6em;
+    padding: 1em;
     text-align: center;
     font-size: 2.6rem;
+    border-bottom: 2px solid rgb(63, 63, 63);
 }
-
 
 #answers{
     padding: 2em;
@@ -530,6 +526,11 @@ body{
     font-size: 1.4rem;
     display: flex;
 }
+.user_ans_box .post_detail_row .ask_by{
+    margin-right: 2%;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
 .user_ans_box .post_detail_row .in{
     margin-left: 5%;
 }
@@ -539,7 +540,7 @@ body{
 .user_ans_box .que_row a{
     font-family: 'Poppins', sans-serif;
     font-size: 1.8rem;
-    font-weight: bold;
+    font-weight: 500;
     color: black;
     text-decoration: none;
 }

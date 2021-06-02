@@ -18,19 +18,36 @@ que_choices = (
     ('Others', 'Others'),
 )
 # Create your models here.
+# model for questions
 class QuestionsModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     question = models.TextField(max_length=300)
     que_category = models.CharField(max_length=30, choices=que_choices, default='Others')
-    que_details = models.TextField(max_length=4000, null=True, blank=True)
-    que_date_time = models.DateTimeField(auto_now=True)
+    que_details = models.TextField(max_length=2000, null=True, blank=True)
+    que_date_time = models.DateTimeField(auto_now_add=True)
+    que_views = models.IntegerField(default=0, null=True, blank=True)
 
     def __str__(self):
         return self.question
     
 
-
 def create_profile(sender, **kwargs):
     if kwargs['created']:
         user_profile = QuestionsModel.objects.create(user=kwargs['instance'])
+post_save.connect(create_profile, sender=User)
+
+
+# model for answers
+class AnswersModel(models.Model):
+    question = models.ForeignKey(QuestionsModel, on_delete=models.CASCADE, null=True, blank=True)
+    ans_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    answer = models.TextField(null=True, blank=True)
+    ans_date_time = models.DateTimeField(auto_now=True)
+
+    # def __str__(self):
+    #     return self.answer[:100]
+
+def create_profile(sender, **kwargs):
+    if kwargs['created']:
+        user_profile = AnswersModel.objects.create(question=kwargs['instance'])
 post_save.connect(create_profile, sender=User)
