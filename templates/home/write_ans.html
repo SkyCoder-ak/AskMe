@@ -56,15 +56,28 @@
                 <a href="">{{ans.ans_by.first_name}} {{ans.ans_by.last_name}}</a>
                 <p class="status bg_orange">Diamond</p>
                 <p class="date_time">Answerd on: <span class="clr_blue">{{ans.ans_date_time}}</span></p>
-
             </div>
             <div class="row2">
-                <p>
+                <p id="ans_{{ans.id}}">
                 <pre style="color:rgb(49, 49, 49); font-size:1.6rem;">{{ans.answer}}</pre>
                 </p>
             </div>
             <div class="row_last">
-                <button class="like_btn"><i class="fas fa-medal clr_orange"></i></button>
+                    <form action="{% url 'like_ans' ans.id %}" method="post">
+                        {% csrf_token %}
+                        {% if user in ans.likes.all %}
+                        <p class="total_likes"><i class="far fa-heart"></i> {{ans.likes.all|length}}</p>
+                        <button type="submit" class="like_btn" name="like_btn" value="{{ans.id}}" style="background-color: rgb(255, 16, 68);">
+                            Dislike
+                        </button>
+                        {% else %}
+                        <p class="total_likes"><i class="far fa-heart"></i> {{ans.likes.all|length}}</p>
+                        <button type="submit" class="like_btn" name="like_btn" value="{{ans.id}}" style="background-color: rgb(4, 158, 63);">
+                            Like
+                        </button>
+                        {% endif %}
+                    </form>
+                <!-- <button class="like_btn"><i class="far fa-thumbs-down"></i><span class="like_num">12 Dislikes</span></button> -->
             </div>
         </div>
     </div>
@@ -99,7 +112,7 @@
                     <input type="file" name="ans_file" accept="image/*" id="ans_file">
                     <label for="ans_file">Select Image</label>
                 </div>
-
+                <input type="hidden" name="ans_hidden" value="AnsHidden">
                 <button class="submit_btn" type="submit">SUBMIT</button>
             </form>
             {% else %}

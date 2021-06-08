@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
+from django.db.models.fields.related import ManyToManyField
 from django.db.models.signals import post_save
 
 
@@ -42,12 +43,24 @@ class AnswersModel(models.Model):
     question = models.ForeignKey(QuestionsModel, on_delete=models.CASCADE, null=True, blank=True)
     ans_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     answer = models.TextField(null=True, blank=True)
-    ans_date_time = models.DateTimeField(auto_now=True)
+    ans_date_time = models.DateTimeField(auto_now_add=True)
+    likes = models.ManyToManyField(User, related_name="answers_likes")
 
-    # def __str__(self):
-    #     return self.answer[:100]
+    def __str__(self):
+        if self.answer != None:
+            return self.answer[:100]
 
 def create_profile(sender, **kwargs):
     if kwargs['created']:
         user_profile = AnswersModel.objects.create(question=kwargs['instance'])
 post_save.connect(create_profile, sender=User)
+
+
+
+class FollowModel(models.Model):
+    u = models.OneToOneField(User, on_delete=models.CASCADE)
+    followed_to = ManyToManyField(User, related_name='followed_users')
+
+class Followers(models.Model):
+    card_user = models.OneToOneField(User, on_delete=models.CASCADE)
+    followed_by = ManyToManyField(User, related_name='followed_by_users')

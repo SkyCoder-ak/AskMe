@@ -72,11 +72,11 @@
                         <p>Questions</p>
                     </div>
                     <div class="social_info_box">
-                        <span>76</span>
+                        <span>{{user.followmodel.followed_to.all|length}}</span>
                         <p>Followings</p>
                     </div>
                     <div class="social_info_box">
-                        <span>33</span>
+                        <span>{{user.followers.followed_by.all|length}}</span>
                         <p>Followers</p>
                     </div>
                 </div>

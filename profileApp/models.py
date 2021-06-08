@@ -16,7 +16,7 @@ class UserModel(models.Model):
     bio = models.TextField(max_length=300, null=True, blank=True)
     age = models.CharField(max_length=4, null=True, blank=True)
     gender = models.CharField(max_length=6, choices=gender_choices, default='Male')
-    profile_photo = models.ImageField(upload_to='profile/images')
+    profile_photo = models.ImageField(upload_to='profile/images', blank=True, null=True, default='profile/images/default_profile.png')
 
     def __str__(self):
         return self.user.username
@@ -25,3 +25,7 @@ def create_profile(sender, **kwargs):
     if kwargs['created']:
         user_profile = UserModel.objects.create(user=kwargs['instance'])
 post_save.connect(create_profile, sender=User)
+
+
+
+
