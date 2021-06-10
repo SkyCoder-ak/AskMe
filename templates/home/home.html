@@ -11,14 +11,13 @@
         </path>
     </svg>
 
-    <div class="search_box">
+    <form action="" method="POST" class="search_box">
+        {% csrf_token %}
         <h1 class="search_heading">Where you got stuck?</h1>
-        <input type="text" placeholder="Type a question to search">
-        <button type="submit">Search</button>
-    </div>
-    <div class="square1">
-        <i class="fas fa-equals"></i>
-    </div>
+        <input type="text" placeholder="Type a question to search" name="search_input">
+        <button id="search_btn" type="submit" value="que_search" name="search_btn" onclick="JumpToQue()">Search</button>
+    </form>
+    <div class="square1"></div>
     <div class="square2"></div>
     <div class="square3"></div>
 </header>
@@ -41,14 +40,14 @@
     <div class="serv_box">
         <h1 class="serv_icon"><i class="fas fa-poll"></i></h1>
         <h2 class="serv_heading">Create Polls</h2>
-        <p class="serv_para">You can create and track live polls here.</p>
+        <p class="serv_para">You can create and track live opinion polls here.</p>
     </div>
 </div>
 
 <div id="main_section">
     <div id="column2" class="column2">
         <div id="home_index" class="index_row">
-            <a id="index_link1" href="/#home_index" class="index_link {{home}}"><i class="fas fa-home font_2rem"></i><small class="index_link_name">Home</small></a>
+            <a id="index_link1" href="/#home_index" class="index_link {{home}}"><i class="fas fa-question font_2rem"></i><small class="index_link_name">Home</small></a>
             <a id="index_link2" href="/home/peoples" class="index_link {{peoples}}"><i class="fas fa-users font_2rem"></i><small class="index_link_name">Peoples</small></a>
             <a id="index_link4" href="" class="index_link {{answers}}"><i class="fas fa-file-alt font_2rem"></i><small class="index_link_name">Answers</small></a>
             <a id="index_link5" href="#" class="index_link {{write_ans}}"><i class="fas fa-poll font_2rem"></i><small class="index_link_name">Polls</small></a>
@@ -83,7 +82,7 @@
             </div>
             {% for que in questions %}
             {% if que.question %}
-            <div class="que_box">
+            <div id="question{{que.id}}" class="que_box">
                 <div class="col2_left">
                     <a href="" class="prof_icon">
                         <img src="{{ que.user.usermodel.profile_photo.url }}" alt="">
@@ -102,7 +101,7 @@
                         <p class="category">In: <span class="clr_blue">{{que.que_category}}</span></p>
                     </div>
                     <div class="col2_right_row2">
-                        <a href="{% url 'ans_page' que.id %}" class="que"><Span class="clr_green">Que: </Span>{{que.question}}</a>
+                        <a href="{% url 'ans_page' que.id %}" class="que"><Span class="clr_green">Que: </Span>{{que.question|capfirst }}</a>
                         {% if que.que_details %}
                         <p class="ans"><span class="clr_green">Discription:</span>&nbsp;&nbsp;<pre style="color:rgb(49, 49, 49); font-size:1.6rem;">{{que.que_details}}</pre></p>
                         {% endif %}
@@ -167,7 +166,7 @@
                 <textarea id="que_details" name="que_details" cols="20" rows="7"></textarea>
             </div>
             <div class="btn_row">
-                <button type="submit">Post Question</button>
+                <button type="submit" value="que_post" name="que_post_btn">Post Question</button>
             </div>
         </form>
     </div>

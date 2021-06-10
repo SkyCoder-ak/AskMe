@@ -10,11 +10,11 @@ import time
 
 # Create your views here.
 def homeView(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and request.POST.get('que_post_btn')=='que_post':
         current_user = request.user
         user_id = current_user.id
         question_model = User.objects.get(id=user_id)
-        que = request.POST.get('question')
+        que = f"{request.POST.get('question').lower()}?"
         que_category = request.POST.get('que_category')
         que_details = request.POST.get('que_details')
         QuestionsModel.objects.create(user=question_model, question=que, que_category=que_category,que_details=que_details)
@@ -27,6 +27,13 @@ def homeView(request):
     anss = AnswersModel.objects.filter(question=questions[1])
     ans_length = len(anss)
     
+    if request.method == 'POST' and request.POST.get('search_btn')=='que_search':
+        search_que = request.POST.get('search_input').lower()
+        questions = QuestionsModel.objects.filter(question__contains=search_que)
+        # getting first object id for redirect
+        # first_obj = f"#question{questions[0].id}"
+        # redirect_link = f'#section_home'
+        # return render(request, 'home/home.html', {'searched_questions':searched_questions})
 
     return render(request, 'home/home.html', {'home':'index_link_active','questions':questions, 'ans_length':ans_length
     })
@@ -58,8 +65,8 @@ def FollowView(request, p_id):
     return redirect(reverse('peoples_main')+card_id)
 
 
+
 def writeAnsView(request, pk):
-    # getting the question which click by ans button
     clicked_que = QuestionsModel.objects.get(id=pk)
     # --------------------
     # views count

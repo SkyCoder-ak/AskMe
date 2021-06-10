@@ -32,10 +32,10 @@ class QuestionsModel(models.Model):
         return self.question
     
 
-def create_profile(sender, **kwargs):
-    if kwargs['created']:
-        user_profile = QuestionsModel.objects.create(user=kwargs['instance'])
-post_save.connect(create_profile, sender=User)
+# def create_profile(sender, **kwargs):
+#     if kwargs['created']:
+#         user_profile = QuestionsModel.objects.create(user=kwargs['instance'])
+# post_save.connect(create_profile, sender=User)
 
 
 # model for answers
@@ -50,10 +50,10 @@ class AnswersModel(models.Model):
         if self.answer != None:
             return self.answer[:100]
 
-def create_profile(sender, **kwargs):
-    if kwargs['created']:
-        user_profile = AnswersModel.objects.create(question=kwargs['instance'])
-post_save.connect(create_profile, sender=User)
+# def create_profile(sender, **kwargs):
+#     if kwargs['created']:
+#         user_profile = AnswersModel.objects.create(question=kwargs['instance'])
+# post_save.connect(create_profile, sender=User)
 
 
 
