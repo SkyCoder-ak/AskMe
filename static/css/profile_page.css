@@ -248,12 +248,10 @@ body{
     width: 80%;
     font-family: 'Bitter', serif;
     font-size: 2rem;
-    /* border: 2px solid red; */
 }
 #user_followers .row-1 .search_box{
     width: 20%;
     display: flex;
-    /* border: 2px solid red; */
 
 }
 #user_followers .row-1 .search_box input{
@@ -280,7 +278,14 @@ body{
     justify-content: center;
     flex-wrap: wrap;
 }
-
+.no_followed{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 6rem;
+    color: rgb(0, 0, 0);
+}
 
 /* =====================PROFILE EDIT======================= */
 #profile_edit{

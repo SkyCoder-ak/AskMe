@@ -4,6 +4,7 @@
 
 <!-- {{ block.super }} -->
 {% block profilecontent %}
+{% if user.followed_by_users.all|length != 0 %}
 <div id="user_followers">
     <div class="row-1">
         <h4>Peoples followed by you.</h4>
@@ -13,182 +14,31 @@
         </div>
     </div>
     <div class="row-2">
-        <div class="people_card">
+        {% for following in user.followed_by_users.all %}
+        <div id="following_card_{{following.card_user.id}}" class="people_card">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
             <a href="" class="img_box">
-                <img src="./Images/boy2.jpg" alt="">
+                <img src="{{following.card_user.usermodel.profile_photo.url}}" alt="">
             </a>
-            <a href="" class="card_name">Akash Mothe</a>
-            <p class="card_prof">Web Developer</p>
+            <a href="" class="card_name">{{following.card_user.first_name}} {{following.card_user.last_name}}</a>
+            <p class="card_prof">{{following.card_user.usermodel.designation}}</p>
             <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">60k Followers</p>
-            <button class="follow_btn">Follow</button>
+            <p class="card_followers clr_red">{{following.card_user.followers.followed_by.all|length}} Followers</p>
+
+            <form action="{% url 'follow_by' following.card_user.id %}" method="post">
+                {% csrf_token %}
+                {% if user in following.card_user.followers.followed_by.all %}
+                <button class="follow_btn" name="following_btn_prof" value="{{following.card_user.id}}" style="background-color: #02b13c;">Unfollow</button>
+                {% else %}
+                <button class="follow_btn" name="following_btn_prof" value="{{following.card_user.id}}">Follow</button>
+                {% endif %}
+            </form>
         </div>
-        <div class="people_card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <a href="" class="img_box">
-                <img src="./Images/boy2.jpg" alt="">
-            </a>
-            <a href="" class="card_name">Akash Mothe</a>
-            <p class="card_prof">Web Developer</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">60k Followers</p>
-            <button class="follow_btn">Follow</button>
-        </div>
-        <div class="people_card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <a href="" class="img_box">
-                <img src="./Images/boy2.jpg" alt="">
-            </a>
-            <a href="" class="card_name">Akash Mothe</a>
-            <p class="card_prof">Web Developer</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">60k Followers</p>
-            <button class="follow_btn">Follow</button>
-        </div>
-        <div class="people_card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <a href="" class="img_box">
-                <img src="./Images/boy2.jpg" alt="">
-            </a>
-            <a href="" class="card_name">Akash Mothe</a>
-            <p class="card_prof">Web Developer</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">60k Followers</p>
-            <button class="follow_btn">Follow</button>
-        </div>
-        <div class="people_card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <a href="" class="img_box">
-                <img src="./Images/boy2.jpg" alt="">
-            </a>
-            <a href="" class="card_name">Akash Mothe</a>
-            <p class="card_prof">Web Developer</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">60k Followers</p>
-            <button class="follow_btn">Follow</button>
-        </div>
-        <div class="people_card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <a href="" class="img_box">
-                <img src="./Images/boy2.jpg" alt="">
-            </a>
-            <a href="" class="card_name">Akash Mothe</a>
-            <p class="card_prof">Web Developer</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">60k Followers</p>
-            <button class="follow_btn">Follow</button>
-        </div>
-        <div class="people_card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <a href="" class="img_box">
-                <img src="./Images/boy2.jpg" alt="">
-            </a>
-            <a href="" class="card_name">Akash Mothe</a>
-            <p class="card_prof">Web Developer</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">60k Followers</p>
-            <button class="follow_btn">Follow</button>
-        </div>
-        <div class="people_card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <a href="" class="img_box">
-                <img src="./Images/boy2.jpg" alt="">
-            </a>
-            <a href="" class="card_name">Akash Mothe</a>
-            <p class="card_prof">Web Developer</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">60k Followers</p>
-            <button class="follow_btn">Follow</button>
-        </div>
-        <div class="people_card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <a href="" class="img_box">
-                <img src="./Images/boy2.jpg" alt="">
-            </a>
-            <a href="" class="card_name">Akash Mothe</a>
-            <p class="card_prof">Web Developer</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">60k Followers</p>
-            <button class="follow_btn">Follow</button>
-        </div>
-        <div class="people_card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <a href="" class="img_box">
-                <img src="./Images/boy2.jpg" alt="">
-            </a>
-            <a href="" class="card_name">Akash Mothe</a>
-            <p class="card_prof">Web Developer</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">60k Followers</p>
-            <button class="follow_btn">Follow</button>
-        </div>
-        <div class="people_card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <a href="" class="img_box">
-                <img src="./Images/boy2.jpg" alt="">
-            </a>
-            <a href="" class="card_name">Akash Mothe</a>
-            <p class="card_prof">Web Developer</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">60k Followers</p>
-            <button class="follow_btn">Follow</button>
-        </div>
-        <div class="people_card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <a href="" class="img_box">
-                <img src="./Images/boy2.jpg" alt="">
-            </a>
-            <a href="" class="card_name">Akash Mothe</a>
-            <p class="card_prof">Web Developer</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">60k Followers</p>
-            <button class="follow_btn">Follow</button>
-        </div>
-        <div class="people_card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <a href="" class="img_box">
-                <img src="./Images/boy2.jpg" alt="">
-            </a>
-            <a href="" class="card_name">Akash Mothe</a>
-            <p class="card_prof">Web Developer</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">60k Followers</p>
-            <button class="follow_btn">Follow</button>
-        </div>
-        <div class="people_card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <a href="" class="img_box">
-                <img src="./Images/boy2.jpg" alt="">
-            </a>
-            <a href="" class="card_name">Akash Mothe</a>
-            <p class="card_prof">Web Developer</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">60k Followers</p>
-            <button class="follow_btn">Follow</button>
-        </div>
-        <div class="people_card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <a href="" class="img_box">
-                <img src="./Images/boy2.jpg" alt="">
-            </a>
-            <a href="" class="card_name">Akash Mothe</a>
-            <p class="card_prof">Web Developer</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">60k Followers</p>
-            <button class="follow_btn">Follow</button>
-        </div>
-        <div class="people_card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <a href="" class="img_box">
-                <img src="./Images/boy2.jpg" alt="">
-            </a>
-            <a href="" class="card_name">Akash Mothe</a>
-            <p class="card_prof">Web Developer</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">60k Followers</p>
-            <button class="follow_btn">Follow</button>
-        </div>
+        {% endfor %}
+        
     </div>
 </div>
+{% else %}
+<h1 class="no_followed">You did't followed any people.</h1>
+{% endif %}
 {% endblock profilecontent %}

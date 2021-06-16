@@ -38,7 +38,7 @@ function LoginAlert(){
     alert("You need to login first.")
 }
 
-// ==================FOR SET SCROLL POSITION===============
-function JumpToQue(){
-    window.scrollTop(840);
+// ==================for popup messsage===============
+function DismissPopup(){
+    document.getElementById("message_main").style.display = "none";
 }

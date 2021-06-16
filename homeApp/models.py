@@ -61,6 +61,13 @@ class FollowModel(models.Model):
     u = models.OneToOneField(User, on_delete=models.CASCADE)
     followed_to = ManyToManyField(User, related_name='followed_users')
 
+    def __str__(self):
+        return self.u.first_name +" "+ self.u.last_name
+    
+
 class Followers(models.Model):
     card_user = models.OneToOneField(User, on_delete=models.CASCADE)
     followed_by = ManyToManyField(User, related_name='followed_by_users')
+
+    def __str__(self):
+        return self.card_user.first_name +" "+ self.card_user.last_name

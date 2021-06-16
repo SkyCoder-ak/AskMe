@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% extends "base/base.html" %}
+{% load static %}
+<title>AskMe-login</title>
+
+{% block bodyblock %}
+
+<header class="about_header">
+    <div class="header_left">
+        <h1>We are <span class="logo_clr">AskMe</span></h1>
+        <p>Providing the solutions of your questions.</p>
+        <a href="">Contact Us</a>
+    </div>
+    <div class="header_right">
+        <img src="{% static '/images/question-mark.png' %}" alt="Image">
+    </div>
+</header>
+
+<div class="team_main">
+    <h1><Span class="clr_red">O</Span>ur <span class="clr_red">T</span>eam</h1>
+    <div class="team_row">
+        <div class="team_box">
+            <img src="{% static 'images/little_boy.jpg' %}" alt="">
+            <h3>Akash Mothe</h3>
+            <p>BE Final Year</p>
+        </div>
+        <div class="team_box">
+            <img src="{% static 'images/little_boy.jpg' %}" alt="">
+            <h3>Yogesh Nikas</h3>
+            <p>BE Final Year</p>
+        </div>
+        <div class="team_box">
+            <img src="{% static 'images/little_boy.jpg' %}" alt="">
+            <h3>Vrushali Hade</h3>
+            <p>BE Final Year</p>
+        </div>
+    </div>
+</div>
+
+<div class="about_section">
+    <div class="img_box">
+        <img src="{% static 'images/office_desk.jpg' %}" alt="">
+    </div>
+    <div class="text_box">
+        <h3><span class="clr_red">A</span>bout <span class="clr_red">U</span>s</h3>
+        <h1>What we want to <span class="clr_green">Achive?</span></h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A dolores odit omnis impedit fuga soluta, similique iure enim consequuntur adipisci est nobis illum ratione ipsum rem deserunt amet ad sapiente eaque labore iusto minima assumenda, nulla dolorem! Illo neque alias porro reiciendis beatae sunt deleniti, molestiae autem voluptas nulla ducimus inventore incidunt obcaecati id, sint, provident sit placeat. Sint, quae et accusamus non porro nihil, saepe quas tempore eaque beatae eligendi officiis eum deserunt quos iusto, ut voluptatibus nemo fugit? Assumenda dolor delectus iste suscipit impedit maxime reprehenderit natus, excepturi quis. Neque natus porro aliquam vitae voluptas. Dolorem, autem eveniet.</p>
+        <a href="">Explore</a>
+    </div>
+</div>
+
+<div class="address_main">
+    <h1><span class="clr_red">O</span>ur <span class="clr_red">L</span>ocations</h1>
+    <div class="locations_row">
+        <div class="box">
+            <h1><i class="fas fa-map-marker-alt"></i></h1>
+            <p>San Frasisco, CA 590 Bush St & 20th Avenue Apt</p>    
+        </div>
+        <div class="box">
+            <h1><i class="fas fa-map-marker-alt"></i></h1>
+            <p>San Frasisco, CA 590 Bush St & 20th Avenue Apt</p>
+        </div>
+        <div class="box">
+            <h1><i class="fas fa-map-marker-alt"></i></h1>
+            <p>San Frasisco, CA 590 Bush St & 20th Avenue Apt</p>
+        </div>
+    </div>
+</div>
+
+<div class="insights_main">
+    <h1><span class="clr_red">A</span>skme <span class="clr_red">I</span>nsights</h1>
+    <div class="insights">
+        <div class="insight_box">
+            <p>23</p>
+            <h2>Questions Asked</h2>
+        </div>
+        <div class="insight_box">
+            <p>43</p>
+            <h2>Answers given</h2>
+        </div>
+        <div class="insight_box">
+            <p>343</p>
+            <h2>Peoples Joined</h2>
+        </div>
+        <div class="insight_box">
+            <p>43</p>
+            <h2>Opnion Polls</h2>
+        </div>
+    </div>
+</div>
+
+<div class="contact_main">
+    <div class="left_box">
+        <h3><span class="clr_red">C</span>onact <span class="clr_red">U</span>s</h3>
+        <p>It's a matter of minute.</p>
+        <h1>If you have some query or inquiry, Don't hesitate to send message.</h1>
+    </div>
+    <div class="right_box">
+        <form class="contact_form" action="" method="post">
+            {% csrf_token %}
+            <div class="field_row">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="field_row">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="field_row">
+                <label for="message">Message:</label>
+                <textarea name="message" id="message" name="message" cols="30" rows="6"></textarea>
+            </div>
+            <div class="field_row">
+                <button type="submit">Send Message</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock bodyblock%}

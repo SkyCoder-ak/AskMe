@@ -1,8 +1,6 @@
     
-// let login_input = document.getElementById("login_pass").type;
-
-function showHidePass() {
-    var login_input = document.getElementById("signup_pass");
+function showHidePass(){
+    var login_input = document.getElementById("id_password");
     var show_btn = document.getElementById("show_pass");
     var hide_btn = document.getElementById("hide_pass");
     if (login_input.type === "password") {

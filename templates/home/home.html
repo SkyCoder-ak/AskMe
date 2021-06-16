@@ -4,6 +4,31 @@
 <title>AskMe-home</title>
 
 {% block bodyblock %}
+{% if messages %}
+{% for message in messages %}
+{% if message.tags == 'error' %}
+<div id="message_main">
+    <div class="message_box">
+        <h1 style="color: rgb(241, 60, 60);"><i class="far fa-times-circle"></i></h1>
+        <h2>NOT FOUND!!</h2>
+        <P>{{message}}</P>
+        <a href="/#post_question" id="popup_close_btn" onclick="DismissPopup()" style="background-color: rgb(241, 60, 60);">OK</a>
+    </div>
+</div>
+{% endif %}
+
+{% if message.tags == 'success' %}
+<div id="message_main">
+    <div class="message_box">
+        <h1 style="color: rgb(1, 207, 104);"><i class="far fa-check-circle"></i></h1>
+        <h2>SUCCESS!!</h2>
+        <P>{{message}}</P>
+        <a href="/#main_section" id="popup_close_btn" onclick="DismissPopup()" style="background-color: rgb(1, 207, 104);">OK</a>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
 <header id="header">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 320">
         <path fill="#02a151" fill-opacity="1"
@@ -11,11 +36,11 @@
         </path>
     </svg>
 
-    <form action="" method="POST" class="search_box">
+    <form method="POST" class="search_box">
         {% csrf_token %}
         <h1 class="search_heading">Where you got stuck?</h1>
         <input type="text" placeholder="Type a question to search" name="search_input">
-        <button id="search_btn" type="submit" value="que_search" name="search_btn" onclick="JumpToQue()">Search</button>
+        <button id="search_btn" type="submit" value="que_search" name="search_btn">Search</button>
     </form>
     <div class="square1"></div>
     <div class="square2"></div>
@@ -38,17 +63,17 @@
         <p class="serv_para">If somebody post questions related your designation, you will get notifications.</p>
     </div>
     <div class="serv_box">
-        <h1 class="serv_icon"><i class="fas fa-poll"></i></h1>
-        <h2 class="serv_heading">Create Polls</h2>
-        <p class="serv_para">You can create and track live opinion polls here.</p>
+        <h1 class="serv_icon"><i class="fas fa-user-friends"></i></h1>
+        <h2 class="serv_heading">Follow Peoples</h2>
+        <p class="serv_para">Follow and get update from your closer one.</p>
     </div>
 </div>
 
 <div id="main_section">
     <div id="column2" class="column2">
         <div id="home_index" class="index_row">
-            <a id="index_link1" href="/#home_index" class="index_link {{home}}"><i class="fas fa-question font_2rem"></i><small class="index_link_name">Home</small></a>
-            <a id="index_link2" href="/home/peoples" class="index_link {{peoples}}"><i class="fas fa-users font_2rem"></i><small class="index_link_name">Peoples</small></a>
+            <a id="index_link1" href="{% url 'home' %}" class="index_link {{home}}"><i class="fas fa-question font_2rem"></i><small class="index_link_name">Home</small></a>
+            <a id="index_link2" href="{% url 'peoples_main' %}" class="index_link {{peoples}}"><i class="fas fa-users font_2rem"></i><small class="index_link_name">Peoples</small></a>
             <a id="index_link4" href="" class="index_link {{answers}}"><i class="fas fa-file-alt font_2rem"></i><small class="index_link_name">Answers</small></a>
             <a id="index_link5" href="#" class="index_link {{write_ans}}"><i class="fas fa-poll font_2rem"></i><small class="index_link_name">Polls</small></a>
             <!-- <a id="index_link3" href="#user_questions" class="index_link"><i class="fas fa-question-circle font_2rem"></i><small class="index_link_name">Questions</small></a> -->
@@ -57,29 +82,29 @@
         </div>
         {% block sectionblock %}
         <div id="section_home">
-            <div id="categories" class="categories">
+            <form action="" method="post" id="categories" class="categories">
+                {% csrf_token %}
                 <ul id="cate_ul">
-                    <li><a href="" class="cate_link cateActive">All</a></li>
-                    <li><a href="" class="cate_link">Programming</a></li>
-                    <li><a href="" class="cate_link">Technology</a></li>
-                    <li><a href="" class="cate_link">Language</a></li>
-                    <li><a href="" class="cate_link">Products</a></li>
-                    <li><a href="" class="cate_link">Math</a></li>
-                    <li><a href="" class="cate_link">Science</a></li>
-                    <li><a href="" class="cate_link">Bussiness</a></li>
-                    <li><a href="" class="cate_link">Education</a></li>
-                    <li><button onclick="showHideDropdown()" id="more_btn">More <i
-                                class="fas fa-caret-down"></i></button>
+                    <li><a href="/#section_home" class="cate_link cateActive">All</a></li>
+                    <li><button type="submit" name="category" value="Programming" class="cate_link">Programming</button></li>
+                    <li><button type="submit" name="category" value="Technology" class="cate_link">Technology</button></li>
+                    <li><button type="submit" name="category" value="Products" class="cate_link">Products</button></li>
+                    <li><button type="submit" name="category" value="Science" class="cate_link">Science</button></li>
+                    <li><button type="submit" name="category" value="Bussiness" class="cate_link">Bussiness</button></li>
+                    <li><button type="submit" name="category" value="Educaition" class="cate_link">Education</button></li>
+                    <li><p onclick="showHideDropdown()" id="more_btn">More <i class="fas fa-caret-down"></i></p>
                         <div id="cate_dropdown">
-                            <a href="" class="cate_link_more">Gk</a>
-                            <a href="" class="cate_link_more">Space</a>
-                            <a href="" class="cate_link_more">Health</a>
-                            <a href="" class="cate_link_more">Other</a>
+                            <button type="submit" name="category" value="Gk" class="cate_link">Gk</button>
+                            <button type="submit" name="category" value="Space" class="cate_link">Space</button>
+                            <button type="submit" name="category" value="Health" class="cate_link">Health</button>
+                            <button type="submit" name="category" value="Other" class="cate_link">Other</button>
                         </div>
                     </li>
 
                 </ul>
-            </div>
+                <input id="category_input" type="text" name="category_input" value="category_form" readonly>
+            </form>
+
             {% for que in questions %}
             {% if que.question %}
             <div id="question{{que.id}}" class="que_box">
@@ -119,6 +144,7 @@
             {% endif %}
             {% endfor %}
 
+            
         </div>
         {% endblock sectionblock %}       
     </div>

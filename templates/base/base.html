@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/profile_page.css' %}">
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aboutus.css' %}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -32,10 +33,10 @@
                 <span>AskMe</span>
             </a>
             <ul id="top_nav_ul">
-                <li><a href="/" class="nav_link activeTopNav">Home</a></li>
-                <li><a href="#main_section" class="nav_link">Peoples</a></li>
-                <li><a href="/home/post-question" class="nav_link">Ask Question</a></li>
-                <li><a href="" class="nav_link">About Us</a></li>
+                <li><a href="/" class="nav_link {{nav_home}}">Home</a></li>
+                <li><a href="{% url 'peoples_main' %}" class="nav_link {{nav_peoples}}">Peoples</a></li>
+                <li><a href="/#post_question" class="nav_link">Ask Question</a></li>
+                <li><a href="/about-us" class="nav_link {{nav_about}}">About Us</a></li>
             </ul>
         </div>
         <div class="nav_right">

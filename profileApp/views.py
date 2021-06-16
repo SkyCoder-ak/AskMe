@@ -1,10 +1,11 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import authenticate
 from .models import UserModel
-from homeApp.models import AnswersModel, QuestionsModel
+from homeApp.models import AnswersModel, Followers, QuestionsModel, FollowModel
 from django.contrib import messages
+from django.urls import reverse
 
 
 # Create your views here.
@@ -72,10 +73,49 @@ def editProfileView(request):
 
 
 def followersView(request):
-    return render(request, "profile/followers.html", {'followers':'profile_link_active'})
+    return render(request, "profile/followers.html", {'follower_link':'profile_link_active'})
+
+@login_required(login_url='/login')
+def ProfileFollowView(request, f_id):
+    follow_to = get_object_or_404(User, id=request.POST.get('follow_btn_prof'))
+    
+    following = FollowModel.objects.filter(u=request.user, followed_to=follow_to)
+    is_following = True if following else False
+    if is_following:
+        obj,create = FollowModel.objects.get_or_create(u=request.user)
+        obj.followed_to.remove(follow_to)
+        us,cret = Followers.objects.get_or_create(card_user=follow_to)
+        us.followed_by.remove(request.user)
+        
+
+    else:
+        obj,create = FollowModel.objects.get_or_create(u=request.user)
+        obj.followed_to.add(follow_to)
+        us,cret = Followers.objects.get_or_create(card_user=follow_to)
+        us.followed_by.add(request.user)
+
+    follower_card = f"#follower_card_{f_id}"
+    return redirect(reverse('followers_main')+follower_card)
+
 
 def followingsView(request):
     return render(request, "profile/followings.html", {'followings':'profile_link_active'})
+
+@login_required(login_url='/login')
+def ProfileFollowingsView(request, f_ing_id):
+    follow_to = get_object_or_404(User, id=request.POST.get('following_btn_prof'))
+    
+    following = FollowModel.objects.filter(u=request.user, followed_to=follow_to)
+    is_following = True if following else False
+    if is_following:
+        obj,create = FollowModel.objects.get_or_create(u=request.user)
+        obj.followed_to.remove(follow_to)
+        us,cret = Followers.objects.get_or_create(card_user=follow_to)
+        us.followed_by.remove(request.user)
+        
+    return redirect(reverse('followings_main'))
+
+
 
 @login_required(login_url='/login')
 def userQueView(request):

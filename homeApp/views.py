@@ -1,3 +1,4 @@
+from django.contrib.messages.constants import ERROR
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse
@@ -20,28 +21,29 @@ def homeView(request):
         QuestionsModel.objects.create(user=question_model, question=que, que_category=que_category,que_details=que_details)
         
         messages.add_message(request, messages.SUCCESS, "Your question has been posted.")
-        
         return redirect("/")
     
     questions = QuestionsModel.objects.order_by('que_date_time').reverse()
     anss = AnswersModel.objects.filter(question=questions[1])
     ans_length = len(anss)
-    
     if request.method == 'POST' and request.POST.get('search_btn')=='que_search':
         search_que = request.POST.get('search_input').lower()
         questions = QuestionsModel.objects.filter(question__contains=search_que)
-        # getting first object id for redirect
-        # first_obj = f"#question{questions[0].id}"
-        # redirect_link = f'#section_home'
-        # return render(request, 'home/home.html', {'searched_questions':searched_questions})
-
-    return render(request, 'home/home.html', {'home':'index_link_active','questions':questions, 'ans_length':ans_length
-    })
+        if len(questions) == 0:
+            messages.add_message(request, messages.ERROR, "Sorry we did't found related questions. Please post your question below.")
+        
+    if request.method == 'POST' and request.POST.get('category_input') == 'category_form':
+        category = request.POST.get('category')
+        questions = QuestionsModel.objects.filter(que_category__iexact=category)
+        
+    context = {'home':'index_link_active','nav_home':'activeTopNav', 'questions':questions, 'ans_length':ans_length
+    }
+    return render(request, 'home/home.html', context=context)
 
 
 def peoplesView(request):
     all_users = User.objects.all()
-    return render(request, 'home/peoples.html', {'peoples':'index_link_active','all_users':all_users})
+    return render(request, 'home/peoples.html', {'peoples':'index_link_active', 'nav_peoples':'activeTopNav', 'all_users':all_users})
 
 @login_required(login_url='/login')
 def FollowView(request, p_id):

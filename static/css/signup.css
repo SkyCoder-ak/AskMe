@@ -1,20 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-html{
-    font-size: 10px;
-}
-body{
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(218, 218, 218);
-    overflow-x: hidden;
-}
 .signup_main{
     width: 100vw;
     height: 80vh;
@@ -34,21 +17,24 @@ body{
     padding: 2em 1em;
     width: 60%;
     height: 100%;
-    /* border: 2px solid black; */
-}
-.signup_box .left_box h1{
-    font-size: 2.4rem;
-    text-align: center;
-    color: rgb(255, 8, 69);
-    text-transform: uppercase;
-    text-shadow: 0 1px 2px black;
-}
-.signup_box .left_box form{
-    padding-top: 4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* border: 2px solid red; */
+    /* justify-content: center; */
+}
+.signup_box .left_box h1{
+    width: 5rem;
+    height: 5rem;
+    font-size: 4rem;
+    color: #2ed573;
+    border-radius: 50%;
+}
+.signup_box .left_box form{
+    width: 100%;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .signup_box .left_box .field_row{
     position: relative;
@@ -59,19 +45,19 @@ body{
     display: block;
     padding-left: 0.2em;
     padding-bottom: 0.3em;
-    /* letter-spacing: 0.2rem; */
     font-size: 1.8rem;
     font-family: 'Poppins', sans-serif;
 
 }
 .signup_box .left_box .field_row input{
     width: 100%;
-    padding: 0.2em 0.7em;
+    padding: 0.4em 0.7em;
     border: none;
     border-radius: 2rem;
     outline: none;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: transparent;
     font-size: 1.7rem;
+
     box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.452), inset -2px -2px 3px rgb(255, 255, 255);
 }
 .signup_box #show_pass{
@@ -93,25 +79,21 @@ body{
     z-index: 100;
     display: none;
 }
-.signup_box #show_pass:hover, .signup_box #hide_pass:hover{
-    color: black;
-}
-
 
 .signup_box .left_box .btn_row{
     padding: 5em 7em;
     width: 100%;
     display: flex;
     flex-direction: row-reverse;
-    justify-content: center;
+    /* justify-content: center; */
 }
 .signup_box .left_box .btn_row button{
-    padding: 0.7em 1em;
-    width: 50%;
+    padding: 0.3em 1em;
+    width: 100%;
     border: none;
     border-radius: 2rem;
     outline: none;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: transparent;
     font-size: 2rem;
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
@@ -130,8 +112,38 @@ body{
     align-items: center;
     width: 40%;
     height: 100%;
-    /* border-left: 2px solid black; */
+    
 }
-.signup_box .right_box img{
-    height: 100%;
+.signup_box .right_box .inner_box{
+    padding: 10em 5em;
+    width: 90%;
+    height: 90%;
+    border-radius: 2rem;
+    background-color: #2ed573;
+}
+.signup_box .right_box .inner_box h1{
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    color: white;
+    font-weight: 500;
+}
+.signup_box .right_box .inner_box p{
+    font-size: 1.6rem;
+    color: rgba(255, 255, 255, 0.671);
+}
+.signup_box .right_box .inner_box .su-au-btn{
+    display: inline-block;
+    margin-top: 3rem;
+    font-family: 'Poppins', sans-serif;
+    padding: 0.2em 0.9em;
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+    border: 2px solid white;
+    border-radius: 2rem;
+    transition-duration: 0.5s;
+}
+.su-au-btn:hover{
+    color: rgb(0, 0, 0) !important;
+    background-color: #ffffff9c;
 }
