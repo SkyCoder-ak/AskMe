@@ -32,5 +32,6 @@ urlpatterns = [
     path('signup/', signupviews.signupView),
     path('login/', loginviews.loginView),
     path('about-us/', aboutviews.AboutView, name='aboutpage'),
+    path('badges-info/', aboutviews.BadgesView, name='badgespage'),
     path('profile/', include('profileApp.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

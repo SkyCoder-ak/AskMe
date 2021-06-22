@@ -5,6 +5,22 @@
 
 {% block bodyblock %}
 
+{% if messages %}
+{% for message in messages %}
+{% if 'message_sent' in message.tags %}
+<div id="message_main">
+    <div class="message_box">
+        <h1 style="color: rgb(1, 207, 104);"><i class="far fa-check-circle"></i></h1>
+        <h2>MESSAGE SENT!</h2>
+        <P>{{message}}</P>
+        <a href="" id="popup_close_btn" onclick="DismissPopup()"
+            style="background-color: rgb(1, 207, 104);">OK</a>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+
 <header class="about_header">
     <div class="header_left">
         <h1>We are <span class="logo_clr">AskMe</span></h1>
@@ -16,7 +32,7 @@
     </div>
 </header>
 
-<div class="team_main">
+<div id="our_team" class="team_main">
     <h1><Span class="clr_red">O</Span>ur <span class="clr_red">T</span>eam</h1>
     <div class="team_row">
         <div class="team_box">
@@ -67,7 +83,7 @@
     </div>
 </div>
 
-<div class="insights_main">
+<div id="insights" class="insights_main">
     <h1><span class="clr_red">A</span>skme <span class="clr_red">I</span>nsights</h1>
     <div class="insights">
         <div class="insight_box">
@@ -89,7 +105,7 @@
     </div>
 </div>
 
-<div class="contact_main">
+<div id="contact" class="contact_main">
     <div class="left_box">
         <h3><span class="clr_red">C</span>onact <span class="clr_red">U</span>s</h3>
         <p>It's a matter of minute.</p>
@@ -100,15 +116,15 @@
             {% csrf_token %}
             <div class="field_row">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
+                <input type="text" id="name" name="name" required>
             </div>
             <div class="field_row">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email" required>
             </div>
             <div class="field_row">
                 <label for="message">Message:</label>
-                <textarea name="message" id="message" name="message" cols="30" rows="6"></textarea>
+                <textarea name="message" id="message" name="message" cols="30" rows="6" required></textarea>
             </div>
             <div class="field_row">
                 <button type="submit">Send Message</button>

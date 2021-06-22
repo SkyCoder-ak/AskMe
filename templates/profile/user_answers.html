@@ -10,9 +10,19 @@
     {% for given_ans in given_anss %}
     <div class="user_ans_box">
         <div class="post_detail_row">
-            <p class="ask_by">Asked by: <span class="clr_blue">{{given_ans.question.user.first_name}}
-                    {{given_ans.question.user.last_name}}</span></p>
-            <p class="asked">Asked on: <span class="clr_blue">{{given_ans.question.que_date_time}}</span></p>
+            <p class="ask_by">Asked by: <span class="clr_blue">{{given_ans.question.user.first_name}} {{given_ans.question.user.last_name}}</span></p>
+            
+            {% if given_ans.question.user.usermodel.points < 150 %}
+            <span class="badge badge_beg">Beginner</span>
+            {% elif given_ans.question.user.usermodel.points >= 150 and given_ans.question.user.usermodel.points < 300 %}
+            <span class="badge badge_med">Mediator</span>
+            {% elif given_ans.question.user.usermodel.points >= 300 and given_ans.question.user.usermodel.points < 500 %}
+            <span class="badge badge_pro">Professional</span>
+            {% elif given_ans.question.user.usermodel.points >= 500 %}
+            <span class="badge badge_ex">Expert</span>
+            {% endif %}
+
+            <p class="asked" style="margin-left: 10%;">Asked on: <span class="clr_blue">{{given_ans.question.que_date_time}}</span></p>
             <p class="in">In: <span class="clr_blue">{{given_ans.question.que_category}}</span></p>
         </div>
         <div class="que_row">

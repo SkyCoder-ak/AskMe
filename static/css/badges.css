@@ -1,0 +1,111 @@
+
+.badges_header{
+    padding: 3em 10em;
+    width: 100vw;
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+.badges_header h1{
+    font-size: 3rem;
+    text-align: center;
+}
+
+.point_system{
+    padding: 3em 20em;
+    width: 100vw;
+}
+.badges_head_row h1{
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 500;
+}
+.badges_head_row p{
+    font-size: 1.7rem;
+    font-family: 'Poppins', sans-serif;
+}
+.point_system .main_box{
+    margin-top: 2rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+}
+.point_system .main_box .box{
+    padding: 2em;
+    width: 25rem;
+    height: 10rem;
+    border: 1px solid rgb(7, 7, 7);
+}
+.point_system .main_box .box h4{
+    font-size: 1.8rem;
+}
+.point_system .main_box .box p{
+    margin-top: 5%;
+    font-size: 1.6rem;
+}
+
+.badges_main{
+    padding: 3em 20em;
+    width: 100vw;
+    /* height: 80vh; */
+}
+
+.badges_main .main_box{
+    width: 100%;
+}
+.badges_main .main_box .badge_row{
+    margin: 3rem 0;
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.747);
+}
+.badge_row .badge_row_left{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid rgba(0, 0, 0, 0.747);
+
+}
+.badge_row_left .badge_icon{
+    font-size: 3rem;
+    color: orange;
+}
+.badge{
+    padding: 0 0.5em;
+    font-size: 1.3rem;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+}
+.badge_beg{
+    background-color: rgb(105, 105, 105);
+}
+.badge_med{
+    background-color: rgb(240, 88, 0);
+}
+.badge_pro{
+    background-color: rgb(166, 1, 207);
+}
+.badge_ex{
+    background-color: rgb(255, 9, 83);
+}
+.badge_row_left p{
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+
+.badge_row .badge_row_right{
+    width: 75%;
+    height: 100%;
+    padding: 2em;
+}
+.badge_row .badge_row_right .badge_info{
+    font-size: 1.6rem;
+}

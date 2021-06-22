@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% extends "base/base.html" %}
+{% load static %}
+<title>AskMe-login</title>
+
+{% block bodyblock %}
+
+<div class="badges_header">
+    <h1><span style="color: red;">B</span>adges <span style="color: red;">I</span>nformations</h1>
+</div>
+<div class="point_system">
+    <div class="badges_head_row">
+        <h1><span><i class="fas fa-filter clr_green"></i></span>&nbsp;How you will get points.</h1>
+        <p>Besides gaining reputation with your questions and answers, you receive badges for being especially helpful. Badges appears on your profile page, questions & answers.</p>
+    </div>
+    <div class="main_box">
+        <div class="box">
+            <h4>
+                <span><i class="fas fa-award clr_orange"></i></span>&nbsp;&nbsp;
+                20 Points
+            </h4>
+            <p>For signing up.</p>
+        </div>
+        <div class="box">
+            <h4>
+                <span><i class="fas fa-award clr_orange"></i></span>&nbsp;&nbsp;
+                10 Points
+            </h4>
+            <p>For adding full info to your profile.</p>
+        </div>
+        <div class="box">
+            <h4>
+                <span><i class="fas fa-award clr_orange"></i></span>&nbsp;&nbsp;
+                7 Points
+            </h4>
+            <p>Each time when a user follows you.</p>
+        </div>
+        <div class="box">
+            <h4>
+                <span><i class="fas fa-award clr_orange"></i></span>&nbsp;&nbsp;
+                2 Points
+            </h4>
+            <p>For asking one question.</p>
+        </div>
+        <div class="box">
+            <h4>
+                <span><i class="fas fa-award clr_orange"></i></span>&nbsp;&nbsp;
+                5 Points
+            </h4>
+            <p>For adding an answer.</p>
+        </div>
+        <div class="box">
+            <h4>
+                <span><i class="fas fa-award clr_orange"></i></span>&nbsp;&nbsp;
+                2 Points
+            </h4>
+            <p>When your answer got one like.</p>
+        </div>
+        <div class="box">
+            <h4>
+                <span><i class="fas fa-award clr_orange"></i></span>&nbsp;&nbsp;
+                2 Points
+            </h4>
+            <p>When your question got an answer.</p>
+        </div>
+        <div class="box">
+            <h4>
+                <span><i class="fas fa-award clr_orange"></i></span>&nbsp;&nbsp;
+                5 Points
+            </h4>
+            <p>When you create poll.</p>
+        </div>
+    </div>
+</div>
+
+<div class="badges_main">
+    <div class="badges_head_row">
+        <h1><span><i class="fas fa-ribbon clr_green"></i></span>&nbsp;How you will get badges.</h1>
+        <p>Besides gaining reputation with your questions and answers, you receive badges for being especially helpful. Badges appears on your profile page, questions & answers.</p>
+    </div>
+    <div class="main_box">
+        <div class="badge_row">
+            <div class="badge_row_left">
+                <span class="badge_icon"><i class="fas fa-award clr_orange"></i></span>
+                <span class="badge badge_beg">Beginner</span>
+                <p>Less than 150 points</p>
+            </div>
+            <div class="badge_row_right">
+                <p class="badge_info">You must have a total score of 50 in at least 10 non-community wiki answers to achieve this badge. Highest scoring answer that outscored an accepted answer with score of more than 10.</p>
+            </div>
+        </div>
+        <div class="badge_row">
+            <div class="badge_row_left">
+                <span class="badge_icon"><i class="fas fa-award clr_orange"></i></span>
+                <span class="badge badge_med">Mediator</span>
+                <p>Less than 300 points</p>
+            </div>
+            <div class="badge_row_right">
+                <p class="badge_info">You must have a total score of 50 in at least 10 non-community wiki answers to achieve this badge. Highest scoring answer that outscored an accepted answer with score of more than 10.</p>
+            </div>
+        </div>
+        <div class="badge_row">
+            <div class="badge_row_left">
+                <span class="badge_icon"><i class="fas fa-award clr_orange"></i></span>
+                <span class="badge badge_pro">Professional</span>
+                <p>Less than 500 points</p>
+            </div>
+            <div class="badge_row_right">
+                <p class="badge_info">You must have a total score of 50 in at least 10 non-community wiki answers to achieve this badge. Highest scoring answer that outscored an accepted answer with score of more than 10.</p>
+            </div>
+        </div>
+        <div class="badge_row">
+            <div class="badge_row_left">
+                <span class="badge_icon"><i class="fas fa-award clr_orange"></i></span>
+                <span class="badge badge_ex">Expert</span>
+                <p>Less than 750 points</p>
+            </div>
+            <div class="badge_row_right">
+                <p class="badge_info">You must have a total score of 50 in at least 10 non-community wiki answers to achieve this badge. Highest scoring answer that outscored an accepted answer with score of more than 10.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock bodyblock%}

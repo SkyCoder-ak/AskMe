@@ -7,37 +7,63 @@
 
 <div id="peoples_box">
     <div class="head_row">
-        <h1 class="people_heading">Peoples Nearby You</h1>
-        <div class="search_box">
-            <input type="text" placeholder="Type to Find">
-            <button><i class="fas fa-search"></i></button>
-        </div>
+        <h1 class="people_heading">Suggested Peoples</h1>
+
+        {% for message in messages %}
+        {% if "warning" in message.tags %}
+        <p id="error_msg" class="bg_warning">
+            <strong>Message: </strong>
+            {{ message }}
+            <button id="msg_close_btn" onclick="closeMsg()"><i class="far fa-times-circle"></i></button>
+        </p>
+        {% endif %}
+        {% endfor %}
+
+        <form action="" method="POST" class="search_box">
+            {% csrf_token %}
+            <input type="text" placeholder="Type to Find" name="find_people_input">
+            <button type="submit" value="find_people" name="find_people_btn"><i class="fas fa-search"></i></button>
+        </form>
     </div>
     <div class="people_wrapper">
-        {% for usr in all_users %}
-        {% if usr.is_superuser == False %}
-        <div id="card_{{usr.id}}" class="people_card">
+        {% for people in all_users %}
+        {% if people.is_superuser == False %}
+        <div id="card_{{people.id}}" class="people_card">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
             <a href="" class="img_box">
-                {% if usr.usermodel.profile_photo %}
-                <img src="{{usr.usermodel.profile_photo.url}}" alt="">
+                {% if people.usermodel.profile_photo %}
+                <img src="{{people.usermodel.profile_photo.url}}" alt="">
                 {% endif %}
             </a>
-            <a href="" class="card_name">{{usr.first_name}} {{usr.last_name}}</a>
-            <p class="card_prof">{{usr.usermodel.designation}}</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">{{usr.followers.followed_by.all|length}} Followers</p>
-            <form action="{% url 'follow' usr.id %}" method="post">
+            <a href="" class="card_name">{{people.first_name}} {{people.last_name}}</a>
+            <p class="card_prof">{{people.usermodel.designation}}</p>
+
+            {% if people.usermodel.points < 150 %}
+            <span class="badge badge_beg">Beginner</span>
+            {% elif people.usermodel.points >= 150 and people.usermodel.points < 300 %}
+            <span class="badge badge_med">Mediator</span>
+            {% elif people.usermodel.points >= 300 and people.usermodel.points < 500 %}
+            <span class="badge badge_pro">Professional</span>
+            {% elif people.usermodel.points >= 500 %}
+            <span class="badge badge_ex">Expert</span>
+            {% endif %}
+
+            
+            <p class="card_followers clr_red">{{people.followed_users.all|length}} Followers</p>
+            
+            <form action="{% url 'follow' people.id %}" method="post">
                 {% csrf_token %}
-                {% if usr in user.followmodel.followed_to.all %}
-                <button class="follow_btn" name="follow_btn" value="{{usr.id}}" style="background-color: #02b13c;">Unfollow</button>
+                {% if people in user.followmodel.followed_to.all %}
+                <button class="follow_btn" name="follow_btn" value="{{people.id}}" style="background-color: #03b3f8;">Unfollow</button>
                 {% else %}
-                <button class="follow_btn" name="follow_btn" value="{{usr.id}}">Follow</button>
+                <button class="follow_btn" name="follow_btn" value="{{people.id}}">Follow</button>
                 {% endif %}
             </form>
         </div>
         {% endif %}
         {% endfor %}
+
+        
     </div>
 </div>
 {% endblock sectionblock %}

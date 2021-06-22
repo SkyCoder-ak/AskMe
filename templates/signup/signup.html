@@ -4,6 +4,23 @@
 <title>AskMe-signup</title>
 
 {% block bodyblock %}
+
+{% if messages %}
+{% for message in messages %}
+{% if message.tags == 'success' %}
+<div id="message_main">
+    <div class="message_box">
+        <h1 style="color: rgb(1, 207, 104);"><i class="far fa-check-circle"></i></h1>
+        <h2>SUCCESS!!</h2>
+        <P>{{message}}</P>
+        <a href="/login" id="popup_close_btn" onclick="DismissPopup()"
+            style="background-color: rgb(1, 207, 104);">OK</a>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+
 <div class="signup_main">
     <div class="signup_box">
         <div class="left_box">
@@ -20,11 +37,34 @@
                     {{ form.dis_name.errors }}
                     <label for="displayName">Username:</label>
                     {{ form.dis_name }}
+
+                    {% for message in messages %}
+                    {% if "username_exists" in message.tags %}
+
+                    <p id="error_msg" class="bg_error">
+                        <strong>Message: </strong>
+                        {{ message }}
+                        <button id="msg_close_btn" onclick="closeMsg()"><i class="far fa-times-circle"></i></button>
+                    </p>
+
+                    {% endif %}
+                    {% endfor %}
                 </div>
                 <div class="field_row">
                     {{ form.email.errors }}
                     <label for="email">Email:</label>
                     {{ form.email }}
+                    {% for message in messages %}
+                    {% if "email_exists" in message.tags %}
+
+                    <p id="error_msg" class="bg_error">
+                        <strong>Message: </strong>
+                        {{ message }}
+                        <button id="msg_close_btn" onclick="closeMsg()"><i class="far fa-times-circle"></i></button>
+                    </p>
+
+                    {% endif %}
+                    {% endfor %}
                 </div>
                 <div class="field_row">
                     {{ form.password.errors }}
@@ -42,9 +82,8 @@
         <div class="right_box">
             <div class="inner_box">
                 <h1>Hello There!!</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A fugit eum minima! Voluptatibus aperiam
-                    deserunt accusamus sunt, soluta ipsa ea omnis a et modi. Inventore pariatur sit cupiditate dolorum
-                    qui.</p>
+                <p>“Don’t be afraid to share what you know, because you know it better than anyone else!” <br> And this
+                    is the best platform where you can share your solutions or ask any questions.</p>
                 <a href="/about-us" class="su-au-btn">About Us</a>
             </div>
         </div>

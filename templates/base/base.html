@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <link rel="stylesheet" href="{% static 'css/aboutus.css' %}">
+    <link rel="stylesheet" href="{% static 'css/badges.css' %}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -42,7 +43,11 @@
         <div class="nav_right">
             {% if user.is_authenticated %}
             <a href="/profile/logout" class="nav_btn">Logout</a>
-            <a href="/profile/dashboard" class="username">Welcome, <span>{{ user.first_name }}</span></a>
+            <a href="/profile/dashboard" class="username">
+                {% if user.usermodel.profile_photo %}
+                <img class="login-user-icon" src="{{user.usermodel.profile_photo.url}}" alt="">
+                {% endif %}
+                Welcome,<span>{{ user.first_name }}</span></a>
             {% else %}
             <a href="/login" class="nav_btn">Login</a>
             <a href="/signup" class="nav_btn">SignUp</a>
@@ -64,31 +69,32 @@
             <div class="foot_col2">
                 <h3>About Us</h3>
                 <ul>
-                    <li><a href="">Meet The Team</a></li>
-                    <li><a href="">About Us</a></li>
-                    <li><a href="">Contact Us</a></li>
+                    <li><a href="{% url 'aboutpage' %}#our_team">Meet The Team</a></li>
+                    <li><a href="{% url 'aboutpage' %}#insights">AksMe Insights</a></li>
+                    <li><a href="{% url 'aboutpage' %}">About Us</a></li>
+                    
                 </ul>
             </div>
             <div class="foot_col3">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="">Terms Of Use</a></li>
-                    <li><a href="">About Us</a></li>
-                    <li><a href="">Contact Us</a></li>
+                    
+                    <li><a href="{% url 'badgespage' %}">Badges</a></li>
+                    <li><a href="{% url 'aboutpage' %}#contact">Contact Us</a></li>
                 </ul>
             </div>
             <div class="foot_col4">
                 <h3>Help</h3>
                 <ul>
-                    <li><a href="">Customer Support</a></li>
-                    <li><a href="">Send Message</a></li>
+                    <li><a href="{% url 'aboutpage' %}#contact">Customer Support</a></li>
+                    <li><a href="{% url 'aboutpage' %}#contact">Send Message</a></li>
                 </ul>
             </div>
             <div class="foot_col5">
                 <h3>Reach To Us</h3>
                 <p><i class="fas fa-home clr_green"></i> &nbsp;Maharastra, 443202 Buldana</p>
                 <p><i class="fas fa-envelope clr_green"></i> &nbsp;askme@gmail.com</p>
-                <p><i class="fas fa-phone-alt clr_green"></i> &nbsp;+91-9921542442</p>
+                <p><i class="fas fa-phone-alt clr_green"></i> &nbsp;1800345343</p>
             </div>
         </div>
         <div class="foot_row2">

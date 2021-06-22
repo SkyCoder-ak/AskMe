@@ -22,16 +22,23 @@
             </a>
             <a href="" class="card_name">{{following.card_user.first_name}} {{following.card_user.last_name}}</a>
             <p class="card_prof">{{following.card_user.usermodel.designation}}</p>
-            <p class="card_status bg_blueviolet">Professional</p>
-            <p class="card_followers clr_red">{{following.card_user.followers.followed_by.all|length}} Followers</p>
+            
+            {% if following.card_user.usermodel.points < 150 %}
+            <span class="badge badge_beg">Beginner</span>
+            {% elif following.card_user.usermodel.points >= 150 and following.card_user.usermodel.points < 300 %}
+            <span class="badge badge_med">Mediator</span>
+            {% elif following.card_user.usermodel.points >= 300 and following.card_user.usermodel.points < 500 %}
+            <span class="badge badge_pro">Professional</span>
+            {% elif following.card_user.usermodel.points >= 500 %}
+            <span class="badge badge_ex">Expert</span>
+            {% endif %}
+
+            <p class="card_followers clr_red">{{following.card_user.followed_users.all|length}} Followers</p>
 
             <form action="{% url 'follow_by' following.card_user.id %}" method="post">
                 {% csrf_token %}
-                {% if user in following.card_user.followers.followed_by.all %}
-                <button class="follow_btn" name="following_btn_prof" value="{{following.card_user.id}}" style="background-color: #02b13c;">Unfollow</button>
-                {% else %}
-                <button class="follow_btn" name="following_btn_prof" value="{{following.card_user.id}}">Follow</button>
-                {% endif %}
+                <button type="submit" class="follow_btn" name="following_btn_prof" value="{{following.card_user.id}}" style="background-color: #03b3f8;">Unfollow</button>
+                
             </form>
         </div>
         {% endfor %}

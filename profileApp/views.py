@@ -50,6 +50,7 @@ def editProfileView(request):
             email = request.POST.get('email')
             bio = request.POST.get('bio')
             profile_img = request.FILES.get('avtar_img')
+            
             # first saving the auth_user model
             current_user.first_name = first_name
             current_user.last_name = last_name
@@ -66,18 +67,21 @@ def editProfileView(request):
             user_model.bio = bio
             user_model.profile_photo = profile_img
             user_model.save()
-            
-            messages.add_message(request, messages.SUCCESS, "Your profile has been updated successfully.")
+            all_fields = [user_model.designation, user_model.city, user_model.state, user_model.age, user_model.gender, user_model.bio, user_model.profile_photo]
+            if all(all_fields) == True and user_model.points_update == 'not_updated':
+                user_model.points += 10
+                user_model.points_update = 'updated'
+                user_model.save()
             return redirect("/profile/dashboard")
     return render(request, "profile/edit_profile.html", {'edit_profile':'profile_link_active'})
 
-
+@login_required(login_url='/login')
 def followersView(request):
     return render(request, "profile/followers.html", {'follower_link':'profile_link_active'})
 
 @login_required(login_url='/login')
 def ProfileFollowView(request, f_id):
-    follow_to = get_object_or_404(User, id=request.POST.get('follow_btn_prof'))
+    follow_to = get_object_or_404(User, id=request.POST.get('follow_btn_prof2'))
     
     following = FollowModel.objects.filter(u=request.user, followed_to=follow_to)
     is_following = True if following else False
@@ -86,6 +90,9 @@ def ProfileFollowView(request, f_id):
         obj.followed_to.remove(follow_to)
         us,cret = Followers.objects.get_or_create(card_user=follow_to)
         us.followed_by.remove(request.user)
+        got_user = UserModel.objects.get(user_id=follow_to.id)
+        got_user.points -= 7
+        got_user.save()
         
 
     else:
@@ -93,11 +100,15 @@ def ProfileFollowView(request, f_id):
         obj.followed_to.add(follow_to)
         us,cret = Followers.objects.get_or_create(card_user=follow_to)
         us.followed_by.add(request.user)
+        got_user = UserModel.objects.get(user_id=follow_to.id)
+        got_user.points += 7
+        got_user.save()
 
     follower_card = f"#follower_card_{f_id}"
     return redirect(reverse('followers_main')+follower_card)
 
 
+@login_required(login_url='/login')
 def followingsView(request):
     return render(request, "profile/followings.html", {'followings':'profile_link_active'})
 
@@ -112,6 +123,9 @@ def ProfileFollowingsView(request, f_ing_id):
         obj.followed_to.remove(follow_to)
         us,cret = Followers.objects.get_or_create(card_user=follow_to)
         us.followed_by.remove(request.user)
+        got_user = UserModel.objects.get(user_id=follow_to.id)
+        got_user.points -= 7
+        got_user.save()
         
     return redirect(reverse('followings_main'))
 
@@ -127,6 +141,10 @@ def userAnsView(request):
     given_anss = AnswersModel.objects.filter(ans_by=request.user)
     
     return render(request, "profile/user_answers.html", {'answers':'profile_link_active', 'given_anss':given_anss})
+
+
+# def BadgesView(request):
+#     user = request.user
 
 def logoutView(request):
     auth.logout(request)

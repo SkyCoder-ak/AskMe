@@ -34,7 +34,15 @@
             <div class="col2_right">
                 <div class="col2_right_row1">
                     <a href="" class="name clr_blue">{{user.first_name}} {{user.last_name}}</a>
-                    <p class="status bg_blueviolet">Professional</p>
+                    {% if user.usermodel.points < 150 %}
+                    <span class="badge badge_beg">Beginner</span>
+                    {% elif user.usermodel.points >= 150 and user.usermodel.points < 300 %}
+                    <span class="badge badge_med">Mediator</span>
+                    {% elif user.usermodel.points >= 300 and user.usermodel.points < 500 %}
+                    <span class="badge badge_pro">Professional</span>
+                    {% elif user.usermodel.points >= 500 %}
+                    <span class="badge badge_ex">Expert</span>
+                    {% endif %}
                     <p class="date">Asked: <span class="clr_blue">{{que_data_row.que_date_time}}</span></p>
                     <p class="category">In: <span class="clr_blue">{{que_data_row.que_category}}</span></p>
                 </div>

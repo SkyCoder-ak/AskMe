@@ -124,7 +124,7 @@ body{
     font-size: 1.6rem;
     /* font-family: 'Bitter', serif; */
 }
-.header_row .header_info_row .name_box .user_status{
+/* .header_row .header_info_row .name_box .user_status{
     margin-top: 1.5rem;
     width: 50%;
     text-align: center;
@@ -132,7 +132,7 @@ body{
     font-size: 1.4rem;
     border-radius: 2rem;
     font-family: 'Bitter', serif;
-}
+} */
 .header_row .header_info_row .btns_box{
     width: 80%;
     height: 100%;
@@ -532,7 +532,7 @@ body{
     display: flex;
 }
 .user_ans_box .post_detail_row .ask_by{
-    margin-right: 2%;
+    margin-right: 1%;
     font-size: 1.6rem;
     font-weight: bold;
 }

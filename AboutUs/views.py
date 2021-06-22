@@ -15,8 +15,12 @@ def AboutView(request):
 
         sent = send_mail('Contact from AskMe', mail_message, sender, recipients, fail_silently=False,auth_user=settings.EMAIL_HOST_USER,auth_password=settings.EMAIL_HOST_PASSWORD)
         if sent == 1:
-            messages.add_message(request, message.SUCCESS, "Mesage sent! We will shortly in touch with you.")
+            messages.add_message(request, messages.SUCCESS, "We will shortly in touch with you.", extra_tags='message_sent')
             return redirect("aboutpage")
         else:
             messages.add_message(request, message.SUCCESS, "Sorry something went wrong, Try again.")
-    return render(request, 'aboutus/aboutus.html', {'nav_about':'activeTopNav',})
+    return render(request, 'aboutus/aboutus.html', {'nav_about':'activeTopNav'})
+
+
+def BadgesView(request):
+    return render(request, 'aboutus/badges.html')

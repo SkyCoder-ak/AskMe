@@ -7,8 +7,8 @@
 <div id="profile_main">
     <div id="index_col">
         <ul>
-            <li><a href="/profile/dashboard" class="left_nav_link {{dashboard}}"><i
-                        class="fas fa-tachometer-alt"></i> &nbsp;&nbsp;Dashboard</a></li>
+            <li><a href="/profile/dashboard" class="left_nav_link {{dashboard}}"><i class="fas fa-tachometer-alt"></i>
+                    &nbsp;&nbsp;Dashboard</a></li>
             <li><a href="/profile/followers" class="left_nav_link {{follower_link}}"><i
                         class="fas fa-user-friends"></i>&nbsp;&nbsp;Followers</a></li>
             <li><a href="/profile/followings" class="left_nav_link {{followings}}"><i
@@ -18,7 +18,8 @@
             <li><a href="/profile/user-answers" class="left_nav_link {{answers}}"><i
                         class="far fa-file-alt"></i>&nbsp;&nbsp;Answers</a></li>
             <li><a href="" class="left_nav_link {{polls}}"><i class="fas fa-poll-h"></i>&nbsp;&nbsp;Polls</a></li>
-            <li><a href="/profile/edit-profile" class="left_nav_link {{edit_profile}}"><i class="fas fa-poll-h"></i>&nbsp;&nbsp;Edit
+            <li><a href="/profile/edit-profile" class="left_nav_link {{edit_profile}}"><i
+                        class="fas fa-poll-h"></i>&nbsp;&nbsp;Edit
                     Profile</a></li>
         </ul>
     </div>
@@ -28,11 +29,17 @@
 
         {% if messages %}
         {% for message in messages %}
-        <p id="error_msg" class="bg_success">
-            <strong>Message: </strong>
-            {{ message }}
-            <button id="msg_close_btn" onclick="closeMsg()"><i class="far fa-times-circle"></i></button>
-        </p>
+        {% if message.tags == 'success' %}
+        <div id="message_main">
+            <div class="message_box">
+                <h1 style="color: rgb(1, 207, 104);"><i class="far fa-check-circle"></i></h1>
+                <h2>SUCCESS!!</h2>
+                <P>{{message}}</P>
+                <a href="" id="popup_close_btn" onclick="DismissPopup()"
+                    style="background-color: rgb(1, 207, 104);">OK</a>
+            </div>
+        </div>
+        {% endif %}
         {% endfor %}
         {% endif %}
 
@@ -49,7 +56,19 @@
                     <div class="name_box">
                         <h4 class="user_name">{{ user.first_name }} {{ user.last_name }}</h4>
                         <p class="desgn">{{ user.usermodel.designation }}</p>
-                        <p class="user_status bg_blueviolet">Professional</p>
+                        
+                        <!-- badges condtions -->
+                        {% if user.usermodel.points < 150 %}
+                        <span class="badge badge_beg" style="width: 10rem;">Beginner</span>
+                        {% elif user.usermodel.points >= 150 and user.usermodel.points < 300  %}
+                        <span class="badge badge_med" style="width: 10rem;">Mediator</span>
+                        {% elif user.usermodel.points >= 300 and user.usermodel.points < 500  %}
+                        <span class="badge badge_pro" style="width: 10rem;">Professional</span>
+                        {% elif user.usermodel.points >= 500 %}
+                        <span class="badge badge_ex" style="width: 10rem;">Expert</span>
+                        {% endif %}
+                        <!-- ================== -->
+
                     </div>
                     <div class="btns_box">
                         <a href="/#post_question" class="ask_user_btn bg_redPigment">Ask Question</a>
@@ -60,8 +79,8 @@
             <div id="user_about">
                 <div class="social_info_row">
                     <div class="social_info_box">
-                        <span>06</span>
-                        <p>Polls</p>
+                        <span>{{user.usermodel.points}}</span>
+                        <p>Points</p>
                     </div>
                     <div class="social_info_box">
                         <span>{{user_ans_len}}</span>

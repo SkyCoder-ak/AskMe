@@ -23,7 +23,7 @@ body{
     color: rgb(164, 0, 214);
 }
 .clr_red{
-    color: #ff014d;
+    color: #fd1c42;
 }
 .clr_blue{
     color: blue;
@@ -65,10 +65,13 @@ body{
     background-color: #0692fd;
 }
 .bg_error{
-    background-color: rgb(247, 119, 96);
+    background-color: rgb(248, 245, 73);
 }
 .bg_success{
     background-color: rgb(111, 245, 99);
+}
+.bg_warning{
+    background-color: rgb(255, 173, 21);
 }
 .font_1-2rem{
     font-size: 1.2rem;
@@ -115,9 +118,10 @@ body{
 /* =============================MESSAGES======================== */
 #error_msg{
     position: relative;
-    padding: 0.4em 2em 0.4em 0.2em;
+    padding: 0.4em 2em;
     font-size: 1.4rem;
     color: rgb(48, 47, 47);
+    border-radius: 2rem;
     z-index: 1000;
 }
 #error_msg #msg_close_btn{
@@ -184,15 +188,24 @@ body{
 #nav_top .nav_right{
     display: flex;
     flex-direction: row-reverse;
+    align-items: center;
     width: 30%;
-    /* border: 2px solid white; */
+    height: 100%;
 }
 #nav_top .nav_right .username{
     margin: 0 1rem;
     padding: 0.2em 0.9em;
+    display: flex;
+    align-items: center;
     color: white;
     font-size: 1.7rem;
     text-decoration: none;
+}
+#nav_top .nav_right .username .login-user-icon{
+    width: 4rem;
+    height: 4rem;
+    margin-right: 3%;
+    border-radius: 50%;
 }
 #nav_top .nav_right .username span{
     font-family: 'Poppins', sans-serif;
@@ -253,26 +266,41 @@ body{
 #header .search_box input::placeholder{
     font-size: 1.4rem;
 }
-#header .search_box button{
-    padding: 0.2em 2em;
-    font-size: 1.8rem;
-    font-weight: 700;
-    font-family: 'Merienda', cursive;
+#search_btn{
+    position: relative;
+    margin-top: 2rem;
+    width: 15rem;
+    height: 4rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
     border-radius: 2rem;
     outline: none;
     border: none;
-    letter-spacing: 0.2rem;
-    background-color: #ff1346;
+    overflow: hidden;
     color: white;
+    background-color: rgb(0, 204, 85);
+    z-index: 100;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.692), -2px -2px 3px rgb(255, 255, 255);
-    transition-duration: 0.3s;
 }
-#header .search_box button:hover{
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.692), -1px -1px 1px rgba(255, 255, 255, 0.699);
+#search_btn::before{
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    width: 0%;
+    height: 10%;
+    transition: all 0.5s linear;
+    background-color: #fd1c42;
+    z-index: -1;
+
 }
-#header .search_box button:active{
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.692), -1px -1px 1px rgba(255, 255, 255, 0.699);
+#search_btn:hover::before{
+    width: 200%;
+    height: 200%;
 }
+
 .square1{
     position: absolute;
     display: grid;
@@ -503,7 +531,7 @@ body{
 #section_home .categories .cate_link:hover{
     font-size: 1.6rem;
 }
-#section_home .categories ul li:nth-child(10){
+#section_home .categories ul li:nth-child(8){
     position: relative;
 }
 #section_home .categories #more_btn{
@@ -517,7 +545,7 @@ body{
     outline: none;
 }
 #section_home .categories #more_btn:hover{
-    color: #555 !important;
+    color: rgb(2, 255, 129) !important;
 }
 #section_home .categories #cate_dropdown{
     padding: 0 1em;
@@ -529,12 +557,13 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    z-index: 1;
+    z-index: 1000;
     background-color: #00b661;
     border-bottom-left-radius: 0.7rem;
     border-bottom-right-radius: 0.7rem;
     overflow: hidden;
     transition: all linear 0.2s;
+    /* border: 2px solid red; */
 }
 #section_home .categories #cate_dropdown .cate_link_more{
     font-size: 1.5rem;
@@ -628,16 +657,16 @@ body{
 .col2_right .col2_right_row1 .name:hover{
     color: rgb(0, 0, 0);
 }
-.status{
+/* .status{
     display: inline-block;
     padding: 0 0.5em;
     margin-right: 25%;
     font-size: 1.4rem;
     border-radius: 0.7rem;
     color: white;
-}
+} */
 .col2_right .col2_right_row1 .date{
-    margin-right: 2rem;
+    margin: 0 2rem;
     font-size: 1.3rem;
 }
 .category{

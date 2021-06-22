@@ -4,6 +4,7 @@
 
 {{ block.super }}
 {% block sectionblock %}
+
 {% if messages %}
 {% for message in messages %}
 <p id="error_msg" class="bg_success">
@@ -17,8 +18,10 @@
     {% if clicked_que %}
     <div class="que_box">
         <div class="col2_left">
+            {% if clicked_que.user.usermodel.profile_photo %}
             <a href="" class="prof_icon"><img src="{{ clicked_que.user.usermodel.profile_photo.url }}"
                     alt="Profile Image"></a>
+            {% endif %}
 
             <div class="col2_row2">
                 <h4><i class="fas fa-question"></i></h4>
@@ -29,7 +32,19 @@
         <div class="col2_right">
             <div class="col2_right_row1">
                 <a href="" class="name clr_blue">{{clicked_que.user.first_name}} {{clicked_que.user.last_name}}</a>
-                <p class="status bg_blueviolet">Professional</p>
+                
+                <!-- badges condtions -->
+                {% if clicked_que.user.usermodel.points < 150 %}
+                <span class="badge badge_beg">Beginner</span>
+                {% elif clicked_que.user.usermodel.points >= 150 and clicked_que.user.usermodel.points < 300  %}
+                <span class="badge badge_med">Mediator</span>
+                {% elif clicked_que.user.usermodel.points >= 300 and clicked_que.user.usermodel.points < 500  %}
+                <span class="badge badge_pro">Professional</span>
+                {% elif clicked_que.user.usermodel.points >= 500 %}
+                <span class="badge badge_ex">Expert</span>
+                {% endif %}
+                <!-- ================== -->
+                
                 <p class="date">Asked: <span class="clr_blue">{{clicked_que.que_date_time}}</span></p>
                 <p class="category">In: <span class="clr_blue">{{clicked_que.que_category}}</span></p>
             </div>
@@ -49,12 +64,26 @@
     {% for ans in ans_obj %}
     <div class="ans_row">
         <div class="col_left">
+            {% if ans.ans_by.usermodel.profile_photo %}
             <a href=""><img src="{{ ans.ans_by.usermodel.profile_photo.url }}" alt=""></a>
+            {% endif %}
         </div>
         <div class="col_right">
             <div class="row1">
                 <a href="">{{ans.ans_by.first_name}} {{ans.ans_by.last_name}}</a>
-                <p class="status bg_orange">Diamond</p>
+                
+                <!-- badges condtions -->
+                {% if ans.ans_by.usermodel.points < 150 %}
+                <span class="badge badge_beg">Beginner</span>
+                {% elif ans.ans_by.usermodel.points >= 150 and ans.ans_by.usermodel.points < 300  %}
+                <span class="badge badge_med">Mediator</span>
+                {% elif ans.ans_by.usermodel.points >= 300 and ans.ans_by.usermodel.points < 500  %}
+                <span class="badge badge_pro">Professional</span>
+                {% elif ans.ans_by.usermodel.points >= 500 %}
+                <span class="badge badge_ex">Expert</span>
+                {% endif %}
+                <!-- ================== -->
+
                 <p class="date_time">Answerd on: <span class="clr_blue">{{ans.ans_date_time}}</span></p>
             </div>
             <div class="row2">
@@ -77,7 +106,6 @@
                         </button>
                         {% endif %}
                     </form>
-                <!-- <button class="like_btn"><i class="far fa-thumbs-down"></i><span class="like_num">12 Dislikes</span></button> -->
             </div>
         </div>
     </div>

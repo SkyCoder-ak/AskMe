@@ -2,7 +2,7 @@
 
 
 // ===========================FOR CATEGORIES DROPDOWN======================
-function showHideDropdown() {
+function showHideDropdown(){
     var dropdown = document.getElementById("cate_dropdown");
     var moreBtn = document.getElementById("more_btn");
     if (dropdown.style.height === "12rem") {

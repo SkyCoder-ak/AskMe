@@ -40,7 +40,9 @@
         {% csrf_token %}
         <h1 class="search_heading">Where you got stuck?</h1>
         <input type="text" placeholder="Type a question to search" name="search_input">
-        <button id="search_btn" type="submit" value="que_search" name="search_btn">Search</button>
+        <button id="search_btn" type="submit" value="que_search" name="search_btn">
+            Search
+        </button>
     </form>
     <div class="square1"></div>
     <div class="square2"></div>
@@ -92,7 +94,7 @@
                     <li><button type="submit" name="category" value="Science" class="cate_link">Science</button></li>
                     <li><button type="submit" name="category" value="Bussiness" class="cate_link">Bussiness</button></li>
                     <li><button type="submit" name="category" value="Educaition" class="cate_link">Education</button></li>
-                    <li><p onclick="showHideDropdown()" id="more_btn">More <i class="fas fa-caret-down"></i></p>
+                    <li><button type="button" id="more_btn" onclick="showHideDropdown()">More <i class="fas fa-caret-down"></i></button>
                         <div id="cate_dropdown">
                             <button type="submit" name="category" value="Gk" class="cate_link">Gk</button>
                             <button type="submit" name="category" value="Space" class="cate_link">Space</button>
@@ -110,7 +112,9 @@
             <div id="question{{que.id}}" class="que_box">
                 <div class="col2_left">
                     <a href="" class="prof_icon">
+                        {% if que.user.usermodel.profile_photo %}
                         <img src="{{ que.user.usermodel.profile_photo.url }}" alt="">
+                        {% endif %}
                     </a>
                     <div class="col2_row2">
                         <h4><i class="fas fa-question"></i></h4>
@@ -121,7 +125,19 @@
                 <div class="col2_right">
                     <div class="col2_right_row1">
                         <a href="" class="name clr_blue">{{que.user.first_name}} {{que.user.last_name}}</a>
-                        <p class="status bg_blueviolet">Professional</p>
+                        
+                        <!-- badges condtions -->
+                        {% if que.user.usermodel.points < 150 %}
+                        <span class="badge badge_beg">Beginner</span>
+                        {% elif que.user.usermodel.points >= 150 and que.user.usermodel.points < 300  %}
+                        <span class="badge badge_med">Mediator</span>
+                        {% elif que.user.usermodel.points >= 300 and que.user.usermodel.points < 500  %}
+                        <span class="badge badge_pro">Professional</span>
+                        {% elif que.user.usermodel.points >= 500 %}
+                        <span class="badge badge_ex">Expert</span>
+                        {% endif %}
+                        <!-- ================== -->
+
                         <p class="date">Asked: <span class="clr_blue">{{que.que_date_time}}</span></p>
                         <p class="category">In: <span class="clr_blue">{{que.que_category}}</span></p>
                     </div>
@@ -169,7 +185,7 @@
             {% csrf_token %}
             <div class="field_box">
                 <label for="question">Question: </label>
-                <input type="text" id="question" placeholder="Type your question here." name="question">
+                <input type="text" id="question" placeholder="Type your question here." name="question" required>
             </div>
             <div class="field_box">
                 <label for="category">Category: </label>
