@@ -7,7 +7,7 @@
 
 <div id="peoples_box">
     <div class="head_row">
-        <h1 class="people_heading">Suggested Peoples</h1>
+        <h1 class="people_heading">{{people_heading}}</h1>
 
         {% for message in messages %}
         {% if "warning" in message.tags %}
@@ -28,13 +28,65 @@
     <div class="people_wrapper">
         {% for people in all_users %}
         {% if people.is_superuser == False %}
+
+        <div id="pc-con" class="pc-container {{people.id}}">
+            <div class="pc-main">
+                <a href="/peoples#peoples_box" id="close-pc"><i class="fas fa-times"></i></a>
+                <div class="pc-left">
+                    <div class="img-box">
+                        {% if people.usermodel.profile_photo %}
+                        <img src="{{people.usermodel.profile_photo.url}}" alt="">
+                        {% endif %}
+                    </div>
+                    <div class="pc-basics">
+                        <p class="name">{{people.first_name}} {{people.last_name}}</p>
+                        
+                        {% if people.usermodel.points < 150 %}
+                        <span class="badge badge_beg">Beginner</span>
+                        {% elif people.usermodel.points >= 150 and people.usermodel.points < 300 %}
+                        <span class="badge badge_med">Mediator</span>
+                        {% elif people.usermodel.points >= 300 and people.usermodel.points < 500 %}
+                        <span class="badge badge_pro">Professional</span>
+                        {% elif people.usermodel.points >= 500 %}
+                        <span class="badge badge_ex">Expert</span>
+                        {% endif %}
+
+
+                        <p class="desg">{{people.usermodel.designation}}</p>
+                    </div>
+                </div>
+                <div class="pc-right">
+                    <div class="intro-box">
+                        <p class="intro">{{people.usermodel.bio}}
+                        </p>
+                    </div>
+                    <div class="details-box">
+                        <p>{{people.usermodel.city}}, {{people.usermodel.state}}</p>
+                        <p>{{people.usermodel.gender}}</p>
+                        <p>{{people.usermodel.email}}</p>
+                        <p>{{people.usermodel.age}} year old.</p>
+                    </div>
+                    <div class="last-row">
+                        <p><span class="number">{{people.followed_users.all|length}}</span><span class="text">Followers</span></p>
+                        <p><span class="number">{{people.followed_by_users.all|length}}</span><span class="text">Followings</span></p>
+                        <p><span class="number">{{people.people_questions.all|length}}</span><span class="text">Questions</span></p>
+                        <p><span class="number">{{people.people_answers.all|length}}</span><span class="text">Answers</span></p>
+                        <p><span class="number">{{people.usermodel.points}}</span><span class="text">Points</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>    
+
         <div id="card_{{people.id}}" class="people_card">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <a href="" class="img_box">
-                {% if people.usermodel.profile_photo %}
-                <img src="{{people.usermodel.profile_photo.url}}" alt="">
-                {% endif %}
-            </a>
+            <form action="" method="post" class="pc-form">
+                {% csrf_token %}
+                <button id="{{people.id}}" type="button" class="img_box" onclick="ShowPC(this.id)">
+                    {% if people.usermodel.profile_photo %}
+                    <img src="{{people.usermodel.profile_photo.url}}" alt="">
+                    {% endif %}
+                </button>
+            </form>
             <a href="" class="card_name">{{people.first_name}} {{people.last_name}}</a>
             <p class="card_prof">{{people.usermodel.designation}}</p>
 
@@ -51,7 +103,7 @@
             
             <p class="card_followers clr_red">{{people.followed_users.all|length}} Followers</p>
             
-            <form action="{% url 'follow' people.id %}" method="post">
+            <form action="{% url 'follow' people.id %}" method="post" class="follow_form">
                 {% csrf_token %}
                 {% if people in user.followmodel.followed_to.all %}
                 <button class="follow_btn" name="follow_btn" value="{{people.id}}" style="background-color: #03b3f8;">Unfollow</button>
@@ -60,8 +112,12 @@
                 {% endif %}
             </form>
         </div>
+         
+
         {% endif %}
         {% endfor %}
+
+        
 
         
     </div>

@@ -42,3 +42,15 @@ function LoginAlert(){
 function DismissPopup(){
     document.getElementById("message_main").style.display = "none";
 }
+
+// ===============PEOPLE CARD====================
+// const user_id = JSON.parse(document.getElementById('people_id').textContent);
+
+function ShowPC(clicked_id){
+    document.getElementsByClassName(clicked_id)[0].style.display = 'flex';
+}
+// function HidePC(){
+//     document.getElementById('pc-con').style.display = 'none';
+// }
+
+// ===============GETTING THE PC-ICON DATA================

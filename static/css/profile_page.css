@@ -246,30 +246,15 @@ body{
 }
 #user_followers .row-1 h4{
     width: 80%;
-    font-family: 'Bitter', serif;
+    /* font-family: 'Bitter', serif; */
     font-size: 2rem;
 }
 #user_followers .row-1 .search_box{
     width: 20%;
     display: flex;
-
 }
-#user_followers .row-1 .search_box input{
-    padding: 0 0.3em;
-    font-family: 'Bitter', serif;
-    font-size: 1.6rem;
-    background-color: transparent;
-    outline: none;
-    border: 2px solid rgb(3, 170, 92);
-}
-#user_followers .row-1 .search_box button{
-    padding: 0.2em 0.4em;
-    background-color: rgb(3, 170, 92);
-    outline: none;
-    border: none;
-    color: white;
-    font-size: 1.6rem;
-
+.total_fol{
+    font-size: 1.7rem;
 }
 #user_followers .row-2{
     width: 100%;

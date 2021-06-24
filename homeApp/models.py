@@ -21,7 +21,7 @@ que_choices = (
 # Create your models here.
 # model for questions
 class QuestionsModel(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='people_questions')
     question = models.TextField(max_length=300)
     que_category = models.CharField(max_length=30, choices=que_choices, default='Others')
     que_details = models.TextField(max_length=2000, null=True, blank=True)
@@ -41,7 +41,7 @@ class QuestionsModel(models.Model):
 # model for answers
 class AnswersModel(models.Model):
     question = models.ForeignKey(QuestionsModel, on_delete=models.CASCADE, null=True, blank=True)
-    ans_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    ans_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='people_answers')
     answer = models.TextField(null=True, blank=True)
     ans_date_time = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(User, related_name="answers_likes")

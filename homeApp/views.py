@@ -2,7 +2,7 @@ from profileApp.models import UserModel
 from django.contrib.messages.constants import ERROR
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, request
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import AnswersModel, FollowModel, QuestionsModel, Followers
@@ -47,16 +47,19 @@ def homeView(request):
     return render(request, 'home/home.html', context=context)
 
 
-def peoplesView(request):
+def peoplesView(request, **kwargs):
     all_users = User.objects.all()
+    people_heading = 'Suggested Peoples'
     # to search peoples=====================
     if request.method == 'POST' and request.POST.get('find_people_btn') == 'find_people':
         people_name = request.POST.get('find_people_input').title().split(' ')
         all_users = User.objects.filter(first_name__contains=people_name[0])
+        people_heading = 'Searched Peoples'
         if len(all_users) == 0:
             messages.add_message(request, messages.WARNING, "No peoples with that name.")
     # ======================================
-    return render(request, 'home/peoples.html', {'peoples':'index_link_active', 'nav_peoples':'activeTopNav', 'all_users':all_users})
+    context = {'peoples':'index_link_active', 'nav_peoples':'activeTopNav', 'all_users':all_users, 'people_heading':people_heading}
+    return render(request, 'home/peoples.html', context=context)
 
 @login_required(login_url='/login')
 def FollowView(request, p_id):
@@ -149,4 +152,8 @@ def LikeView(request, pk):
         # =================
     ans_id = f"#ans_{request.POST.get('like_btn')}"
     return redirect(reverse('ans_page', args=(que_id,)) + ans_id)
-    
+
+
+# def PeopleInfo(request, pc_id):
+#     people_info = User.objects.get(id=pc_id)
+#     return HttpResponseRedirect(reverse('homeApp:peoplesView', kwargs={ 'people_info': people_info }))

@@ -9,8 +9,7 @@
     <div class="row-1">
         <h4>Peoples followed by you.</h4>
         <div class="search_box">
-            <input type="text" placeholder="Type to find">
-            <button type="submit"><i class="fas fa-search"></i></button>
+            <p class="total_fol">Total: {{user.followmodel.followed_to.all|length}}</p>
         </div>
     </div>
     <div class="row-2">

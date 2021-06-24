@@ -12,7 +12,7 @@
             <li><a href="/profile/followers" class="left_nav_link {{follower_link}}"><i
                         class="fas fa-user-friends"></i>&nbsp;&nbsp;Followers</a></li>
             <li><a href="/profile/followings" class="left_nav_link {{followings}}"><i
-                        class="fas fa-user-check"></i>&nbsp;&nbsp;Following</a></li>
+                        class="fas fa-user-check"></i>&nbsp;&nbsp;Followed</a></li>
             <li><a href="/profile/user-questions" class="left_nav_link {{questions}}"><i
                         class="fas fa-question"></i>&nbsp;&nbsp;Questions</a></li>
             <li><a href="/profile/user-answers" class="left_nav_link {{answers}}"><i
@@ -95,7 +95,7 @@
                         <p>Followings</p>
                     </div>
                     <div class="social_info_box">
-                        <span>{{user.followers.followed_by.all|length}}</span>
+                        <span>{{user.followed_users.all|length}}</span>
                         <p>Followers</p>
                     </div>
                 </div>

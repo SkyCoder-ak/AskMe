@@ -9,8 +9,7 @@
     <div class="head_row">
         <h1 class="people_heading">Your Followers</h1>
         <div class="search_box">
-            <input type="text" placeholder="Type to Find">
-            <button><i class="fas fa-search"></i></button>
+            <p class="total_fol">Total: {{user.followed_users.all|length}}</p>
         </div>
     </div>
     <div class="people_wrapper">

@@ -2,9 +2,14 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.core.mail import send_mail
 from AskMe import settings
+from django.contrib.auth.models import User
+from homeApp.models import QuestionsModel, AnswersModel
 
 # Create your views here.
 def AboutView(request):
+    all_ques = len(QuestionsModel.objects.all())
+    all_ans = len(AnswersModel.objects.all())
+    all_peoples = len(User.objects.all())
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -19,7 +24,7 @@ def AboutView(request):
             return redirect("aboutpage")
         else:
             messages.add_message(request, message.SUCCESS, "Sorry something went wrong, Try again.")
-    return render(request, 'aboutus/aboutus.html', {'nav_about':'activeTopNav'})
+    return render(request, 'aboutus/aboutus.html', {'nav_about':'activeTopNav', 'all_ques':all_ques, 'all_ans':all_ans, 'all_peoples':all_peoples})
 
 
 def BadgesView(request):

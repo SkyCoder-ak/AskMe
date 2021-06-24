@@ -1,0 +1,121 @@
+.pc-container{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+}
+.pc-main{
+    position: relative;
+    width: 50%;
+    height: 60%;
+    display: flex;
+    background-color: #0fd160;
+    border-radius: 1rem;
+}
+#close-pc{
+    position: absolute;
+    padding: 0.2em;
+    top: 2%;
+    right: 1%;
+    background-color: transparent;
+    color: rgb(255, 0, 76);
+    font-size: 2rem;
+    border: none;
+    outline: none;
+}
+.pc-left{
+    padding: 2em;
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(240, 5, 64);
+    border-top-right-radius: 6rem;
+    border-bottom-right-radius: 6rem;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+}
+.pc-left .img-box{
+    width: 85%;
+    height: 70%;
+    border-radius: 50%;
+}
+.pc-left .img-box img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.pc-basics{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+}
+.pc-basics .name{
+    text-align: center;
+    font-size: 1.6rem;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.pc-basics .desg{
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+
+.pc-right{
+    padding: 2em;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: #0fd160; */
+    justify-content: space-between;
+    border-top-left-radius: 6rem;
+    border-bottom-left-radius: 6rem;
+
+}
+.pc-right .details-box p{
+    margin: 1rem 0;
+    text-align: center;
+    color: white;
+    margin: 3% 0;
+    font-size: 1.6rem;
+}
+.pc-right .intro-box{
+    width: 100%;
+}
+.pc-right .intro{
+    font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: white;
+}
+.pc-right .last-row{
+    width: 100%;
+    justify-content: space-around;
+    display: flex;
+}
+.pc-right .last-row p{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.pc-right .last-row p .number{
+    font-size: 2.6rem;
+    color: rgb(255, 255, 255);
+}
+.pc-right .last-row p .text{
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+}
