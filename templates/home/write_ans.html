@@ -5,15 +5,7 @@
 {{ block.super }}
 {% block sectionblock %}
 
-{% if messages %}
-{% for message in messages %}
-<p id="error_msg" class="bg_success">
-    <strong>Message: </strong>
-    {{ message }}
-    <button id="msg_close_btn" onclick="closeMsg()"><i class="far fa-times-circle"></i></button>
-</p>
-{% endfor %}
-{% endif %}
+
 <div id="ans_page">
     {% if clicked_que %}
     <div class="que_box">

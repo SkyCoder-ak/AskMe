@@ -143,8 +143,17 @@ def userAnsView(request):
     return render(request, "profile/user_answers.html", {'answers':'profile_link_active', 'given_anss':given_anss})
 
 
-# def BadgesView(request):
-#     user = request.user
+def DeleteQue(request, que_id):
+    que = QuestionsModel.objects.get(id=que_id)
+    que.delete()
+    messages.add_message(request, messages.SUCCESS, 'Your question has been deleted.')
+    return redirect(reverse('userquestions'))
+
+def DeleteAns(request, ans_id):
+    ans = AnswersModel.objects.get(id=ans_id)
+    ans.delete()
+    messages.add_message(request, messages.SUCCESS, 'Your answer has been deleted.')
+    return redirect(reverse('useranswers'))
 
 def logoutView(request):
     auth.logout(request)

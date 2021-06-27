@@ -106,7 +106,7 @@ def writeAnsView(request, pk):
         got_user.points += 5
         got_user.save()
         # ==========
-        messages.add_message(request, messages.SUCCESS, "Your answer has been added successfully.")
+        messages.add_message(request, messages.SUCCESS, "Your answer has been added successfully.", extra_tags='ans_posted')
         return redirect(reverse('ans_page', args=(pk,)))
     
     ans_obj = AnswersModel.objects.filter(question_id=pk)
@@ -154,6 +154,3 @@ def LikeView(request, pk):
     return redirect(reverse('ans_page', args=(que_id,)) + ans_id)
 
 
-# def PeopleInfo(request, pc_id):
-#     people_info = User.objects.get(id=pc_id)
-#     return HttpResponseRedirect(reverse('homeApp:peoplesView', kwargs={ 'people_info': people_info }))

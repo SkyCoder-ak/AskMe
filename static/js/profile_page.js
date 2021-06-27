@@ -15,21 +15,6 @@ $("#avtar_img").change(function(){
     previewProfileImage( this );
 });
 
-// =================================FOR COVER IMAGE============================
-// function previewProfileImage( uploader ) {
-//     if (uploader.files && uploader.files[0]) {
-//         var imageFile = uploader.files[0];
-//         var reader = new FileReader();    
-//         reader.onload = function (e) {
-//             $('#cover_img').attr('src', e.target.result);
-//         }    
-//         reader.readAsDataURL( imageFile );
-//     }
-// }
-
-// $("#cover_img_input").change(function(){
-//     previewProfileImage( this );
-// });
 
 
 // =======================FOR PASSWORD CHANGE FORM================

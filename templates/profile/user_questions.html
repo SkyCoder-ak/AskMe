@@ -5,15 +5,16 @@
 {% block profilecontent %}
 
 <div id="asked_ques">
-    {% if messages %}
+
     {% for message in messages %}
+    {% if "success" in message.tags %}
     <p id="error_msg" class="bg_success">
         <strong>Message: </strong>
         {{ message }}
         <button id="msg_close_btn" onclick="closeMsg()"><i class="far fa-times-circle"></i></button>
     </p>
-    {% endfor %}
     {% endif %}
+    {% endfor %}
 
 
     <h4 class="asked_ques_heading"><span class="clr_red">Q</span>uestions <span class="clr_red">A</span>sked <span
@@ -45,6 +46,8 @@
                     {% endif %}
                     <p class="date">Asked: <span class="clr_blue">{{que_data_row.que_date_time}}</span></p>
                     <p class="category">In: <span class="clr_blue">{{que_data_row.que_category}}</span></p>
+
+                    
                 </div>
                 <div class="col2_right_row2">
                     <h2 class="que"><strong class="clr_green">Que: &nbsp;</strong>{{que_data_row.question}}</h2>
@@ -55,6 +58,7 @@
                             class="fas fa-comment-alt font_1-2rem"></i>&nbsp;&nbsp;&nbsp;<span>{{que_data_row.answersmodel_set.all|length}}</span>&nbsp;Answers</a>
                     <p href="" class="btn1"><i class="fas fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>{{que_data_row.que_views}}</span> Views
                     </p>
+                    <a href="{% url 'deleteque' que_data_row.id %}" class="del-btn">Delete</a>
                 </div>
             </div>
         </div>

@@ -4,6 +4,16 @@
 
 {% block profilecontent %}
 
+{% for message in messages %}
+{% if "success" in message.tags %}
+<p id="error_msg" class="bg_success">
+    <strong>Message: </strong>
+    {{ message }}
+    <button id="msg_close_btn" onclick="closeMsg()"><i class="far fa-times-circle"></i></button>
+</p>
+{% endif %}
+{% endfor %}
+
 <div id="answers">
     <h4 class="asked_ques_heading"><span class="clr_red">A</span>nswers <span class="clr_red">G</span>iven <span
             class="clr_red">B</span>y <span class="clr_red">Y</span>ou</h4>
@@ -36,6 +46,7 @@
                 <div class="post_detail_row">
                     <p class="asked">Answerd On: <span class="clr_blue">{{given_ans.ans_date_time}}</span></p>
                 </div>
+                <a href="{% url 'deleteans' given_ans.id %}" class="del-btn">Delete</a>
             </div>
         </div>
     </div>

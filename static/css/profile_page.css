@@ -73,7 +73,8 @@ body{
     position: relative;
     width: 100%;
     height: 25rem;
-    /* background-color: rgb(255,150,106); */
+    /* background-color: #01b35f; */
+    
 }
 .header_row #cover_img{
     width: 100%;
@@ -278,12 +279,16 @@ body{
     height: 100%;
 }
 
-#profile_edit .header_row #cover_img_input{
+#profile_edit .header_row{
+    background-color: #01b35f;
+}
+
+/* #profile_edit .header_row #cover_img_input{
     bottom: 0;
     position: absolute;
     display: none;
-}
-#profile_edit .header_row .cover_label{
+} */
+/* #profile_edit .header_row .cover_label{
     position: absolute;
     bottom: 2%;
     right: 2%;
@@ -298,10 +303,10 @@ body{
     overflow: hidden;
     transition: all linear 0.4s;
     
-}
-#profile_edit .header_row:hover .cover_label{
+} */
+/* #profile_edit .header_row:hover .cover_label{
     width: 10rem;
-}
+} */
 
 #profile_edit .profile_img_box #avtar_img{
     bottom: 0;
@@ -554,4 +559,56 @@ body{
 
 #user_questions .col2_right_row2 .que_descs pre{
     font-size: 4rem !important;
+}
+
+/* .que-change{
+    
+    height: 100%;
+}
+.que-change .three-dot{
+    padding: 0 0.3em;
+    font-size: 1.6rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+.que-change #btn-box{
+    position: absolute;
+    right: 100%;
+    top: 0%;
+    width: 0rem;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.3s linear;
+
+}
+.que-change #btn-box a{
+    padding: 0.1em 0.3em;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: white;
+    border-radius: 0.3rem;
+    background-color: #fc0543;
+} */
+
+.del-btn{
+    position: absolute;
+    right: 5%;
+    padding: 0.1em 0.3em;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: white;
+    border-radius: 0.3rem;
+    background-color: #fc0543;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.479), -2px -2px 2px rgba(255, 255, 255, 0.699);
+    transition-duration: 0.3s;
+}
+.del-btn:hover{
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.479), -1px -1px 1px rgba(255, 255, 255, 0.699);
 }

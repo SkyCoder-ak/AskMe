@@ -29,7 +29,7 @@
         {% for people in all_users %}
         {% if people.is_superuser == False %}
 
-        <div id="pc-con" class="pc-container {{people.id}}">
+        <div class="pc-container {{people.id}}">
             <div class="pc-main">
                 <a href="/peoples#peoples_box" id="close-pc"><i class="fas fa-times"></i></a>
                 <div class="pc-left">
@@ -79,15 +79,12 @@
 
         <div id="card_{{people.id}}" class="people_card">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320"><path fill="#00b661" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,282.7C384,299,480,277,576,234.7C672,192,768,128,864,96C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <form action="" method="post" class="pc-form">
-                {% csrf_token %}
-                <button id="{{people.id}}" type="button" class="img_box" onclick="ShowPC(this.id)">
-                    {% if people.usermodel.profile_photo %}
-                    <img src="{{people.usermodel.profile_photo.url}}" alt="">
-                    {% endif %}
-                </button>
-            </form>
-            <a href="" class="card_name">{{people.first_name}} {{people.last_name}}</a>
+            <button id="{{people.id}}" type="button" class="img_box" onclick="ShowPC(this.id)">
+                {% if people.usermodel.profile_photo %}
+                <img src="{{people.usermodel.profile_photo.url}}" alt="">
+                {% endif %}
+            </button>
+            <a class="card_name">{{people.first_name}} {{people.last_name}}</a>
             <p class="card_prof">{{people.usermodel.designation}}</p>
 
             {% if people.usermodel.points < 150 %}

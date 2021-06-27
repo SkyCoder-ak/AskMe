@@ -143,6 +143,6 @@
     transition-duration: 0.5s;
 }
 .su-au-btn:hover{
-    color: rgb(0, 0, 0) !important;
-    background-color: #ffffff9c;
+    color: rgb(255, 255, 255) !important;
+    background-color: #fd0526;
 }
