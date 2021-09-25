@@ -22,6 +22,7 @@ class UserModel(models.Model):
     points = IntegerField(default=0)
     points_update = models.CharField(max_length=12, default='not_updated')
     ans_point = models.BooleanField(default=False)
+    otp = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return self.user.username

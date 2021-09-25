@@ -24,9 +24,8 @@
     <form action="" method="post" class="user_details_form" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="header_row">
+            <button type="button" class="index-menu-open" onclick="OpenProfileIndex()"><i class="fas fa-bars"></i></button>
             <img id="cover_img" src="{% static 'images/profile_cover.jpg' %}" alt="">
-            <!-- <label for="cover_img_input" class="cover_label"><i class="far fa-edit"></i></label>
-            <input type="file" name="cover_img" id="cover_img_input" accept="image/*"> -->
             <a class="change_pass_btn" onclick="show_password_form()">Change Password</a>
             <div class="profile_img_box">
                 {% if user.usermodel.profile_photo %}

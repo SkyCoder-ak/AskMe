@@ -7,6 +7,7 @@
 {% if user.followed_users.all|length != 0 %}
 <div id="peoples_box">
     <div class="head_row">
+        <button type="button" class="index-menu-open" onclick="OpenProfileIndex()" style="color: black;"><i class="fas fa-bars"></i></button>
         <h1 class="people_heading">Your Followers</h1>
         <div class="search_box">
             <p class="total_fol">Total: {{user.followed_users.all|length}}</p>
@@ -39,9 +40,9 @@
             <form action="{% url 'follow_to' follower.u.id %}" method="post">
                 {% csrf_token %}
                 {% if follower.u in user.followmodel.followed_to.all %}
-                <button type="submit" class="follow_btn" name="follow_btn_prof2" value="{{follower.u.id}}" style="background-color: #03b3f8;">Unfollow</button>
+                <button type="submit" class="follow_btn2" name="follow_btn_prof2" value="{{follower.u.id}}" style="background-color: #03b3f8;">Unfollow</button>
                 {% else %}
-                <button type="submit" class="follow_btn" name="follow_btn_prof2" value="{{follower.u.id}}">Follow</button>
+                <button type="submit" class="follow_btn2" name="follow_btn_prof2" value="{{follower.u.id}}">Follow</button>
                 {% endif %}
             </form>
             </form>

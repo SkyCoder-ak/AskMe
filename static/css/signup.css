@@ -1,77 +1,90 @@
 .signup_main{
-    width: 100vw;
-    height: 80vh;
-    display: grid;
-    place-items: center;
-}
-.signup_box{
     position: relative;
-    display: flex;
-    width: 70%;
-    height: 90%;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.452), -2px -2px 3px rgb(255, 255, 255);
-    border-radius: 1rem;
-    overflow: hidden;
+    width: 100vw;
+    height: 90vh;
+    
 }
-.signup_box .left_box{
-    padding: 2em 1em;
-    width: 60%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.signup_box .left_box h1{
-    width: 5rem;
-    height: 5rem;
-    font-size: 4rem;
-    color: #2ed573;
+.signup_main::before{
+    content: '';
+    width: 160rem;
+    height: 160rem;
+    left: -50%;
+    position: absolute;
+    background-image: linear-gradient(-45deg, rgb(0, 211, 95) 0%, rgb(0, 211, 95) 100%);
+    transform: translateY(-40%);
     border-radius: 50%;
+    z-index: -1;
 }
-.signup_box .left_box form{
+.su-box{
+    position: absolute;
+    right: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35%;
+    height: 80%;
+}
+.su-box h1{
+    font-size: 3rem;
+    color: #000000;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+.su-box .signup-form{
     width: 100%;
     padding-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.signup_box .left_box .field_row{
+.su-box .field_row{
     position: relative;
     width: 80%;
-    margin: 1rem;
+    margin: 2.5rem;
 }
-.signup_box .left_box .field_row label{
-    display: block;
-    padding-left: 0.2em;
-    padding-bottom: 0.3em;
+.su-box .field_row .su-label{
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
     font-size: 1.8rem;
+    color: rgba(0, 0, 0, 0.562);
     font-family: 'Poppins', sans-serif;
-
+    transition: 0.3s;
+    z-index: -1;
 }
-.signup_box .left_box .field_row input{
+.su-box .field_row input{
+    position: relative;
     width: 100%;
-    padding: 0.4em 0.7em;
+    padding: 0.5em 0.7em;
     border: none;
     border-radius: 2rem;
     outline: none;
     background-color: transparent;
     font-size: 1.7rem;
-
     box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.452), inset -2px -2px 3px rgb(255, 255, 255);
 }
-.signup_box #show_pass{
+.su-box .field_row input:focus ~ .su-label,
+.su-box .field_row input:valid ~ .su-label{
+    top: -50%;
+    color: rgb(0, 0, 0);
+    font-size: 1.9rem;
+}
+
+#show_pass{
     padding: 0.2em;
     position: absolute;
-    top: 55%;
+    top: 50%;
+    transform: translateY(-50%);
     right: 2%;
     font-size: 2rem;
     color: rgb(4, 187, 80);
     z-index: 100;
 }
-.signup_box #hide_pass{
+#hide_pass{
     padding: 0.2em;
     position: absolute;
-    top: 55%;
+    top: 50%;
+    transform: translateY(-50%);
     right: 2%;
     font-size: 2rem;
     color: rgb(4, 187, 80);
@@ -79,70 +92,104 @@
     display: none;
 }
 
-.signup_box .left_box .btn_row{
-    padding: 5em 7em;
-    width: 100%;
+.su-box .btn_row{
+    margin-top: 3rem;
     display: flex;
-    flex-direction: row-reverse;
-    /* justify-content: center; */
+    justify-content: center;
 }
-.signup_box .left_box .btn_row button{
-    padding: 0.3em 1em;
+.su-box .btn_row button{
+    padding: 0.2em 2em;
     width: 100%;
     border: none;
     border-radius: 2rem;
     outline: none;
-    background-color: transparent;
+    background-color: rgb(0,211,95);
     font-size: 2rem;
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
     font-weight: 500;
-    color: rgb(255, 2, 78);
+    color: rgb(255, 255, 255);
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.452), -2px -2px 3px rgb(255, 255, 255);
     transition-duration: 0.3s;
 }
-.signup_box .left_box .btn_row button:hover{
+.su-box .btn_row button:hover{
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.452), -1px -1px 1px rgb(255, 255, 255);
 }
-.signup_box .right_box{
-    overflow: hidden;
+
+.su-left{
+    position: absolute;
+    left: 10%;
+    top: 30%;
+    width: 30%;
+}
+.su-left h1{
+    font-size: 3rem;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+.su-left p{
+    font-size: 1.7rem;
+    margin-bottom: 3rem;
+    font-family: 'Poppins', sans-serif;
+    color: rgba(255, 255, 255, 0.925);
+}
+.su-left a{
+    padding: .2em .7em;
+    text-decoration: none;
+    font-size: 1.9rem;
+    border: 2px solid white;
+    color: white;
+    border-radius: 1rem;
+    transition: .3s;
+}
+.su-left a:hover{
+    background-color: rgb(255, 0, 64);
+}
+
+
+/* ===============OTP FORM============== */
+.otp-form{
+    padding: 3em;
+    width: 100%;
+}
+.otp-field-row{
+    width: 100%;
+}
+.otp-field-row label{
+    display: block;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.6rem;
+    font-family: 'Poppins', sans-serif;
+}
+.otp-field-row input{
+    width: 100%;
+    padding: 0.5em 0.7em;
+    border: none;
+    border-radius: 2rem;
+    outline: none;
+    background-color: transparent;
+    font-size: 1.7rem;
+    box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.452), inset -2px -2px 3px rgb(255, 255, 255);
+}
+.otp-form .last-row{
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40%;
-    height: 100%;
-    
 }
-.signup_box .right_box .inner_box{
-    padding: 10em 5em;
-    width: 90%;
-    height: 90%;
+.otp-form .last-row button{
+    margin-top: 4rem;
+    padding: 0.2em 2em;
+    border: none;
     border-radius: 2rem;
-    background-color: #2ed573;
-}
-.signup_box .right_box .inner_box h1{
+    outline: none;
+    background-color: rgb(0,211,95);
+    font-size: 2rem;
     font-family: 'Poppins', sans-serif;
-    font-size: 3rem;
-    color: white;
+    text-transform: uppercase;
     font-weight: 500;
-}
-.signup_box .right_box .inner_box p{
-    font-size: 1.7rem;
-    color: rgba(255, 255, 255, 0.918);
-}
-.signup_box .right_box .inner_box .su-au-btn{
-    display: inline-block;
-    margin-top: 3rem;
-    font-family: 'Poppins', sans-serif;
-    padding: 0.2em 0.9em;
-    font-size: 1.8rem;
-    color: white;
-    text-decoration: none;
-    border: 2px solid white;
-    border-radius: 2rem;
-    transition-duration: 0.5s;
-}
-.su-au-btn:hover{
-    color: rgb(255, 255, 255) !important;
-    background-color: #fd0526;
+    color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.452), -2px -2px 3px rgb(255, 255, 255);
+    transition-duration: 0.3s;
 }

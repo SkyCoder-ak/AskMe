@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends "base/base.html" %}
+{% load static %}
+<title>AskMe-signup</title>
+
+{% block bodyblock %}
+<div class="signup_main">
+    <div class="su-box">
+        <form action="" method="post" class="otp-form">
+            {% csrf_token %}
+            <div class="otp-field-row">
+                <label for="otp">Enter Your OTP:</label>
+                <input type="number" id="otp" name="otp">
+
+                {% for message in messages %}
+                {% if "wrong_otp" in message.tags %}
+                <p id="error_msg" class="bg_error">
+                    <strong>Message: </strong>
+                    {{ message }}
+                    <button id="msg_close_btn" onclick="closeMsg()"><i class="far fa-times-circle"></i></button>
+                </p>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="last-row">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="su-left">
+        <h1>We are AskMe!!</h1>
+        <p>A forum to gain and share knowledge. It's a platform to ask questions and connect with people who contribute unique insights and quality answers.</p>
+        <a href="{% url 'aboutpage' %}">About Us</a>
+    </div>
+</div>
+{% endblock bodyblock%}

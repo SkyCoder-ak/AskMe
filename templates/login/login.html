@@ -5,24 +5,21 @@
 
 {% block bodyblock %}
 
-
-
 <div class="login_main">
     <div class="login_box">
-        <h2 class="login_icon"><i class="fas fa-key"></i></h2>
         <h1 class="login_heading">LOGIN</h1>
         <form action="" method="post">
             {% csrf_token %}
             {{ form.non_field_errors }}
             <div class="row">
                 {{ form.username.errors}}
-                <label for="login_email">Username:</label>
                 {{ form.username }}
+                <label for="login_email" class="log-label"><i class="fas fa-user"></i>&nbsp;&nbsp;Username</label>
             </div>
             <div class="row">
                 {{ form.password.errors }}
-                <label for="login_pass">Password:</label>
                 {{ form.password }}
+                <label for="login_pass" class="log-label"><i class="fas fa-lock"></i>&nbsp;&nbsp;Password</label>
                 <p onclick="showHidePass()" id="show_pass"><i class="fas fa-eye"></i></p>
                 <p onclick="showHidePass()" id="hide_pass"><i class="fas fa-eye-slash"></i></p>
             </div>
@@ -42,6 +39,11 @@
             </div>
         </form>
         <a href="">Forgot Password?</a>
+    </div>
+    <div class="log-left">
+        <h1>Hello There!!</h1>
+        <p>Enter your details and start journey with us. <br>If you don't have an account click on signup button.</p>
+        <a href="/signup">Signup</a>
     </div>
 </div>
 {% endblock bodyblock%}

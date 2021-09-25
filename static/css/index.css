@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 html{
-    /* scroll-behavior: smooth; */
     font-size: 10px;
 }
 body{
@@ -16,6 +15,9 @@ body{
 }
 
 /* ==============================MY CLASSESS=============================== */
+:root {
+    --site_clr: #03be51;
+  }
 .clr_green{
     color: #059641;
 }
@@ -100,7 +102,7 @@ body{
 .font_6rem{
     font-size: 2rem;
 }
-
+/* ========================================== */
 
 ::-webkit-scrollbar {
     width: 5px;
@@ -153,10 +155,6 @@ body{
     width: 60%;
 
 }
-/* #nav_top .nav_left .logo{
-    font-size: 2.5rem;
-    color: rgb(230, 255, 1);
-} */
 #nav_top .nav_left .logo span:nth-child(1){
     font-size: 3rem;
     color: rgb(255, 255, 255);
@@ -224,6 +222,15 @@ body{
 #nav_top .nav_right .nav_btn:hover{
     box-shadow: 0 0 10px white;
 }
+#nav_top .nav_right button{
+    margin-left: 3rem;
+    font-size: 2.5rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    display: none;
+}
 #header{
     width: 100vw;
     height: 75vh;
@@ -239,7 +246,6 @@ body{
     transform: translate(-50%,-50%);
     width: 60%;
     height: 30%;
-    /* border: 2px solid red; */
 
 }
 #header .search_box .search_heading{
@@ -331,7 +337,6 @@ body{
     height: 5rem;
     top: 30%;
     right: 10%;
-    /* background-color: rgb(2, 168, 104); */
     border: 5px solid rgb(255, 8, 70);
     animation: spin 10s infinite linear;
 }
@@ -349,7 +354,6 @@ body{
     height: 5rem;
     top: 60%;
     left: 10%;
-    /* background-color: rgb(2, 168, 104); */
     border: 5px solid rgb(115, 8, 255);
     animation: spinReverse 10s infinite linear;
 }
@@ -367,7 +371,6 @@ body{
     height: 30vh;
     display: flex;
     justify-content: space-around;
-    /* margin-bottom: 9rem; */
 }
 .services .serv_box{
     padding: 2em;
@@ -393,6 +396,7 @@ body{
 }
 .services .serv_box .serv_heading{
     font-size: 2rem;
+    text-align: center;
 }
 .services .serv_box .serv_para{
     text-align: center;
@@ -475,8 +479,6 @@ body{
 }
 .column1 a{
     display: inline-block;
-    /* padding: 0.2em 0.4em; */
-    /* width: ; */
     color: rgb(32, 32, 32);
     text-decoration: none;
     font-size: 1.8rem;
@@ -563,7 +565,6 @@ body{
     border-bottom-right-radius: 0.7rem;
     overflow: hidden;
     transition: all linear 0.2s;
-    /* border: 2px solid red; */
 }
 #section_home .categories #cate_dropdown .cate_link_more{
     font-size: 1.5rem;
@@ -605,9 +606,6 @@ body{
     height: 5.5rem;
     border-radius: 50%;
 }
-.prof_icon:hover{
-    box-shadow: 0 0 3px black;
-}
 .que_box .col2_left .col2_row2{
     display: flex;
     flex-direction: column;
@@ -634,19 +632,16 @@ body{
     box-shadow: 0 0 3px black;
 }
 .que_box .col2_right{
-    /* position: relative; */
     padding: 2em 2em;
     width: 85%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* border: 2px solid black; */
 }
 .col2_right .col2_right_row1{
     display: flex;
     align-items: center;
-    /* border: 2px solid red; */
 }
 .col2_right .col2_right_row1 .name{
     margin-right: 1rem;
@@ -655,17 +650,6 @@ body{
     text-decoration: none;
     font-size: 1.6rem;
 }
-.col2_right .col2_right_row1 .name:hover{
-    color: rgb(0, 0, 0);
-}
-/* .status{
-    display: inline-block;
-    padding: 0 0.5em;
-    margin-right: 25%;
-    font-size: 1.4rem;
-    border-radius: 0.7rem;
-    color: white;
-} */
 .col2_right .col2_right_row1 .date{
     margin: 0 2rem;
     font-size: 1.3rem;
@@ -727,13 +711,14 @@ body{
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.479), -1px -1px 1px rgba(255, 255, 255, 0.699);
 }
 
-/* =========================================PEOPLES========================== */
+/* ==========================PEOPLES====================== */
 #peoples_box{
     width: 100%;
     height: 100%;
     /* display: none; */
 }
 #peoples_box .head_row{
+    position: relative;
     padding: 0 2em;
     width: 100%;
     height: 5rem;
@@ -744,6 +729,7 @@ body{
     border-top: 2px solid rgb(165, 165, 165);
 }
 #peoples_box .head_row .people_heading{
+    margin-left: 5%;
     font-size: 2.1rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
@@ -854,13 +840,12 @@ body{
     color: white;
     outline: none;
     border: none;
+    transition: .3s;
 }
 .people_card .follow_btn:hover{
-    color: rgb(34, 33, 33);
-    background-color: #059641;
+    letter-spacing: 2px;
 }
-
-/* ======================================ANSWER PAGE================================== */
+/* ======================ANSWER PAGE===================== */
 #ans_page{
     width: 100%;
 }
@@ -891,9 +876,6 @@ body{
     align-items: center;
     border: 2px solid green;
     border-radius: 50%;
-}
-.ans_row .col_left a:hover{
-    box-shadow: 0 0 3px black;
 }
 .ans_row .col_left a img{
     width: 5.5rem;
@@ -930,8 +912,10 @@ body{
 }
 .ans_row .col_right .row2 p{
     font-size: 1.6rem;
+    width: 100%;
     font-family: 'Poppins', sans-serif;
-    color: #555;
+    color: rgb(37, 37, 37);
+
 }
 .ans_row .col_right .row_last{
     padding: 0 1em;
@@ -1357,3 +1341,83 @@ body{
     border-radius: 0.5rem;
 }
 /* ======================================================== */
+
+/* =================componant on media queries========== */
+#mobile-nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0vw;
+    height: 100vh;
+    background-color: #2f3640;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.4s linear;
+}
+#mobile-nav ul{
+    width: 40%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+#mobile-nav ul li{
+    width: 100%;
+    height: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#mobile-nav ul li a{
+    font-size: 1.8rem;
+    width: 90%;
+    height: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.692), -2px -2px 3px rgba(255, 255, 255, 0.322);
+    border-radius: 2rem;
+    text-decoration: none;
+    transition: 0.3s;
+}
+#mobile-nav ul li a:active{
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.692), -1px -1px 1px rgba(255, 255, 255, 0.322);
+    background-color: #7a818b;
+}
+#close-menu{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    padding: 0.5em;
+    font-size: 2rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+}
+
+/* +++++++++++++++++++++++MEDIA QUERIES++++++++++++++++++ */
+/* -----------for mobiles-------------- */
+@media (max-width: 768px) {
+    html{
+        font-size: 50%;
+    }
+    #nav_top #top_nav_ul{
+        display: none;
+    }
+    #nav_top .nav_right button{
+        display: block;
+    }
+    #peoples_box .head_row .search_box{
+        width: 30%;
+    }
+    #peoples_box .head_row .search_box input{
+        padding: 0.3em 0.6em;
+    }
+}

@@ -39,9 +39,11 @@
                 <li><a href="{% url 'peoples_main' %}" class="nav_link {{nav_peoples}}">Peoples</a></li>
                 <li><a href="/#post_question" class="nav_link">Ask Question</a></li>
                 <li><a href="/about-us" class="nav_link {{nav_about}}">About Us</a></li>
+                
             </ul>
         </div>
         <div class="nav_right">
+            <button type="button" onclick="OpenMenu()"><i class="fas fa-bars"></i></button>
             {% if user.is_authenticated %}
             <a href="/profile/logout" class="nav_btn">Logout</a>
             <a href="/profile/dashboard" class="username">
@@ -53,8 +55,18 @@
             <a href="/login" class="nav_btn">Login</a>
             <a href="/signup" class="nav_btn">SignUp</a>
             {% endif %}
+            
         </div>
     </nav>
+    <div id="mobile-nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="{% url 'peoples_main' %}">Peoples</a></li>
+            <li><a href="/#post_question">Ask Quesitons</a></li>
+            <li><a href="/about-us">About Us</a></li>
+        </ul>
+        <button type="button" id="close-menu" onclick="CloseMenu()"><i class="fas fa-times"></i></button>
+    </div>
 
     {% block bodyblock %}
 

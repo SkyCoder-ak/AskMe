@@ -29,3 +29,10 @@ function hide_password_form() {
     frm.style.display = "none";
 }
 
+// ===============for mobile nav================
+function CloseProfileIndex(){
+    document.getElementById('index_col').style.width = '0vw';
+}
+function OpenProfileIndex(){
+    document.getElementById('index_col').style.width = '30vw';
+}

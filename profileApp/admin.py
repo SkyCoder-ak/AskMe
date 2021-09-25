@@ -3,6 +3,5 @@ from .models import UserModel
 
 # Register your models here.
 admin.site.register(UserModel)
-# admin.site.register(Followers)
 
 

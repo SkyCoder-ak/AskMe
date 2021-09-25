@@ -13,7 +13,6 @@ def loginView(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request,user)
-            print("login success")
             return redirect("/profile/dashboard")
         else:
             messages.add_message(request, messages.ERROR, "Incorrect Username or Password.!!!")

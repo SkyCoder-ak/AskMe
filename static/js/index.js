@@ -53,4 +53,10 @@ function ShowPC(clicked_id){
 //     document.getElementById('pc-con').style.display = 'none';
 // }
 
-// ===============GETTING THE PC-ICON DATA================
+// ===============for mobile nav================
+function CloseMenu(){
+    document.getElementById('mobile-nav').style.width = '0vw';
+}
+function OpenMenu(){
+    document.getElementById('mobile-nav').style.width = '100vw';
+}

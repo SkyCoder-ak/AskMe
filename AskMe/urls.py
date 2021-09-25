@@ -30,6 +30,7 @@ urlpatterns = [
     path('home/', include('homeApp.urls')),
     path('peoples/', homeviews.peoplesView),
     path('signup/', signupviews.signupView),
+    path('email-verification', signupviews.OtpView, name='otppage'),
     path('login/', loginviews.loginView),
     path('about-us/', aboutviews.AboutView, name='aboutpage'),
     path('badges-info/', aboutviews.BadgesView, name='badgespage'),

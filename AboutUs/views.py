@@ -15,7 +15,7 @@ def AboutView(request):
         email = request.POST.get('email')
         message = request.POST.get('message')
         sender = 'beyondhorrizon7@gmail.com'
-        recipients = ['motheakash321@gmail.com']
+        recipients = ['akashmothe1@gmail.com']
         mail_message = f"Name: {name}\nEmail:{email}\nMessage:{message}"
 
         sent = send_mail('Contact from AskMe', mail_message, sender, recipients, fail_silently=False,auth_user=settings.EMAIL_HOST_USER,auth_password=settings.EMAIL_HOST_PASSWORD)

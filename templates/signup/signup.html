@@ -7,86 +7,91 @@
 
 {% if messages %}
 {% for message in messages %}
-{% if message.tags == 'success' %}
+{% if 'otp_sent' in message.tags %}
 <div id="message_main">
     <div class="message_box">
         <h1 style="color: rgb(1, 207, 104);"><i class="far fa-check-circle"></i></h1>
-        <h2>SUCCESS!!</h2>
+        <h2>Verify Email!!</h2>
         <P>{{message}}</P>
-        <a href="/login" id="popup_close_btn" onclick="DismissPopup()"
-            style="background-color: rgb(1, 207, 104);">OK</a>
+        <a href="/email-verification" id="popup_close_btn" onclick="DismissPopup()" style="background-color: rgb(1, 207, 104);">OK</a>
     </div>
 </div>
 {% endif %}
+
+{% if 'email_fail' in message.tags %}
+<div id="message_main">
+    <div class="message_box">
+        <h1 style="color: rgb(240, 121, 41);"><i class="far fa-check-circle"></i></h1>
+        <h2>Incorrect Email!!</h2>
+        <P>{{message}}</P>
+        <a href="" id="popup_close_btn" onclick="DismissPopup()"
+            style="background-color: rgb(240, 121, 41);">OK</a>
+    </div>
+</div>
+{% endif %}
+
 {% endfor %}
 {% endif %}
 
 <div class="signup_main">
-    <div class="signup_box">
-        <div class="left_box">
-            <h1><i class="far fa-user"></i></h1>
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ form.non_field_errors }}
-                <div class="field_row">
-                    {{ form.full_name.errors }}
-                    <label for="fname">Full Name:</label>
-                    {{ form.full_name }}
-                </div>
-                <div class="field_row">
-                    {{ form.dis_name.errors }}
-                    <label for="displayName">Username:</label>
-                    {{ form.dis_name }}
-
-                    {% for message in messages %}
-                    {% if "username_exists" in message.tags %}
-
-                    <p id="error_msg" class="bg_error">
-                        <strong>Message: </strong>
-                        {{ message }}
-                        <button id="msg_close_btn" onclick="closeMsg()"><i class="far fa-times-circle"></i></button>
-                    </p>
-
-                    {% endif %}
-                    {% endfor %}
-                </div>
-                <div class="field_row">
-                    {{ form.email.errors }}
-                    <label for="email">Email:</label>
-                    {{ form.email }}
-                    {% for message in messages %}
-                    {% if "email_exists" in message.tags %}
-
-                    <p id="error_msg" class="bg_error">
-                        <strong>Message: </strong>
-                        {{ message }}
-                        <button id="msg_close_btn" onclick="closeMsg()"><i class="far fa-times-circle"></i></button>
-                    </p>
-
-                    {% endif %}
-                    {% endfor %}
-                </div>
-                <div class="field_row">
-                    {{ form.password.errors }}
-                    <label for="signup_pass">Password:</label>
-                    {{ form.password }}
-                    <p onclick="showHidePass()" id="show_pass"><i class="fas fa-eye"></i></p>
-                    <p onclick="showHidePass()" id="hide_pass"><i class="fas fa-eye-slash"></i></p>
-                </div>
-                <div class="btn_row">
-                    <button type="submit">SignUp</button>
-                    <!-- <input type="checkbox" value="I read and agree to Terms and conditions.">  -->
-                </div>
-            </form>
-        </div>
-        <div class="right_box">
-            <div class="inner_box">
-                <h1>Hello There!!</h1>
-                <p>“Don’t be afraid to share what you know, because you know it better than anyone else!” <br> And this
-                    is the best platform where you can share your solutions or ask any questions.</p>
-                <a href="/about-us" class="su-au-btn">About Us</a>
+    <div class="su-box">
+        <h1>SIGNUP</h1>
+        <form action="" method="post" class="signup-form">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="field_row">
+                {{ form.full_name.errors }}
+                {{ form.full_name }}
+                <label for="fname" class="su-label"><i class="fas fa-user-tag"></i>&nbsp;&nbsp;Fullname</label>
             </div>
-        </div>
+            <div class="field_row">
+                {{ form.dis_name.errors }}
+                {{ form.dis_name }}
+                <label for="displayName" class="su-label"><i class="fas fa-user"></i>&nbsp;&nbsp;Username</label>
+
+                {% for message in messages %}
+                {% if "username_exists" in message.tags %}
+                <p id="error_msg" class="bg_error">
+                    <strong>Message: </strong>
+                    {{ message }}
+                    <button id="msg_close_btn" onclick="closeMsg()"><i class="far fa-times-circle"></i></button>
+                </p>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="field_row">
+                {{ form.email.errors }}
+                {{ form.email }}
+                <label for="email" class="su-label"><i class="fas fa-envelope"></i>&nbsp;&nbsp;Email</label>
+                {% for message in messages %}
+                {% if "email_exists" in message.tags %}
+
+                <p id="error_msg" class="bg_error">
+                    <strong>Message: </strong>
+                    {{ message }}
+                    <button id="msg_close_btn" onclick="closeMsg()"><i class="far fa-times-circle"></i></button>
+                </p>
+
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="field_row">
+                {{ form.password.errors }}
+                {{ form.password }}
+                <label for="signup_pass" class="su-label"><i class="fas fa-lock"></i>&nbsp;&nbsp;Password</label>
+
+                <p onclick="showHidePass()" id="show_pass"><i class="fas fa-eye"></i></p>
+                <p onclick="showHidePass()" id="hide_pass"><i class="fas fa-eye-slash"></i></p>
+            </div>
+            <div class="btn_row">
+                <button type="submit">SignUp</button>
+            </div>
+        </form>
+    </div>
+    <div class="su-left">
+        <h1>We are AskMe!!</h1>
+        <p>A forum to gain and share knowledge. It's a platform to ask questions and connect with people who contribute unique insights and quality answers.</p>
+        <a href="{% url 'aboutpage' %}">About Us</a>
     </div>
 </div>
 {% endblock bodyblock%}

@@ -6,6 +6,7 @@
 {% block bodyblock %}
 <div id="profile_main">
     <div id="index_col">
+        <button type="button" class="index-menu-close" onclick="CloseProfileIndex()"><i class="fas fa-times"></i></button>
         <ul>
             <li><a href="/profile/dashboard" class="left_nav_link {{dashboard}}"><i class="fas fa-tachometer-alt"></i>
                     &nbsp;&nbsp;Dashboard</a></li>
@@ -46,6 +47,7 @@
 
         <div id="dashboard">
             <div class="header_row">
+                <button type="button" class="index-menu-open" onclick="OpenProfileIndex()"><i class="fas fa-bars"></i></button>
                 <img src="{% static 'images/doors.jpg' %}" alt="" id="cover_img">
                 
                 <div class="profile_img_box">
@@ -53,8 +55,7 @@
                     <img src="{{ user.usermodel.profile_photo.url }}" alt="img">
                     {% endif %}
                 </div>
-                <div class="header_info_row">
-                    <div class="name_box">
+                <div class="name_box">
                         <h4 class="user_name">{{ user.first_name }} {{ user.last_name }}</h4>
                         <p class="desgn">{{ user.usermodel.designation }}</p>
                         
@@ -70,11 +71,8 @@
                         {% endif %}
                         <!-- ================== -->
 
-                    </div>
-                    <div class="btns_box">
-                        <a href="/#post_question" class="ask_user_btn bg_redPigment">Ask Question</a>
-                    </div>
                 </div>
+                <a href="/#post_question" class="ask_user_btn bg_redPigment">Ask Question</a>
             </div>
 
             <div id="user_about">
